@@ -1,0 +1,19 @@
+enableFeaturePreview("VERSION_CATALOGS")
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+  versionCatalogs {
+    create("libs2") {
+      from(files("gradle/libs2.versions.toml"))
+    }
+  }
+}
+rootProject.name = "Foodies"
+include ':app'
+//include ':features:foodcategoriesdetails'
+
+
+
