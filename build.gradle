@@ -13,7 +13,7 @@ buildscript {
     // See https://github.com/google/dagger/issues/2684
     // Using stable 1.5.10 version instead.
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
-    classpath 'com.google.dagger:hilt-android-gradle-plugin:2.38.1'
+    classpath libs.dagger.hilt.androidGradlePlugin
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -22,4 +22,13 @@ buildscript {
 
 task clean(type: Delete) {
   delete rootProject.buildDir
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+  kotlinOptions {
+    freeCompilerArgs += "-Xopt-in=kotlin.OptIn"
+    freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+  }
 }
