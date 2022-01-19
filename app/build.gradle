@@ -58,37 +58,33 @@ kotlin {
 }
 
 dependencies {
-  kapt libs2.bundles.daggerKapt
-  ksp libs2.compose.destinations.ksp
+  kapt libs.bundles.daggerKapt
+  ksp libs.compose.destinations.ksp
 
-  implementation libs2.androidx.appcompat
-  implementation libs2.androidx.compose.material
-  implementation libs2.androidx.corektx
-  implementation libs2.bundles.compose
-  implementation libs2.compose.destinations.core
-  implementation libs2.timber
-  implementation libs2.material
-  implementation libs2.bundles.dagger
+  implementation libs.androidx.appcompat
+  implementation libs.androidx.compose.material
+  implementation libs.androidx.corektx
+  implementation libs.bundles.compose
+  implementation libs.compose.destinations.core
+  implementation libs.timber
+  implementation libs.material
+  implementation libs.bundles.dagger
 
   // Retrofit
-  implementation libs2.retrofit
-  implementation libs2.retrofit.converter.gson
-  implementation libs2.gson
+  implementation libs.retrofit
+  implementation libs.retrofit.converter.gson
+  implementation libs.gson
 
   // Coroutines
-  implementation libs2.kotlin.coroutines.core
-  implementation libs2.kotlin.coroutines.android
+  implementation libs.kotlin.coroutines.core
+  implementation libs.kotlin.coroutines.android
 
   // Lifecycle
-  implementation libs2.androidx.lifecycle.runtime
-  implementation libs2.androidx.lifecycle.viewmodel
-  implementation libs2.androidx.lifecycle.runtime
-
-  // Navigation
-  implementation "androidx.navigation:navigation-compose:2.4.0-rc01"
+  implementation libs.androidx.lifecycle.runtime
+  implementation libs.androidx.lifecycle.viewmodel
 
   // Image loading
-  implementation("io.coil-kt:coil-compose:1.3.0")
+  implementation libs.coil
 
   testImplementation 'junit:junit:4.13.2'
   androidTestImplementation 'androidx.test.ext:junit:1.1.3'
