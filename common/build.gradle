@@ -3,16 +3,6 @@ plugins {
   id 'amex.gradle.android'
 }
 
-android {
-  kotlinOptions {
-    jvmTarget = '1.8'
-    useIR = true
-  }
-  buildFeatures {
-    compose true
-  }
-}
-
 dependencies {
   implementation libs.timber
 

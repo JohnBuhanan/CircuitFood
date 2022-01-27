@@ -3,6 +3,7 @@
 import amex.gradle.libs
 import amex.gradle.resolveVersion
 import com.android.build.gradle.BaseExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("android")
@@ -34,6 +35,8 @@ with(the<BaseExtension>()) {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures.compose = true
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.resolveVersion("compose").requiredVersion

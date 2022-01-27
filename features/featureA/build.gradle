@@ -2,16 +2,6 @@ plugins {
   id 'amex.gradle.androidlib'
 }
 
-android {
-  kotlinOptions {
-    jvmTarget = '1.8'
-    useIR = true
-  }
-  buildFeatures {
-    compose true
-  }
-}
-
 dependencies {
   kapt libs.bundles.daggerKapt
   ksp libs.compose.destinations.ksp
