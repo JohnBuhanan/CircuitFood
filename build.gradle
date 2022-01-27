@@ -8,7 +8,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.2.0-alpha07'
+    classpath 'com.android.tools.build:gradle:7.2.0-beta01'
     // Kotlin kapt 1.5.20 has a bug in regards to Hilt latest version.
     // See https://github.com/google/dagger/issues/2684
     // Using stable 1.5.10 version instead.
@@ -18,6 +18,10 @@ buildscript {
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
+}
+
+plugins {
+  id("com.google.devtools.ksp") version "1.6.10-1.0.2"
 }
 
 task clean(type: Delete) {

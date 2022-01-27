@@ -8,6 +8,7 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.dagger.hilt.androidGradlePlugin)
     implementation(libs.agp)
     implementation(libs.kotlin.gradle)
     implementation(gradleApi())

@@ -1,48 +1,20 @@
 plugins {
   id 'com.android.application'
   id 'amex.gradle.android'
-  id 'com.google.devtools.ksp' version libs.versions.kspPlugin
+  id 'com.google.devtools.ksp'
 }
 
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-
 android {
-  compileSdk 31
-  buildToolsVersion "30.0.3"
-
   defaultConfig {
     applicationId "com.codingtroops.foodies"
-    minSdk 24
-    targetSdk 31
-    versionCode 1
-    versionName "1.0"
-
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    vectorDrawables {
-      useSupportLibrary true
-    }
   }
 
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-    }
-  }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
   kotlinOptions {
     jvmTarget = '1.8'
     useIR = true
   }
   buildFeatures {
     compose true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion compose_version
   }
 }
 
