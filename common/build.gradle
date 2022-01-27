@@ -20,4 +20,5 @@ dependencies {
 
   // Compose
   implementation libs.bundles.compose
+  implementation libs.compose.destinations.core
 }
