@@ -8,7 +8,10 @@ import com.codingtroops.common.WithViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
-@Destination(start = true)
+@Destination(
+    start = true,
+    navGraph = "featureA",
+)
 @Composable
 fun FeatureA() {
     Timber.e("Composable - FeatureA")
