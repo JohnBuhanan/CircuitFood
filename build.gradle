@@ -34,6 +34,17 @@ allprojects { project ->
         freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
         freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
       }
+
+      kotlin {
+        sourceSets {
+          debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+          }
+          release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+          }
+        }
+      }
     }
   }
 }

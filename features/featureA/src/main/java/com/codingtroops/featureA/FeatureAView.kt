@@ -8,9 +8,9 @@ import com.codingtroops.common.WithViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
-@Destination
+@Destination(start = true)
 @Composable
-fun FeatureA(categoryId: String) {
+fun FeatureA() {
     Timber.e("Composable - FeatureA")
     WithViewModel<FeatureAViewModel>(
         onEffect = { effect ->
@@ -22,7 +22,7 @@ fun FeatureA(categoryId: String) {
             }
         },
         initialize = { viewModel ->
-            viewModel.initialize(categoryId)
+            viewModel.initialize("categoryId")
         },
         start = { viewModel, onEvent ->
             when (val state = viewModel.state.value) {
