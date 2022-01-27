@@ -1,6 +1,8 @@
 package com.codingtroops.foodies
 
+import app.cash.turbine.test
 import com.codingtroops.foodies.model.data.FoodMenuRepository
+import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEvent
 import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesViewModel
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Assert.assertEquals
@@ -21,6 +23,12 @@ class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
+        foodCategoriesViewModel.setEvent(FoodCategoriesEvent.CategorySelection("beef"))
+
+//        foodCategoriesViewModel.effect.test {
+//
+//        }
+
         assertEquals(4, 2 + 2)
     }
 }
