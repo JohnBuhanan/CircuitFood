@@ -6,10 +6,10 @@ import com.android.build.gradle.BaseExtension
 
 plugins {
     kotlin("android")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-    id("com.google.devtools.ksp")
 }
+apply(plugin = "kotlin-kapt")
+apply(plugin = "dagger.hilt.android.plugin")
+apply(plugin = "com.google.devtools.ksp")
 
 with(the<BaseExtension>()) {
     compileSdkVersion(31)
