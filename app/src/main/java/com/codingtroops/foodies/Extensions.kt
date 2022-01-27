@@ -14,10 +14,10 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.repeatOnLifecycle
-import com.codingtroops.foodies.base.BaseViewModel
-import com.codingtroops.foodies.base.UiEffect
-import com.codingtroops.foodies.base.UiEvent
-import com.codingtroops.foodies.base.UiState
+import com.codingtroops.common.BaseViewModel
+import com.codingtroops.common.UiEffect
+import com.codingtroops.common.UiEvent
+import com.codingtroops.common.UiState
 import kotlinx.coroutines.flow.collect
 import kotlin.properties.PropertyDelegateProvider
 import kotlin.properties.ReadWriteProperty

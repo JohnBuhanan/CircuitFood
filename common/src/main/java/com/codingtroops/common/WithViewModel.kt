@@ -1,11 +1,8 @@
-package com.codingtroops.foodies.ui.shared
+package com.codingtroops.common
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.codingtroops.foodies.base.BaseViewModel
-import com.codingtroops.foodies.base.UiEffect
-import com.codingtroops.foodies.base.UiEvent
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber

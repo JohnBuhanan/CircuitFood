@@ -1,5 +1,5 @@
 plugins {
-  id 'com.android.application'
+  id 'com.android.library'
   id 'kotlin-android'
   id 'com.google.devtools.ksp' version libs.versions.kspPlugin
 }
@@ -12,7 +12,6 @@ android {
   buildToolsVersion "30.0.3"
 
   defaultConfig {
-    applicationId "com.codingtroops.foodies"
     minSdk 24
     targetSdk 31
     versionCode 1

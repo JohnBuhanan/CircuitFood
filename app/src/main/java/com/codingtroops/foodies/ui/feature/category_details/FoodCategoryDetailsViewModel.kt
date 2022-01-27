@@ -1,7 +1,7 @@
 package com.codingtroops.foodies.ui.feature.category_details
 
 import androidx.lifecycle.viewModelScope
-import com.codingtroops.foodies.base.BaseViewModel
+import com.codingtroops.common.BaseViewModel
 import com.codingtroops.foodies.model.data.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

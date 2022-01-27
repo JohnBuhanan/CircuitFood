@@ -29,10 +29,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
+import com.codingtroops.common.WithViewModel
 import com.codingtroops.foodies.model.FoodItem
 import com.codingtroops.foodies.ui.feature.categories.FoodItemDetails
 import com.codingtroops.foodies.ui.feature.categories.FoodItemRow
-import com.codingtroops.foodies.ui.shared.WithViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 import kotlin.math.min

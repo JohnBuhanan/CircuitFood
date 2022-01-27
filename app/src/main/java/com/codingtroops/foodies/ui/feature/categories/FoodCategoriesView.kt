@@ -45,13 +45,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
+import com.codingtroops.common.WithViewModel
 import com.codingtroops.foodies.R
 import com.codingtroops.foodies.model.FoodItem
 import com.codingtroops.foodies.noRippleClickable
 import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.DataWasLoaded
 import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.Navigation.ToCategoryDetails
 import com.codingtroops.foodies.ui.feature.destinations.FoodCategoryDetailsDestination
-import com.codingtroops.foodies.ui.shared.WithViewModel
 import com.codingtroops.foodies.ui.theme.ComposeSampleTheme
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

@@ -1,4 +1,4 @@
-package com.codingtroops.foodies.base
+package com.codingtroops.common
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
@@ -21,7 +21,6 @@ interface UiEvent
 interface UiEffect
 
 abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>(private val dispatcher: CoroutineDispatcher) : ViewModel() {
-
     private val initialState: STATE by lazy { setInitialState() }
     abstract fun setInitialState(): STATE
 

@@ -1,8 +1,8 @@
 package com.codingtroops.foodies.ui.feature.category_details
 
-import com.codingtroops.foodies.base.UiEffect
-import com.codingtroops.foodies.base.UiEvent
-import com.codingtroops.foodies.base.UiState
+import com.codingtroops.common.UiEffect
+import com.codingtroops.common.UiEvent
+import com.codingtroops.common.UiState
 import com.codingtroops.foodies.model.FoodItem
 
 sealed class FoodCategoryDetailsEvent : UiEvent
