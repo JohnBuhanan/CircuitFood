@@ -52,26 +52,9 @@ import com.codingtroops.foodies.noRippleClickable
 import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.DataWasLoaded
 import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.Navigation.ToCategoryDetails
 import com.codingtroops.foodies.ui.feature.destinations.FoodCategoryDetailsDestination
-import com.codingtroops.foodies.ui.theme.ComposeSampleTheme
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import timber.log.Timber
-
-
-//suspend fun handleSideEffect(effect: Effect, navigator: DestinationsNavigator, scaffoldState: ScaffoldState) {
-//    Timber.e("Composable - handleSideEffect")
-//    when (effect) {
-//        is FoodCategoriesContract.Effect.DataWasLoaded ->
-//            scaffoldState.snackbarHostState.showSnackbar(
-//                message = "Food categories are loaded.",
-//                duration = SnackbarDuration.Short
-//            )
-//        is FoodCategoriesContract.Effect.Navigation.ToCategoryDetails -> {
-//            Timber.e("Composable - handleSideEffect - ToCategoryDetails")
-//            navigator.navigate(FoodCategoryDetailsDestination(effect.categoryName))//effect.categoryName))
-//        }
-//    }
-//}
 
 @Destination(start = true)
 @Composable
@@ -289,31 +272,5 @@ fun LoadingBar() {
         modifier = Modifier.fillMaxSize()
     ) {
         CircularProgressIndicator()
-    }
-}
-
-//val viewModel = FoodCategoriesViewModel(repository = object : FoodMenuRepository {
-//    val foodItems = (0..10).map {
-//        FoodItem(
-//            id = "id$it",
-//            name = "name$it",
-//            thumbnailUrl = "thumbnailUrl$it",
-//        )
-//    }
-//
-//    override suspend fun getFoodCategories(): List<FoodItem> {
-//        return foodItems
-//    }
-//
-//    override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> {
-//        return foodItems
-//    }
-//})
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ComposeSampleTheme {
-//        FoodCategoriesView(viewModel)
     }
 }
