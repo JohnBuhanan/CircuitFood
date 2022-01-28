@@ -6,4 +6,4 @@ import kotlin.reflect.KClass
 @MapKey
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class NavGraphKey(val value: KClass<out Routes>)
+annotation class NavGraphKey(val value: KClass<out Route>)

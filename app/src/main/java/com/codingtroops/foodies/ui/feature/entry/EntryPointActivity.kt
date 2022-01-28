@@ -13,7 +13,8 @@ import androidx.navigation.NavDestination
 import com.codingtroops.common.AuroraNavigatorViewModel
 import com.codingtroops.common.GenericNavGraph
 import com.codingtroops.common.NavigatorEvent
-import com.codingtroops.common.Routes
+import com.codingtroops.common.Route
+import com.codingtroops.destinations.FoodCategoryDetailsDestination
 import com.codingtroops.foodies.ui.feature.entry.destinations.StartDestination
 import com.codingtroops.foodies.ui.theme.ComposeSampleTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -21,10 +22,12 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavController
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.rememberNavHostEngine
+import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
+import kotlin.reflect.KClass
 
 
 // Single Activity per app
@@ -33,8 +36,12 @@ class EntryPointActivity : ComponentActivity() {
 //    @Inject
 //    lateinit var navGraphs: Map<Class<out Routes>, @JvmSuppressWildcards NavGraphSpec>
 
-    val navGraphs = mapOf<Routes, NavGraphSpec>(
-        Routes.FoodCategories to com.codingtroops.NavGraphs.root
+    private val nestedNavGraphs = mapOf<Route, NavGraphSpec>(
+        Route.FoodCategories to com.codingtroops.NavGraphs.root
+    )
+
+    private val navDestinations = mapOf<KClass<out Route>, DestinationSpec<*>>(
+        Route.FoodCategoryDetails::class to FoodCategoryDetailsDestination
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,17 +49,16 @@ class EntryPointActivity : ComponentActivity() {
 
         setContent {
             ComposeSampleTheme {
-                Initialize(navGraphs)
+                Initialize(nestedNavGraphs, navDestinations)
             }
         }
     }
 }
 
-
-
 @Composable
 fun Initialize(
-    navGraphs: Map<Routes, NavGraphSpec>,
+    navGraphs: Map<Route, NavGraphSpec>,
+    navDestinations: Map<KClass<out Route>, DestinationSpec<*>>,
 ) {
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
@@ -73,11 +79,15 @@ fun Initialize(
             Timber.e("HERE!!!")
             when (val event = it) {
                 is NavigatorEvent.NavigateUp -> destinationsNavController.navigateUp()
-                is NavigatorEvent.Directions -> destinationsNavController.navigate(
-                    direction = event.destination,
-                    onlyIfResumed = false,
-                    builder = event.builder,
-                )
+                is NavigatorEvent.Directions -> {
+//                    val direction = navGraphs[event.route]// ?: navDestinations[event.route::class]
+
+                    destinationsNavController.navigate(
+                        route = event.route.route,
+                        onlyIfResumed = false,
+                        builder = event.builder,
+                    )
+                }
             }
         }
     }
@@ -97,6 +107,7 @@ fun Initialize(
         navController = navController,
     )
 }
+
 @Destination(start = true)
 @Composable
 fun Start(navigator: DestinationsNavigator) {

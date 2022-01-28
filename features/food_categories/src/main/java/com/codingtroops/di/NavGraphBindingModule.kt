@@ -2,7 +2,7 @@ package com.codingtroops.di
 
 import com.codingtroops.NavGraph
 import com.codingtroops.common.NavGraphKey
-import com.codingtroops.common.Routes
+import com.codingtroops.common.Route
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.Binds
 import dagger.Module
@@ -19,6 +19,6 @@ import dagger.multibindings.IntoMap
 interface NavGraphBindingModule {
     @Binds
     @IntoMap
-    @NavGraphKey(Routes.FoodCategories::class)
+    @NavGraphKey(Route.FoodCategories::class)
     fun bindPznService(factory: NavGraph): NavGraphSpec
 }
