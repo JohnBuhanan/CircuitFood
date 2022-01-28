@@ -1,4 +1,4 @@
-package com.johnbuhanan.foodies.ui.theme
+package com.johnbuhanan.app.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

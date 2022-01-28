@@ -1,4 +1,4 @@
-package com.johnbuhanan.foodies.ui.feature.entry
+package com.johnbuhanan.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,11 +9,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle.State.RESUMED
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
+import com.johnbuhanan.app.destinations.StartDestination
+import com.johnbuhanan.app.theme.ComposeSampleTheme
 import com.johnbuhanan.common.GenericNavGraph
 import com.johnbuhanan.common.NavGraphMap
 import com.johnbuhanan.common.RouterViewModel
-import com.johnbuhanan.foodies.ui.feature.entry.destinations.StartDestination
-import com.johnbuhanan.foodies.ui.theme.ComposeSampleTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavController
@@ -21,7 +21,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.rememberNavHostEngine
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 // Single Activity per app
 @AndroidEntryPoint

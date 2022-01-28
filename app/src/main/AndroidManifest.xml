@@ -6,13 +6,13 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name="com.johnbuhanan.foodies.FoodiesApp"
+        android:name="com.johnbuhanan.app.MVIPublicApp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposeSample">
         <activity
-            android:name="com.johnbuhanan.foodies.ui.feature.entry.EntryPointActivity"
+            android:name="com.johnbuhanan.app.EntryPointActivity"
             android:exported="true"
             android:theme="@style/Theme.ComposeSample.NoActionBar">
             <intent-filter>

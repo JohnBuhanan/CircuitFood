@@ -1,4 +1,4 @@
-package com.johnbuhanan.foodies.di
+package com.johnbuhanan.app.di
 
 import dagger.Module
 import dagger.Provides
