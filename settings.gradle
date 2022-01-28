@@ -6,7 +6,7 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
-rootProject.name = "android-compose-mvvm"
+rootProject.name = "MVI-Public"
 
 include(':app',
     ':common',

@@ -50,17 +50,11 @@ import com.codingtroops.foodcategories.FoodCategoriesEffect.DataWasLoaded
 import com.codingtroops.foodcategories.FoodCategoriesEvent.CategorySelection
 import com.codingtroops.networking.FoodItem
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import timber.log.Timber
 
-@Destination(
-    start = true,
-//    navGraph = "FoodCategories",
-)
+@Destination(start = true)
 @Composable
-fun FoodCategories(
-    navigator: DestinationsNavigator,
-) {
+fun FoodCategories() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     WithViewModel<FoodCategoriesViewModel>(
@@ -74,10 +68,6 @@ fun FoodCategories(
                         duration = Short
                     )
                 }
-//                is ToCategoryDetails -> {
-//                    Timber.e("Composable - onEffect - ToCategoryDetails")
-//                    navigator.navigate(FoodCategoryDetailsDestination(effect.categoryName))
-//                }
             }
         },
         start = { viewModel, onEvent ->
