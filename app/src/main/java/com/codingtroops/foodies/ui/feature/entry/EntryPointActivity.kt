@@ -22,41 +22,34 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavController
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.rememberNavHostEngine
-import com.ramcosta.composedestinations.spec.DestinationSpec
+import com.ramcosta.composedestinations.spec.Direction
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 import kotlin.reflect.KClass
 
-typealias DestinationTransform<T> = (T) -> DestinationSpec<*>
-//typealias NavGraphTransform = (Route) -> NavGraphSpec
-
-typealias NavGraphMap = Map<Route, @JvmSuppressWildcards NavGraphSpec>
-typealias DestinationMap = Map<KClass<out Route>, @JvmSuppressWildcards DestinationTransform<*>>
-
-//fun <T : Route> doThing(): DestinationSpec<*> {
-//
-//}
+typealias DirectionTransform = (Route) -> Direction
+typealias NavGraphMap = Map<KClass<out Route>, @JvmSuppressWildcards NavGraphSpec>
+typealias DirectionMap = Map<KClass<out Route>, @JvmSuppressWildcards DirectionTransform>
 
 // Single Activity per app
 @AndroidEntryPoint
 class EntryPointActivity : ComponentActivity() {
 //    @Inject
-//    lateinit var navGraphs: Map<Class<out Routes>, @JvmSuppressWildcards NavGraphSpec>
+//    lateinit var navGraphMap: NavGraphMap
 
-    private val destinationTransform: DestinationTransform<Route.FoodCategoryDetails> = {
-        FoodCategoryDetailsDestination(it.id) as DestinationSpec<*>
+
+    private val destinationTransform: DirectionTransform = {
+        val id = (it as Route.FoodCategoryDetails).id
+        FoodCategoryDetailsDestination(id)
     }
-//    private val navGraphTransform: NavGraphTransform = {
-//
-//    }
 
-    private val nestedNavGraphs: NavGraphMap = mapOf(
-        Route.FoodCategories to com.codingtroops.NavGraphs.root
+    private val navGraphMap: NavGraphMap = mapOf(
+        Route.FoodCategories::class to com.codingtroops.NavGraphs.root
     )
 
-    private val navDestinations = mapOf<KClass<out Route>, DestinationTransform<*>>(
+    private val destinationMap: DirectionMap = mapOf(
         Route.FoodCategoryDetails::class to destinationTransform
     )
 
@@ -73,7 +66,7 @@ class EntryPointActivity : ComponentActivity() {
 
         setContent {
             ComposeSampleTheme {
-                Initialize(nestedNavGraphs, navDestinations)
+                Initialize(navGraphMap, destinationMap)
             }
         }
     }
@@ -82,7 +75,7 @@ class EntryPointActivity : ComponentActivity() {
 @Composable
 fun Initialize(
     navGraphMap: NavGraphMap,
-    destinationMap: DestinationMap,
+    destinationMap: DirectionMap,
 ) {
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
@@ -104,20 +97,11 @@ fun Initialize(
             when (val event = it) {
                 is NavigatorEvent.NavigateUp -> destinationsNavController.navigateUp()
                 is NavigatorEvent.Directions -> {
-//                    val destinationTransform = destinationMap[event.route::class] as DestinationTransform<Route.FoodCategoryDetails>
-                    val route = when (event.route) {
-                        is Route.FoodCategories -> navGraphMap[event.route]!!.route
-                        is Route.FoodCategoryDetails -> {
-                            val newRoute = event.route as Route.FoodCategoryDetails
-                            FoodCategoryDetailsDestination(newRoute.id).route
-                        }
-                        else -> {
-                            ""
-                        }
-                    }
-
-
-//                    val navGraph = navGraphMap[event.route]// .invoke(event.route)// ?: navDestinations[event.route::class]
+                    val eventRoute = event.route
+                    val clazz = eventRoute::class
+                    val navGraphRoute = navGraphMap[clazz]?.route
+                    val destinationRoute = destinationMap[clazz]?.invoke(eventRoute)?.route
+                    val route = navGraphRoute ?: destinationRoute ?: ""
 
                     destinationsNavController.navigate(
                         route = route,
