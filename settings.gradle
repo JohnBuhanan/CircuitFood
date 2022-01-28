@@ -11,4 +11,6 @@ rootProject.name = "MVI-Public"
 include(':app',
     ':common',
     ':features:featureA',
-    ':features:food_categories',)
+    ':features:food',
+    ':features:food:shared',
+)

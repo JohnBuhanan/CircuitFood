@@ -1,21 +1,13 @@
 plugins {
-  id 'com.android.application'
-  id 'amex.gradle.android'
-}
-
-android {
-  defaultConfig {
-    applicationId "com.johnbuhanan.mvi.public"
-  }
+  id 'amex.gradle.androidlib'
 }
 
 dependencies {
+  api project(':features:food:shared')
   kapt libs.bundles.daggerKapt
   ksp libs.compose.destinations.ksp
 
   implementation project(":common")
-  implementation project(":features:featureA")
-  implementation project(":features:food")
   implementation libs.androidx.appcompat
   implementation libs.androidx.compose.material
   implementation libs.androidx.corektx

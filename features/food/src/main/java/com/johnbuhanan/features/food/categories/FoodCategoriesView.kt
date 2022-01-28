@@ -1,0 +1,99 @@
+package com.johnbuhanan.features.food.categories
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.johnbuhanan.features.food.shared.FoodItem
+import com.johnbuhanan.features.food.shared.FoodItemRow
+import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.CategorySelection
+
+@Preview
+@Composable
+fun FoodCategoriesView(
+    categories: List<FoodItem> = emptyList(),
+    isLoading: Boolean = false,
+    onEvent: (FoodCategoriesEvent) -> Unit = {},
+) {
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            CategoriesAppBar()
+        },
+    ) {
+        Box {
+            FoodCategoriesList(
+                foodItems = categories,
+                onItemClicked = { itemId ->
+                    onEvent(CategorySelection(itemId))
+                },
+            )
+            if (isLoading)
+                LoadingBar()
+        }
+    }
+}
+
+@Composable
+private fun CategoriesAppBar() {
+    TopAppBar(
+        navigationIcon = {
+            Icon(
+                imageVector = Icons.Default.Home,
+                modifier = Modifier.padding(horizontal = 12.dp),
+                contentDescription = "Action icon"
+            )
+        },
+        title = { Text("stringResource(R.string.app_name)") },
+        backgroundColor = MaterialTheme.colors.background
+    )
+}
+
+@Composable
+fun FoodCategoriesList(
+    foodItems: List<FoodItem>,
+    onItemClicked: (id: String) -> Unit = { },
+) {
+    LazyColumn(
+        contentPadding = PaddingValues(bottom = 16.dp)
+    ) {
+        items(foodItems) { item ->
+            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = onItemClicked)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewLoadingBar() {
+    LoadingBar()
+}
+
+@Composable
+fun LoadingBar() {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        CircularProgressIndicator()
+    }
+}
