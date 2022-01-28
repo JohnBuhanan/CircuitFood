@@ -5,7 +5,7 @@ plugins {
 
 android {
   defaultConfig {
-    applicationId "com.codingtroops.foodies"
+    applicationId "com.johnbuhanan.mvi.public"
   }
 }
 
