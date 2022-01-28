@@ -29,6 +29,15 @@ import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 import kotlin.reflect.KClass
 
+typealias DestinationTransform<T> = (T) -> DestinationSpec<*>
+//typealias NavGraphTransform = (Route) -> NavGraphSpec
+
+typealias NavGraphMap = Map<Route, @JvmSuppressWildcards NavGraphSpec>
+typealias DestinationMap = Map<KClass<out Route>, @JvmSuppressWildcards DestinationTransform<*>>
+
+//fun <T : Route> doThing(): DestinationSpec<*> {
+//
+//}
 
 // Single Activity per app
 @AndroidEntryPoint
@@ -36,13 +45,28 @@ class EntryPointActivity : ComponentActivity() {
 //    @Inject
 //    lateinit var navGraphs: Map<Class<out Routes>, @JvmSuppressWildcards NavGraphSpec>
 
-    private val nestedNavGraphs = mapOf<Route, NavGraphSpec>(
+    private val destinationTransform: DestinationTransform<Route.FoodCategoryDetails> = {
+        FoodCategoryDetailsDestination(it.id) as DestinationSpec<*>
+    }
+//    private val navGraphTransform: NavGraphTransform = {
+//
+//    }
+
+    private val nestedNavGraphs: NavGraphMap = mapOf(
         Route.FoodCategories to com.codingtroops.NavGraphs.root
     )
 
-    private val navDestinations = mapOf<KClass<out Route>, DestinationSpec<*>>(
-        Route.FoodCategoryDetails::class to FoodCategoryDetailsDestination
+    private val navDestinations = mapOf<KClass<out Route>, DestinationTransform<*>>(
+        Route.FoodCategoryDetails::class to destinationTransform
     )
+
+    // When two features can't see eachother, how do you navigate from one to the other?
+    // We need to map shared "Route" objects to them.
+    // NavGraphs
+
+//    private val navDestinations = mapOf<KClass<out Route>, DestinationSpec<*>>(
+//        Route.FoodCategoryDetails::class to FoodCategoryDetailsDestination
+//    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +81,8 @@ class EntryPointActivity : ComponentActivity() {
 
 @Composable
 fun Initialize(
-    navGraphs: Map<Route, NavGraphSpec>,
-    navDestinations: Map<KClass<out Route>, DestinationSpec<*>>,
+    navGraphMap: NavGraphMap,
+    destinationMap: DestinationMap,
 ) {
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
@@ -80,10 +104,23 @@ fun Initialize(
             when (val event = it) {
                 is NavigatorEvent.NavigateUp -> destinationsNavController.navigateUp()
                 is NavigatorEvent.Directions -> {
-//                    val direction = navGraphs[event.route]// ?: navDestinations[event.route::class]
+//                    val destinationTransform = destinationMap[event.route::class] as DestinationTransform<Route.FoodCategoryDetails>
+                    val route = when (event.route) {
+                        is Route.FoodCategories -> navGraphMap[event.route]!!.route
+                        is Route.FoodCategoryDetails -> {
+                            val newRoute = event.route as Route.FoodCategoryDetails
+                            FoodCategoryDetailsDestination(newRoute.id).route
+                        }
+                        else -> {
+                            ""
+                        }
+                    }
+
+
+//                    val navGraph = navGraphMap[event.route]// .invoke(event.route)// ?: navDestinations[event.route::class]
 
                     destinationsNavController.navigate(
-                        route = event.route.route,
+                        route = route,
                         onlyIfResumed = false,
                         builder = event.builder,
                     )
@@ -98,7 +135,7 @@ fun Initialize(
         destinations = listOf(
             StartDestination
         ),
-        nestedNavGraphs = navGraphs.values.toList()
+        nestedNavGraphs = navGraphMap.values.toList()
     )
 
     DestinationsNavHost(

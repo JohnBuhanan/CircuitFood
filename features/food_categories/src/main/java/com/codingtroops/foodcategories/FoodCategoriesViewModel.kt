@@ -3,7 +3,7 @@ package com.codingtroops.foodcategories
 import androidx.lifecycle.viewModelScope
 import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
-import com.codingtroops.destinations.FoodCategoryDetailsDestination
+import com.codingtroops.common.Route
 import com.codingtroops.networking.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -29,7 +29,7 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                auroraNavigator.navigate(FoodCategoryDetailsDestination(event.categoryName))
+                auroraNavigator.navigate(Route.FoodCategoryDetails(event.categoryName))
             }
             FoodCategoriesEvent.TappedBack -> auroraNavigator.navigateUp()
         }

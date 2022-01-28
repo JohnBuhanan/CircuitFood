@@ -1,7 +1,6 @@
 package com.codingtroops.common
 
 import androidx.navigation.NavOptionsBuilder
-import com.ramcosta.composedestinations.spec.Direction
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -10,7 +9,7 @@ import javax.inject.Singleton
 
 interface AuroraNavigator {
     fun navigateUp(): Boolean
-    fun navigate(route: Direction, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
+    fun navigate(route: Route, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
     val destinations: Flow<NavigatorEvent>
 }
 
@@ -20,6 +19,6 @@ class AuroraNavigatorImpl @Inject constructor() : AuroraNavigator {
     override val destinations = navigationEvents.receiveAsFlow()
 
     override fun navigateUp(): Boolean = navigationEvents.trySend(NavigatorEvent.NavigateUp).isSuccess
-    override fun navigate(route: Direction, builder: NavOptionsBuilder.() -> Unit): Boolean =
+    override fun navigate(route: Route, builder: NavOptionsBuilder.() -> Unit): Boolean =
         navigationEvents.trySend(NavigatorEvent.Directions(route, builder)).isSuccess
 }
