@@ -10,19 +10,19 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class AuroraNavigatorViewModel @Inject constructor(
-    private val auroraNavigator: AuroraNavigator,
+class RouterViewModel @Inject constructor(
+    private val router: Router,
     private val navGraphMap: NavGraphMap,
     private val directionMap: DirectionMap,
-) : ViewModel(), AuroraNavigator by auroraNavigator {
+) : ViewModel(), Router by router {
 
-    fun initialize(destinationsNavController: DestinationsNavController) {
+    fun initRouter(destinationsNavController: DestinationsNavController) {
         viewModelScope.launch {
-            destinations.collect {
+            routerEvents.collect {
                 Timber.e("HERE!!!")
                 when (val event = it) {
-                    is NavigatorEvent.NavigateUp -> destinationsNavController.navigateUp()
-                    is NavigatorEvent.Directions -> {
+                    is RouterEvent.GoBack -> destinationsNavController.navigateUp()
+                    is RouterEvent.GoTo -> {
                         val eventRoute = event.route
                         val clazz = eventRoute::class.java
                         val navGraphRoute = navGraphMap[clazz]?.get()?.route

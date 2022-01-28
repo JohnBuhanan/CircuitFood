@@ -1,8 +1,9 @@
 package com.codingtroops.foodcategorydetails
 
 import androidx.lifecycle.viewModelScope
-import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
+import com.codingtroops.common.Route
+import com.codingtroops.common.Router
 import com.codingtroops.networking.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,9 +13,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodCategoryDetailsViewModel @Inject constructor(
-    private val dispatcher: CoroutineDispatcher,
+    dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
-    private val auroraNavigator: AuroraNavigator,
+    private val router: Router,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(dispatcher) {
 
     fun initialize(categoryId: String) {
@@ -35,8 +36,8 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoryDetailsEvent) {
         Timber.e("handleEvents")
         when (event) {
-            FoodCategoryDetailsEvent.TappedBack -> auroraNavigator.navigateUp()
-            is FoodCategoryDetailsEvent.TappedFoodItem -> TODO() //auroraNavigator.navigate(NavGraphs.featureA)
+            FoodCategoryDetailsEvent.TappedBack -> router.goBack()
+            is FoodCategoryDetailsEvent.TappedFoodItem -> router.goTo(Route.FeatureA)
         }
     }
 

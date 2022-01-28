@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class NavigatorModule {
+abstract class RouterModule {
     @Binds
-    abstract fun navigator(navigator: AuroraNavigatorImpl): AuroraNavigator
+    abstract fun bindsRouter(router: RouterImpl): Router
 }

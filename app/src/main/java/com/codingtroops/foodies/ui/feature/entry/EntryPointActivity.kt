@@ -9,7 +9,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle.State.RESUMED
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
-import com.codingtroops.common.AuroraNavigatorViewModel
+import com.codingtroops.common.RouterViewModel
 import com.codingtroops.common.GenericNavGraph
 import com.codingtroops.common.NavGraphMap
 import com.codingtroops.foodies.ui.feature.entry.destinations.StartDestination
@@ -61,8 +61,8 @@ fun Initialize(appGraph: GenericNavGraph) {
         navController = navController,
         navBackStackEntry = navBackStackEntry,
     )
-    val auroraNavigatorViewModel = hiltViewModel<AuroraNavigatorViewModel>()
-    auroraNavigatorViewModel.initialize(destinationsNavController)
+    val routerViewModel = hiltViewModel<RouterViewModel>()
+    routerViewModel.initRouter(destinationsNavController)
 
     DestinationsNavHost(
         navGraph = appGraph,

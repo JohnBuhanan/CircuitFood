@@ -1,7 +1,7 @@
 package com.codingtroops.foodcategories
 
 import androidx.lifecycle.viewModelScope
-import com.codingtroops.common.AuroraNavigator
+import com.codingtroops.common.Router
 import com.codingtroops.common.BaseViewModel
 import com.codingtroops.common.Route
 import com.codingtroops.networking.FoodMenuRepository
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class FoodCategoriesViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
-    private val auroraNavigator: AuroraNavigator,
+    private val router: Router,
 ) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
 
     init {
@@ -29,9 +29,9 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                auroraNavigator.navigate(Route.FoodCategoryDetails(event.categoryName))
+                router.goTo(Route.FoodCategoryDetails(event.categoryName))
             }
-            FoodCategoriesEvent.TappedBack -> auroraNavigator.navigateUp()
+            FoodCategoriesEvent.TappedBack -> router.goBack()
         }
     }
 
