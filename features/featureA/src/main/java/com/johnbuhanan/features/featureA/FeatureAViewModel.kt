@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FeatureAViewModel @Inject constructor(
-    private val dispatcher: CoroutineDispatcher,
+    dispatcher: CoroutineDispatcher,
 ) : BaseViewModel<FeatureAEvent, FeatureAState, FeatureAEffect>(dispatcher) {
 
     fun initialize(categoryId: String) {

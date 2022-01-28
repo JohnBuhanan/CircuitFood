@@ -22,7 +22,6 @@ import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
-import androidx.compose.material.SnackbarDuration.Short
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -44,45 +43,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
-import com.johnbuhanan.common.WithViewModel
 import com.johnbuhanan.common.noRippleClickable
-import com.johnbuhanan.features.foodcategories.FoodCategoriesEffect.DataWasLoaded
 import com.johnbuhanan.features.foodcategories.FoodCategoriesEvent.CategorySelection
 import com.johnbuhanan.features.networking.FoodItem
-import com.ramcosta.composedestinations.annotation.Destination
-import timber.log.Timber
 
-@Destination(start = true)
-@Composable
-fun FoodCategories() {
-    val scaffoldState: ScaffoldState = rememberScaffoldState()
-
-    WithViewModel<FoodCategoriesViewModel>(
-        onEffect = { effect ->
-            Timber.e("Composable - onEffect")
-            when (effect) {
-                is DataWasLoaded -> {
-                    Timber.e("Composable - onEffect - DataWasLoaded")
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = "Food categories are loaded.",
-                        duration = Short
-                    )
-                }
-            }
-        },
-        start = { viewModel, onEvent ->
-            Timber.e("FoodCategoriesView - start")
-            val state = viewModel.state.value
-            FoodCategoriesView(state.categories, state.isLoading, onEvent)
-        }
-    )
-}
-
+@Preview
 @Composable
 fun FoodCategoriesView(
-    categories: List<FoodItem>,
-    isLoading: Boolean,
-    onEvent: (FoodCategoriesEvent) -> Unit,
+    categories: List<FoodItem> = emptyList(),
+    isLoading: Boolean = false,
+    onEvent: (FoodCategoriesEvent) -> Unit = {},
 ) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
@@ -219,18 +189,6 @@ fun FoodItemDetails(
             }
     }
 }
-
-//@Preview
-//@Composable
-//fun PreviewFoodItemThumbnail() {
-//    FoodItemThumbnail(materialIcon(),
-//        iconTransformationBuilder = {
-//            transformations(
-//                CircleCropTransformation()
-//            )
-//        }
-//    )
-//}
 
 @Composable
 fun FoodItemThumbnail(

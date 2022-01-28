@@ -71,28 +71,3 @@ fun <T> SavedStateHandle.mutableStateOf(
         defaultValue = defaultValue,
     )
 }
-
-///**
-// * Observe [Container.stateFlow] in a Compose [LaunchedEffect].
-// */
-//@SuppressLint("ComposableNaming")
-//@Composable
-//fun <EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect> BaseViewModel<EVENT, STATE, EFFECT>.collectState(
-//    doState: (suspend (state: STATE) -> Unit),
-//) {
-//    val stateFlow = this.state
-//    val lifecycleOwner = LocalLifecycleOwner.current
-//    LaunchedEffect(stateFlow, lifecycleOwner) {
-//        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//            state.collect { doState(it) }
-//        }
-//    }
-//}
-
-
-///**
-// * Observe [Container.stateFlow] as [State].
-// */
-//@Composable
-//public fun <STATE : Any, SIDE_EFFECT : Any> ContainerHost<STATE, SIDE_EFFECT>.collectAsState(): State<STATE> =
-//    container.stateFlow.collectAsState()
