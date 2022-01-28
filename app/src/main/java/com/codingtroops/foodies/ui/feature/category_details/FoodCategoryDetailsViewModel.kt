@@ -1,6 +1,7 @@
 package com.codingtroops.foodies.ui.feature.category_details
 
 import androidx.lifecycle.viewModelScope
+import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
 import com.codingtroops.foodies.model.data.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,6 +14,7 @@ import javax.inject.Inject
 class FoodCategoryDetailsViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
+    private val auroraNavigator: AuroraNavigator,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(dispatcher) {
 
     fun initialize(categoryId: String) {
@@ -32,6 +34,9 @@ class FoodCategoryDetailsViewModel @Inject constructor(
 
     override fun handleEvents(event: FoodCategoryDetailsEvent) {
         Timber.e("handleEvents")
+        when (event) {
+            FoodCategoryDetailsEvent.TappedBack -> auroraNavigator.navigateUp()
+        }
     }
 
     companion object {

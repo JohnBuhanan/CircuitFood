@@ -5,7 +5,9 @@ import com.codingtroops.common.UiEvent
 import com.codingtroops.common.UiState
 import com.codingtroops.foodies.model.FoodItem
 
-sealed class FoodCategoryDetailsEvent : UiEvent
+sealed class FoodCategoryDetailsEvent : UiEvent {
+    object TappedBack : FoodCategoryDetailsEvent()
+}
 
 data class FoodCategoryDetailsState(
     val category: FoodItem?,

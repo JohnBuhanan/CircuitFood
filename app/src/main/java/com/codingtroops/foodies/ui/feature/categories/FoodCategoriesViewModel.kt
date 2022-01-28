@@ -16,7 +16,7 @@ class FoodCategoriesViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
     private val auroraNavigator: AuroraNavigator,
-) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher), AuroraNavigator by auroraNavigator {
+) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
 
     init {
         start()
@@ -31,6 +31,7 @@ class FoodCategoriesViewModel @Inject constructor(
                 Timber.e("handleEvents - CategorySelection")
                 auroraNavigator.navigate(FoodCategoryDetailsDestination(event.categoryName))
             }
+            FoodCategoriesEvent.TappedBack -> auroraNavigator.navigateUp()
         }
     }
 

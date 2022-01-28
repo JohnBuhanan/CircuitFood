@@ -1,6 +1,5 @@
 package com.codingtroops.foodies.ui.feature.category_details
 
-
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -34,23 +33,19 @@ import com.codingtroops.foodies.model.FoodItem
 import com.codingtroops.foodies.ui.feature.categories.FoodItemDetails
 import com.codingtroops.foodies.ui.feature.categories.FoodItemRow
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import timber.log.Timber
 import kotlin.math.min
-
 
 @Destination
 @Composable
 fun FoodCategoryDetails(
     categoryId: String,
-    navigator: DestinationsNavigator,
 ) {
     Timber.e("Composable - FoodCategoryDetails")
     WithViewModel<FoodCategoryDetailsViewModel>(
         onEffect = { effect ->
             when (effect) {
                 is FoodCategoryDetailsEffect -> {
-//                    navigator.navigate(com.codingtroops.featureA.NavGraphs.featureA)
                     val scaffoldState: ScaffoldState = rememberScaffoldState()
                     scaffoldState.snackbarHostState.showSnackbar("blah")
                 }
