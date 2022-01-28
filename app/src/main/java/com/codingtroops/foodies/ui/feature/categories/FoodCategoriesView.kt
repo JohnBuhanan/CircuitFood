@@ -73,7 +73,7 @@ import timber.log.Timber
 //    }
 //}
 
-@Destination
+@Destination(start = true)
 @Composable
 fun FoodCategories(
     navigator: DestinationsNavigator,

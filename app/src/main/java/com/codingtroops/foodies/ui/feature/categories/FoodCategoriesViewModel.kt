@@ -1,8 +1,10 @@
 package com.codingtroops.foodies.ui.feature.categories
 
 import androidx.lifecycle.viewModelScope
+import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
 import com.codingtroops.foodies.model.data.FoodMenuRepository
+import com.codingtroops.foodies.ui.feature.destinations.FoodCategoryDetailsDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -13,7 +15,8 @@ import javax.inject.Inject
 class FoodCategoriesViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
-) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
+    private val auroraNavigator: AuroraNavigator,
+) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher), AuroraNavigator by auroraNavigator {
 
     init {
         start()
@@ -26,7 +29,7 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                setEffect { FoodCategoriesEffect.Navigation.ToCategoryDetails(event.categoryName) }
+                auroraNavigator.navigate(FoodCategoryDetailsDestination(event.categoryName))
             }
         }
     }
