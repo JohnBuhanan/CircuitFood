@@ -32,6 +32,7 @@ import com.codingtroops.common.WithViewModel
 import com.codingtroops.foodies.model.FoodItem
 import com.codingtroops.foodies.ui.feature.categories.FoodItemDetails
 import com.codingtroops.foodies.ui.feature.categories.FoodItemRow
+import com.codingtroops.foodies.ui.feature.category_details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 import kotlin.math.min
@@ -95,7 +96,8 @@ fun FoodCategoryDetailsView(
                             transformations(
                                 CircleCropTransformation()
                             )
-                        }
+                        },
+                        onItemClicked = { onEvent(TappedFoodItem(it)) }
                     )
                 }
             }
