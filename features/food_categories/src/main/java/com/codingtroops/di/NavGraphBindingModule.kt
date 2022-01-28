@@ -1,11 +1,14 @@
 package com.codingtroops.di
 
 import com.codingtroops.NavGraph
+import com.codingtroops.common.DirectionTransform
 import com.codingtroops.common.NavGraphKey
 import com.codingtroops.common.Route
+import com.codingtroops.destinations.FoodCategoriesDestination
+import com.codingtroops.destinations.FoodCategoryDetailsDestination
 import com.ramcosta.composedestinations.spec.NavGraphSpec
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
@@ -16,9 +19,28 @@ import dagger.multibindings.IntoMap
  */
 @Module
 @InstallIn(SingletonComponent::class)
-interface NavGraphBindingModule {
-    @Binds
+object NavGraphModule {
+    @Provides
     @IntoMap
     @NavGraphKey(Route.FoodCategories::class)
-    fun bindPznService(factory: NavGraph): NavGraphSpec
+    fun provideNavGraphSpec(): NavGraphSpec {
+        return NavGraph(
+            route = "root",
+            startDestination = FoodCategoriesDestination,
+            destinations = listOf(
+                FoodCategoriesDestination,
+                FoodCategoryDetailsDestination
+            )
+        )
+    }
+
+    @Provides
+    @IntoMap
+    @NavGraphKey(Route.FoodCategoryDetails::class)
+    fun provideDirections(): DirectionTransform {
+        return {
+            val id = (it as Route.FoodCategoryDetails).id
+            FoodCategoryDetailsDestination(id)
+        }
+    }
 }
