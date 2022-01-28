@@ -6,7 +6,7 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
-rootProject.name = "Foodies"
+rootProject.name = "android-compose-mvvm"
 
 include(':app',
     ':common',
