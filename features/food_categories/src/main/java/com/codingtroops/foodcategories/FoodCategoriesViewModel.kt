@@ -1,10 +1,10 @@
-package com.codingtroops.foodies.ui.feature.categories
+package com.codingtroops.foodcategories
 
 import androidx.lifecycle.viewModelScope
 import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
-import com.codingtroops.foodies.model.data.FoodMenuRepository
-import com.codingtroops.foodies.ui.feature.destinations.FoodCategoryDetailsDestination
+import com.codingtroops.destinations.FoodCategoryDetailsDestination
+import com.codingtroops.networking.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch

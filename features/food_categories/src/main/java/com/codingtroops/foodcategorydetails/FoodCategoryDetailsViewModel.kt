@@ -1,10 +1,9 @@
-package com.codingtroops.foodies.ui.feature.category_details
+package com.codingtroops.foodcategorydetails
 
 import androidx.lifecycle.viewModelScope
 import com.codingtroops.common.AuroraNavigator
 import com.codingtroops.common.BaseViewModel
-import com.codingtroops.featureA.NavGraphs
-import com.codingtroops.foodies.model.data.FoodMenuRepository
+import com.codingtroops.networking.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -37,7 +36,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             FoodCategoryDetailsEvent.TappedBack -> auroraNavigator.navigateUp()
-            is FoodCategoryDetailsEvent.TappedFoodItem -> auroraNavigator.navigate(NavGraphs.featureA)
+            is FoodCategoryDetailsEvent.TappedFoodItem -> TODO() //auroraNavigator.navigate(NavGraphs.featureA)
         }
     }
 

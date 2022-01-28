@@ -1,9 +1,9 @@
-package com.codingtroops.foodies.ui.feature.category_details
+package com.codingtroops.foodcategorydetails
 
 import com.codingtroops.common.UiEffect
 import com.codingtroops.common.UiEvent
 import com.codingtroops.common.UiState
-import com.codingtroops.foodies.model.FoodItem
+import com.codingtroops.networking.FoodItem
 
 sealed class FoodCategoryDetailsEvent : UiEvent {
     data class TappedFoodItem(val message: String) : FoodCategoryDetailsEvent()

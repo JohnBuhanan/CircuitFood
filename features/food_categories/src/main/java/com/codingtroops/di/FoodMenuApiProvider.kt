@@ -1,7 +1,7 @@
-package com.codingtroops.foodies.di
+package com.codingtroops.di
 
-import com.codingtroops.foodies.model.data.FoodMenuApi
-import com.codingtroops.foodies.model.data.FoodMenuApi.Companion.API_URL
+import com.codingtroops.networking.FoodMenuApi
+import com.codingtroops.networking.FoodMenuApi.Companion.API_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

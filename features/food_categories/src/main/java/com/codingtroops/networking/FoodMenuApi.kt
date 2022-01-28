@@ -1,7 +1,5 @@
-package com.codingtroops.foodies.model.data
+package com.codingtroops.networking
 
-import com.codingtroops.foodies.model.response.FoodCategoriesResponse
-import com.codingtroops.foodies.model.response.MealsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Inject

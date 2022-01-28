@@ -1,4 +1,4 @@
-package com.codingtroops.foodies
+package com.codingtroops.common
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
@@ -14,10 +14,6 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.repeatOnLifecycle
-import com.codingtroops.common.BaseViewModel
-import com.codingtroops.common.UiEffect
-import com.codingtroops.common.UiEvent
-import com.codingtroops.common.UiState
 import kotlinx.coroutines.flow.collect
 import kotlin.properties.PropertyDelegateProvider
 import kotlin.properties.ReadWriteProperty

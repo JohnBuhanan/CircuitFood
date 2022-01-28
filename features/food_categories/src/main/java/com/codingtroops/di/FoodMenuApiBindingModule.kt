@@ -1,7 +1,7 @@
-package com.codingtroops.foodies.di
+package com.codingtroops.di
 
-import com.codingtroops.foodies.model.data.FoodMenuRepository
-import com.codingtroops.foodies.model.data.FoodMenuRepositoryImpl
+import com.codingtroops.networking.FoodMenuRepository
+import com.codingtroops.networking.FoodMenuRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

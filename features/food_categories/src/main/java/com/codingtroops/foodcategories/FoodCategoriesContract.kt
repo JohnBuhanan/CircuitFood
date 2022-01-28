@@ -1,9 +1,9 @@
-package com.codingtroops.foodies.ui.feature.categories
+package com.codingtroops.foodcategories
 
 import com.codingtroops.common.UiEffect
 import com.codingtroops.common.UiEvent
 import com.codingtroops.common.UiState
-import com.codingtroops.foodies.model.FoodItem
+import com.codingtroops.networking.FoodItem
 
 sealed class FoodCategoriesEvent : UiEvent {
     data class CategorySelection(val categoryName: String) : FoodCategoriesEvent()

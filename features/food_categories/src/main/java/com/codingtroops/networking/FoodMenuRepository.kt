@@ -1,8 +1,5 @@
-package com.codingtroops.foodies.model.data
+package com.codingtroops.networking
 
-import com.codingtroops.foodies.model.FoodItem
-import com.codingtroops.foodies.model.response.FoodCategoriesResponse
-import com.codingtroops.foodies.model.response.MealsResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 

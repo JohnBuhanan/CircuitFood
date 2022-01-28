@@ -1,12 +1,14 @@
 enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    google()
+    mavenCentral()
+  }
 }
 rootProject.name = "Foodies"
-include ':app'
-include ':common'
-include ':features:featureA'
+
+include(':app',
+    ':common',
+    ':features:featureA',
+    ':features:food_categories',)

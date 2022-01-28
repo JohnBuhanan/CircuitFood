@@ -1,4 +1,4 @@
-package com.codingtroops.foodies.ui.feature.categories
+package com.codingtroops.foodcategories
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -38,7 +38,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,17 +45,18 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.codingtroops.common.WithViewModel
-import com.codingtroops.foodies.R
-import com.codingtroops.foodies.model.FoodItem
-import com.codingtroops.foodies.noRippleClickable
-import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.DataWasLoaded
-import com.codingtroops.foodies.ui.feature.categories.FoodCategoriesEffect.Navigation.ToCategoryDetails
-import com.codingtroops.foodies.ui.feature.destinations.FoodCategoryDetailsDestination
+import com.codingtroops.common.noRippleClickable
+import com.codingtroops.foodcategories.FoodCategoriesEffect.DataWasLoaded
+import com.codingtroops.foodcategories.FoodCategoriesEvent.CategorySelection
+import com.codingtroops.networking.FoodItem
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import timber.log.Timber
 
-@Destination(start = true)
+@Destination(
+    start = true,
+//    navGraph = "FoodCategories",
+)
 @Composable
 fun FoodCategories(
     navigator: DestinationsNavigator,
@@ -74,10 +74,10 @@ fun FoodCategories(
                         duration = Short
                     )
                 }
-                is ToCategoryDetails -> {
-                    Timber.e("Composable - onEffect - ToCategoryDetails")
-                    navigator.navigate(FoodCategoryDetailsDestination(effect.categoryName))
-                }
+//                is ToCategoryDetails -> {
+//                    Timber.e("Composable - onEffect - ToCategoryDetails")
+//                    navigator.navigate(FoodCategoryDetailsDestination(effect.categoryName))
+//                }
             }
         },
         start = { viewModel, onEvent ->
@@ -106,7 +106,7 @@ fun FoodCategoriesView(
             FoodCategoriesList(
                 foodItems = categories,
                 onItemClicked = { itemId ->
-                    onEvent(FoodCategoriesEvent.CategorySelection(itemId))
+                    onEvent(CategorySelection(itemId))
                 },
             )
             if (isLoading)
@@ -125,7 +125,7 @@ private fun CategoriesAppBar() {
                 contentDescription = "Action icon"
             )
         },
-        title = { Text(stringResource(R.string.app_name)) },
+        title = { Text("stringResource(R.string.app_name)") },
         backgroundColor = MaterialTheme.colors.background
     )
 }

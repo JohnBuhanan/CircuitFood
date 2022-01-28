@@ -1,4 +1,4 @@
-package com.codingtroops.foodies.model
+package com.codingtroops.networking
 
 data class FoodItem(
     val id: String,
