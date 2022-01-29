@@ -7,6 +7,11 @@ import com.johnbuhanan.common.WithViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
+@Destination(start = true)
+@Composable
+fun PreventRootNotImplementedException() {
+}
+
 @Destination(
     start = true,
     navGraph = "featureA",
