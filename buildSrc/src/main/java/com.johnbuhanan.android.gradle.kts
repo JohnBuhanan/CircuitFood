@@ -1,9 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-import amex.gradle.libs
-import amex.gradle.resolveVersion
 import com.android.build.gradle.BaseExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("android")

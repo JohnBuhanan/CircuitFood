@@ -1,18 +1,12 @@
-/**
- * Source: https://github-dev.aexp.com/amex-eng/jvm-paved-road-template/blob/main/buildSrc/src/main/kotlin/aexp/VersionCatalogExt.kt
- */
-package amex.gradle
-
 import org.gradle.api.InvalidUserDataException
+import org.gradle.api.Project
 import org.gradle.api.artifacts.ExternalModuleDependencyBundle
 import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.artifacts.VersionConstraint
 import org.gradle.api.provider.Provider
-import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import java.util.Optional
-
 
 private fun exceptionTemplate(type: String, name: String) =
     "Couldn't resolve $type $name is it defined in the version catalog? (toml file)"
@@ -38,7 +32,7 @@ fun VersionCatalog.resolveVersion(version: String): VersionConstraint =
 private fun <T> VersionCatalog.resolveCatalogItem(
     finder: VersionCatalog.(String) -> Optional<T>,
     type: String,
-    identifier: String
+    identifier: String,
 ): T {
     return finder(identifier)
         .orElseThrow { InvalidUserDataException(exceptionTemplate(type, identifier)) }

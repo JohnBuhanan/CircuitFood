@@ -4,7 +4,7 @@ import com.android.build.gradle.BaseExtension
 
 plugins {
     id("com.android.library")
-    id("amex.gradle.android")
+    id("com.johnbuhanan.android")
 }
 
 with(the<BaseExtension>()) {

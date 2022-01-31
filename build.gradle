@@ -24,7 +24,7 @@ task clean(type: Delete) {
 
 allprojects { project ->
   project.afterEvaluate {
-    if (plugins.hasPlugin('amex.gradle.android')) {
+    if (plugins.hasPlugin('com.johnbuhanan.android')) {
       android.kotlinOptions {
         useIR = true
         jvmTarget = "1.8"
