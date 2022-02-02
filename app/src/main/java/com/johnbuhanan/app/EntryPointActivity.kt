@@ -56,6 +56,9 @@ fun Initialize(appGraph: GenericNavGraph) {
         destination = NavDestination(""),
         hostLifecycleState = RESUMED
     )
+    // All of this garbage so we can:
+    // 1. Add all nestedGraphs
+    // 2. Get our hands on the destinationsNavController...
     val destinationsNavController = DestinationsNavController(
         navController = navController,
         navBackStackEntry = navBackStackEntry,
@@ -73,5 +76,5 @@ fun Initialize(appGraph: GenericNavGraph) {
 @Destination(start = true)
 @Composable
 fun Start(navigator: DestinationsNavigator) {
-    navigator.navigate(NavGraphs.root)
+    navigator.navigate("food")
 }

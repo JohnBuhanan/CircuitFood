@@ -19,7 +19,7 @@ object NavGraphModule {
     @IntoMap
     @NavGraphKey(Route.FoodCategories::class)
     fun provideNavGraphSpec(): NavGraphSpec {
-        return NavGraphs.root
+        return NavGraphs.food
     }
 
     @Provides
