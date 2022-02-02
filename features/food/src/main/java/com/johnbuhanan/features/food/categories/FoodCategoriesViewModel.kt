@@ -13,13 +13,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodCategoriesViewModel @Inject constructor(
-    private val dispatcher: CoroutineDispatcher,
+    dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
     private val router: Router,
 ) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
-
     init {
-        start()
+        viewModelScope.launch(dispatcher) {
+            val categories = repository.getFoodCategories()
+            setState {
+                copy(categories = categories, isLoading = false)
+            }
+            setEffect { FoodCategoriesEffect.DataWasLoaded }
+        }
     }
 
     override fun setInitialState() = FoodCategoriesState(categories = listOf(), isLoading = true)
@@ -32,16 +37,6 @@ class FoodCategoriesViewModel @Inject constructor(
                 router.goTo(Route.FoodFeature.FoodCategoryDetails(event.categoryName))
             }
             FoodCategoriesEvent.TappedBack -> router.goBack()
-        }
-    }
-
-    private fun start() {
-        viewModelScope.launch(dispatcher) {
-            val categories = repository.getFoodCategories()
-            setState {
-                copy(categories = categories, isLoading = false)
-            }
-            setEffect { FoodCategoriesEffect.DataWasLoaded }
         }
     }
 }

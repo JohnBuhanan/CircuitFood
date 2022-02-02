@@ -2,12 +2,11 @@ package com.johnbuhanan.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.johnbuhanan.app.destinations.StartDestination
 import com.johnbuhanan.common.DirectionMap
 import com.johnbuhanan.common.NavGraphMap
+import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterEvent
-import com.johnbuhanan.common.RouterViewModel
 import com.johnbuhanan.common.toGeneric
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.rememberNavHostEngine
@@ -15,14 +14,13 @@ import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 @Composable
-fun NavigationComponent(navGraphMap: NavGraphMap, directionMap: DirectionMap) {
-    val routerViewModel = hiltViewModel<RouterViewModel>()
+fun NavigationComponent(router: Router, navGraphMap: NavGraphMap, directionMap: DirectionMap) {
     val appGraph = NavGraphs.root.toGeneric().copy(nestedNavGraphs = navGraphMap.values.map { it.get() })
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
 
     LaunchedEffect(navController) {
-        routerViewModel.routerEvents.collect {
+        router.routerEvents.collect {
             Timber.e("ROUTER")
             when (val event = it) {
                 is RouterEvent.GoBack -> navController.navigateUp()

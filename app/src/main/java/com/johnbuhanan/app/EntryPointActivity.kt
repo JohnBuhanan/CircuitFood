@@ -9,6 +9,7 @@ import com.johnbuhanan.app.theme.ComposeSampleTheme
 import com.johnbuhanan.common.DirectionMap
 import com.johnbuhanan.common.NavGraphMap
 import com.johnbuhanan.common.Route
+import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,12 +25,15 @@ class EntryPointActivity : ComponentActivity() {
     @Inject
     lateinit var directionMap: DirectionMap
 
+    @Inject
+    lateinit var router: Router
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             ComposeSampleTheme {
-                NavigationComponent(navGraphMap, directionMap)
+                NavigationComponent(router, navGraphMap, directionMap)
             }
         }
     }
