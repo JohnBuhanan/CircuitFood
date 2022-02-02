@@ -14,12 +14,12 @@ import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NavGraphModule {
+object FoodNavGraphModule {
     @Provides
     @IntoMap
     @NavGraphKey(Route.FoodCategories::class)
     fun provideNavGraphSpec(): NavGraphSpec {
-        return NavGraphs.root
+        return NavGraphs.food
     }
 
     @Provides

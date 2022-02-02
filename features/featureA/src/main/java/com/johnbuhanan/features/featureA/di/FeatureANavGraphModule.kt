@@ -12,7 +12,7 @@ import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NavGraphModule {
+object FeatureANavGraphModule {
     @Provides
     @IntoMap
     @NavGraphKey(Route.FeatureA::class)

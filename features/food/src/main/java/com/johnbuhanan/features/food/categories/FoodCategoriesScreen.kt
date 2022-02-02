@@ -11,6 +11,14 @@ import timber.log.Timber
 
 @Destination(start = true)
 @Composable
+fun PreventRootNotImplementedException() {
+}
+
+@Destination(
+    start = true,
+    navGraph = "food",
+)
+@Composable
 fun FoodCategoriesScreen() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 

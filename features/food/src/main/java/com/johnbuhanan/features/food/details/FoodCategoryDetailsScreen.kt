@@ -7,7 +7,9 @@ import com.johnbuhanan.common.WithViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
-@Destination
+@Destination(
+    navGraph = "food"
+)
 @Composable
 fun FoodCategoryDetailsScreen(
     categoryId: String,
