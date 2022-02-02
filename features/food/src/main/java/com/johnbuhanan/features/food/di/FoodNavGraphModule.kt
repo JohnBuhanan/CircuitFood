@@ -14,7 +14,7 @@ import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NavGraphModule {
+object FoodNavGraphModule {
     @Provides
     @IntoMap
     @NavGraphKey(Route.FoodCategories::class)
