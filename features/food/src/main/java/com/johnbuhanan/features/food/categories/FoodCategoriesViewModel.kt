@@ -29,7 +29,7 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                router.goTo(Route.FoodCategoryDetails(event.categoryName))
+                router.goTo(Route.FoodFeature.FoodCategoryDetails(event.categoryName))
             }
             FoodCategoriesEvent.TappedBack -> router.goBack()
         }

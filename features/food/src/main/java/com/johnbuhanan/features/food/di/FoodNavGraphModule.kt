@@ -17,17 +17,17 @@ import dagger.multibindings.IntoMap
 object FoodNavGraphModule {
     @Provides
     @IntoMap
-    @NavGraphKey(Route.FoodCategories::class)
-    fun provideNavGraphSpec(): NavGraphSpec {
+    @NavGraphKey(Route.FoodFeature::class)
+    fun provideFoodNavGraph(): NavGraphSpec {
         return NavGraphs.food
     }
 
     @Provides
     @IntoMap
-    @NavGraphKey(Route.FoodCategoryDetails::class)
-    fun provideDirections(): DirectionTransform {
+    @NavGraphKey(Route.FoodFeature.FoodCategoryDetails::class)
+    fun provideFoodCategoryDetailsScreen(): DirectionTransform {
         return {
-            val id = (it as Route.FoodCategoryDetails).id
+            val id = (it as Route.FoodFeature.FoodCategoryDetails).id
             FoodCategoryDetailsScreenDestination(id)
         }
     }
