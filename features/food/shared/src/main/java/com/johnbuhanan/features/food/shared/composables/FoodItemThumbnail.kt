@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun FoodItemThumbnail(
     thumbnailUrl: Any?,
