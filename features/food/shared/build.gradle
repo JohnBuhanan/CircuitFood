@@ -3,11 +3,6 @@ plugins {
 }
 
 dependencies {
-  implementation libs.androidx.appcompat
-  implementation libs.androidx.compose.material
-  implementation libs.androidx.corektx
-  implementation libs.material
-
   // Retrofit
   implementation libs.retrofit
   implementation libs.retrofit.converter.gson

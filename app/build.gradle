@@ -10,36 +10,11 @@ android {
 }
 
 dependencies {
-  kapt libs.bundles.daggerKapt
-  ksp libs.compose.destinations.ksp
-
   implementation project(":common")
   implementation project(":features:featureA")
   implementation project(":features:food")
-  implementation libs.androidx.appcompat
-  implementation libs.androidx.compose.material
-  implementation libs.androidx.corektx
-  implementation libs.bundles.compose
-  implementation libs.compose.destinations.core
-  implementation libs.timber
+
   implementation libs.material
-  implementation libs.bundles.dagger
-
-  // Retrofit
-  implementation libs.retrofit
-  implementation libs.retrofit.converter.gson
-  implementation libs.gson
-
-  // Coroutines
-  implementation libs.kotlin.coroutines.core
-  implementation libs.kotlin.coroutines.android
-
-  // Lifecycle
-  implementation libs.androidx.lifecycle.runtime
-  implementation libs.androidx.lifecycle.viewmodel
-
-  // Image loading
-  implementation libs.coil
 
   testImplementation libs.junit4
   testImplementation libs.kotlin.coroutines.test
