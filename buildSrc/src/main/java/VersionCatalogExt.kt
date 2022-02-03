@@ -40,3 +40,6 @@ private fun <T> VersionCatalog.resolveCatalogItem(
 
 val Project.libs: VersionCatalog
     get() = extensions.getByType(VersionCatalogsExtension::class.java).named("libs")
+
+//val Project.projects: VersionCatalog
+//    get() = extensions.getByType(VersionCatalogsExtension::class.java).named("projects")

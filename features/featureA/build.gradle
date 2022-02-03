@@ -1,27 +1,17 @@
 plugins {
-  id 'com.johnbuhanan.androidlib'
+  id 'com.johnbuhanan.feature'
 }
 
 dependencies {
-  implementation project(":common")
   implementation libs.androidx.appcompat
   implementation libs.androidx.compose.material
   implementation libs.androidx.corektx
   implementation libs.material
-  implementation libs.bundles.dagger
 
   // Retrofit
   implementation libs.retrofit
   implementation libs.retrofit.converter.gson
   implementation libs.gson
-
-  // Coroutines
-  implementation libs.kotlin.coroutines.core
-  implementation libs.kotlin.coroutines.android
-
-  // Lifecycle
-  implementation libs.androidx.lifecycle.runtime
-  implementation libs.androidx.lifecycle.viewmodel
 
   // Image loading
   implementation libs.coil

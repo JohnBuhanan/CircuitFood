@@ -2,23 +2,3 @@ plugins {
   id 'com.android.library'
   id 'com.johnbuhanan.android'
 }
-
-dependencies {
-  implementation libs.timber
-
-  // Dagger
-  kapt libs.bundles.daggerKapt
-  implementation libs.bundles.dagger
-
-  // Coroutines
-  implementation libs.kotlin.coroutines.core
-  implementation libs.kotlin.coroutines.android
-
-  // Lifecycle
-  implementation libs.androidx.lifecycle.runtime
-  implementation libs.androidx.lifecycle.viewmodel
-
-  // Compose
-  implementation libs.bundles.compose
-  implementation libs.compose.destinations.core
-}

@@ -41,5 +41,24 @@ with(the<BaseExtension>()) {
 }
 
 dependencies {
-//    "implementation"(libs.resolveDependency("busybee.android"))
+    "implementation"(libs.resolveDependency("timber"))
+
+    // Dagger
+    "kapt"(libs.resolveBundle("daggerKapt"))
+    "implementation"(libs.resolveBundle("dagger"))
+
+    // Compose
+    "implementation"(libs.resolveBundle("compose"))
+
+    // Compose Destinations
+    "ksp"(libs.resolveDependency("compose.destinations.ksp"))
+    "implementation"(libs.resolveDependency("compose.destinations.core"))
+
+    // Coroutines
+    "implementation"(libs.resolveDependency("kotlin.coroutines.core"))
+    "implementation"(libs.resolveDependency("kotlin.coroutines.android"))
+
+    // Lifecycle
+    "implementation"(libs.resolveDependency("androidx.lifecycle.runtime"))
+    "implementation"(libs.resolveDependency("androidx.lifecycle.viewmodel"))
 }
