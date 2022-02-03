@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.johnbuhanan.app.theme.ComposeSampleTheme
-import com.johnbuhanan.common.NavGraphMap
+import com.johnbuhanan.common.FeatureNavGraphMap
 import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterViewModel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class EntryPointActivity : ComponentActivity() {
     @Inject
-    lateinit var navGraphMap: NavGraphMap
+    lateinit var featureNavGraphMap: FeatureNavGraphMap
 
     @Inject
     lateinit var router: Router
@@ -29,7 +29,7 @@ class EntryPointActivity : ComponentActivity() {
 
         setContent {
             ComposeSampleTheme {
-                NavigationComponent(router, navGraphMap)
+                NavigationComponent(router, featureNavGraphMap)
             }
         }
     }

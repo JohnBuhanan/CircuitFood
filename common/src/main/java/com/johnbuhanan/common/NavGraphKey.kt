@@ -12,4 +12,4 @@ import kotlin.reflect.KClass
 annotation class NavGraphKey(val value: KClass<out FeatureRoute>)
 typealias ScreenRoute = Direction
 typealias FeatureNavGraph = NavGraphSpec
-typealias NavGraphMap = Map<Class<out FeatureRoute>, @JvmSuppressWildcards Provider<FeatureNavGraph>>
+typealias FeatureNavGraphMap = Map<Class<out FeatureRoute>, @JvmSuppressWildcards Provider<FeatureNavGraph>>

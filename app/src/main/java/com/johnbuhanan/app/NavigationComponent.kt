@@ -3,7 +3,7 @@ package com.johnbuhanan.app
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.johnbuhanan.app.destinations.StartDestination
-import com.johnbuhanan.common.NavGraphMap
+import com.johnbuhanan.common.FeatureNavGraphMap
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterEvent.GoBack
 import com.johnbuhanan.common.RouterEvent.GoToFeature
@@ -15,8 +15,8 @@ import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 @Composable
-fun NavigationComponent(router: Router, navGraphMap: NavGraphMap) {
-    val appGraph = NavGraphs.root.toGeneric().copy(nestedNavGraphs = navGraphMap.values.map { it.get() })
+fun NavigationComponent(router: Router, featureNavGraphMap: FeatureNavGraphMap) {
+    val appGraph = NavGraphs.root.toGeneric().copy(nestedNavGraphs = featureNavGraphMap.values.map { it.get() })
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
 
@@ -28,7 +28,7 @@ fun NavigationComponent(router: Router, navGraphMap: NavGraphMap) {
                 is GoToFeature -> {
                     val featureRoute = event.featureRoute
                     val clazz = featureRoute::class.java
-                    val route = navGraphMap[clazz]?.get()?.route ?: ""
+                    val route = featureNavGraphMap[clazz]?.get()?.route ?: ""
 
                     navController.navigate(
                         route = route,
