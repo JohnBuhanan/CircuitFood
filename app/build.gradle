@@ -15,12 +15,4 @@ dependencies {
   implementation project(":features:food")
 
   implementation libs.material
-
-  testImplementation libs.junit4
-  testImplementation libs.kotlin.coroutines.test
-  testImplementation libs.turbine
-  //  androidTestImplementation libs.androidx.compose.test.junit4
-  //  androidTestImplementation libs.androidx.test.junit
-  //  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-  //  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }

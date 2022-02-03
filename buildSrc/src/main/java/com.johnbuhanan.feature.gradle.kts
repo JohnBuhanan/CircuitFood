@@ -7,4 +7,12 @@ plugins {
 
 dependencies {
     "implementation"(project(":common"))
+
+    // Retrofit
+    "implementation"(libs.resolveDependency("retrofit"))
+    "implementation"(libs.resolveDependency("retrofit.converter.gson"))
+    "implementation"(libs.resolveDependency("gson"))
+
+    // Image loading
+    "implementation"(libs.resolveDependency("coil"))
 }

@@ -1,21 +1,3 @@
 plugins {
   id 'com.johnbuhanan.feature'
 }
-
-dependencies {
-  // Retrofit
-  implementation libs.retrofit
-  implementation libs.retrofit.converter.gson
-  implementation libs.gson
-
-  // Image loading
-  implementation libs.coil
-
-  testImplementation libs.junit4
-  testImplementation libs.kotlin.coroutines.test
-  testImplementation libs.turbine
-  //  androidTestImplementation libs.androidx.compose.test.junit4
-  //  androidTestImplementation libs.androidx.test.junit
-  //  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-  //  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-}
