@@ -4,18 +4,12 @@ plugins {
 
 dependencies {
   api project(':features:food:shared')
-  kapt libs.bundles.daggerKapt
-  ksp libs.compose.destinations.ksp
 
   implementation project(":common")
   implementation libs.androidx.appcompat
   implementation libs.androidx.compose.material
   implementation libs.androidx.corektx
-  implementation libs.bundles.compose
-  implementation libs.compose.destinations.core
-  implementation libs.timber
   implementation libs.material
-  implementation libs.bundles.dagger
 
   // Retrofit
   implementation libs.retrofit
