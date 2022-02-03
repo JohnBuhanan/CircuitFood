@@ -6,9 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.johnbuhanan.app.theme.ComposeSampleTheme
-import com.johnbuhanan.common.DirectionMap
 import com.johnbuhanan.common.NavGraphMap
-import com.johnbuhanan.common.Route
+import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterViewModel
 import com.ramcosta.composedestinations.annotation.Destination
@@ -23,9 +22,6 @@ class EntryPointActivity : ComponentActivity() {
     lateinit var navGraphMap: NavGraphMap
 
     @Inject
-    lateinit var directionMap: DirectionMap
-
-    @Inject
     lateinit var router: Router
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +29,7 @@ class EntryPointActivity : ComponentActivity() {
 
         setContent {
             ComposeSampleTheme {
-                NavigationComponent(router, navGraphMap, directionMap)
+                NavigationComponent(router, navGraphMap)
             }
         }
     }
@@ -44,5 +40,5 @@ class EntryPointActivity : ComponentActivity() {
 fun Start() {
     Timber.e("Composable - Start")
     val routerViewModel = hiltViewModel<RouterViewModel>()
-    routerViewModel.goTo(Route.FoodFeature())
+    routerViewModel.goToFeature(FeatureRoute.Food)
 }

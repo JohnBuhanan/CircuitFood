@@ -4,5 +4,6 @@ import androidx.navigation.NavOptionsBuilder
 
 sealed class RouterEvent {
     object GoBack : RouterEvent()
-    class GoTo(val route: Route, val builder: NavOptionsBuilder.() -> Unit) : RouterEvent()
+    class GoToFeature(val featureRoute: FeatureRoute, val builder: NavOptionsBuilder.() -> Unit) : RouterEvent()
+    class GoToScreen(val screenRoute: ScreenRoute, val builder: NavOptionsBuilder.() -> Unit) : RouterEvent()
 }

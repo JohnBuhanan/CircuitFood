@@ -9,8 +9,7 @@ import kotlin.reflect.KClass
 @MapKey
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class NavGraphKey(val value: KClass<out Route>)
-
-typealias DirectionTransform = (Route) -> Direction
-typealias NavGraphMap = Map<Class<out Route>, @JvmSuppressWildcards Provider<NavGraphSpec>>
-typealias DirectionMap = Map<Class<out Route>, @JvmSuppressWildcards DirectionTransform>
+annotation class NavGraphKey(val value: KClass<out FeatureRoute>)
+typealias ScreenRoute = Direction
+typealias FeatureNavGraph = NavGraphSpec
+typealias NavGraphMap = Map<Class<out FeatureRoute>, @JvmSuppressWildcards Provider<FeatureNavGraph>>

@@ -1,7 +1,7 @@
 package com.johnbuhanan.features.featureA.di
 
+import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.NavGraphKey
-import com.johnbuhanan.common.Route
 import com.johnbuhanan.features.featureA.NavGraphs
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.Module
@@ -15,7 +15,7 @@ import dagger.multibindings.IntoMap
 object FeatureANavGraphModule {
     @Provides
     @IntoMap
-    @NavGraphKey(Route.FeatureA::class)
+    @NavGraphKey(FeatureRoute.FeatureA::class)
     fun provideNavGraphSpec(): NavGraphSpec {
         return NavGraphs.featureA
     }

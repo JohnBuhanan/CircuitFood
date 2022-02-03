@@ -9,7 +9,8 @@ import javax.inject.Singleton
 
 interface Router {
     fun goBack(): Boolean
-    fun goTo(route: Route, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
+    fun goToFeature(featureRoute: FeatureRoute, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
+    fun goToScreen(screenRoute: ScreenRoute, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
     val routerEvents: Flow<RouterEvent>
 }
 
@@ -19,6 +20,9 @@ class RouterImpl @Inject constructor() : Router {
     override val routerEvents = _routerEvents.receiveAsFlow()
 
     override fun goBack(): Boolean = _routerEvents.trySend(RouterEvent.GoBack).isSuccess
-    override fun goTo(route: Route, builder: NavOptionsBuilder.() -> Unit): Boolean =
-        _routerEvents.trySend(RouterEvent.GoTo(route, builder)).isSuccess
+    override fun goToFeature(featureRoute: FeatureRoute, builder: NavOptionsBuilder.() -> Unit): Boolean =
+        _routerEvents.trySend(RouterEvent.GoToFeature(featureRoute, builder)).isSuccess
+
+    override fun goToScreen(screenRoute: ScreenRoute, builder: NavOptionsBuilder.() -> Unit): Boolean =
+        _routerEvents.trySend(RouterEvent.GoToScreen(screenRoute, builder)).isSuccess
 }

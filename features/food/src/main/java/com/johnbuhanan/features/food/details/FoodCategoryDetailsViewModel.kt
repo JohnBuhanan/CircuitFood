@@ -2,7 +2,7 @@ package com.johnbuhanan.features.food.details
 
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
-import com.johnbuhanan.common.Route
+import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
@@ -39,7 +39,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             TappedBack -> router.goBack()
-            is TappedFoodItem -> router.goTo(Route.FeatureA)
+            is TappedFoodItem -> router.goToFeature(FeatureRoute.FeatureA)
         }
     }
 

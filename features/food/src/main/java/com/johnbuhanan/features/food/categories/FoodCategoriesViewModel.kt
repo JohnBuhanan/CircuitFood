@@ -2,8 +2,8 @@ package com.johnbuhanan.features.food.categories
 
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
-import com.johnbuhanan.common.Route
 import com.johnbuhanan.common.Router
+import com.johnbuhanan.features.food.destinations.FoodCategoryDetailsScreenDestination
 import com.johnbuhanan.features.food.shared.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -34,7 +34,7 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                router.goTo(Route.FoodFeature.FoodCategoryDetails(event.categoryName))
+                router.goToScreen(FoodCategoryDetailsScreenDestination(event.categoryName))
             }
             FoodCategoriesEvent.TappedBack -> router.goBack()
         }

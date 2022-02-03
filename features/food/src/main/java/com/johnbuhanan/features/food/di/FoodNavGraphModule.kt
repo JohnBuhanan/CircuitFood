@@ -1,10 +1,8 @@
 package com.johnbuhanan.features.food.di
 
-import com.johnbuhanan.common.DirectionTransform
+import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.NavGraphKey
-import com.johnbuhanan.common.Route
 import com.johnbuhanan.features.food.NavGraphs
-import com.johnbuhanan.features.food.destinations.FoodCategoryDetailsScreenDestination
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.Module
 import dagger.Provides
@@ -17,18 +15,8 @@ import dagger.multibindings.IntoMap
 object FoodNavGraphModule {
     @Provides
     @IntoMap
-    @NavGraphKey(Route.FoodFeature::class)
-    fun provideFoodNavGraph(): NavGraphSpec {
+    @NavGraphKey(FeatureRoute.Food::class)
+    fun provideFoodFeatureNavGraph(): NavGraphSpec {
         return NavGraphs.food
-    }
-
-    @Provides
-    @IntoMap
-    @NavGraphKey(Route.FoodFeature.FoodCategoryDetails::class)
-    fun provideFoodCategoryDetailsScreen(): DirectionTransform {
-        return {
-            val id = (it as Route.FoodFeature.FoodCategoryDetails).id
-            FoodCategoryDetailsScreenDestination(id)
-        }
     }
 }
