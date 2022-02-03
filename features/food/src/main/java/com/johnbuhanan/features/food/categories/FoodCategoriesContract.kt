@@ -13,9 +13,5 @@ sealed class FoodCategoriesEvent : UiEvent {
 data class FoodCategoriesState(val categories: List<FoodItem> = listOf(), val isLoading: Boolean = false) : UiState
 
 sealed class FoodCategoriesEffect : UiEffect {
-    object DataWasLoaded : FoodCategoriesEffect()
-
-    sealed class Navigation : FoodCategoriesEffect() {
-        data class ToCategoryDetails(val categoryName: String) : Navigation()
-    }
+    data class ShowSnackbar(val message: String) : FoodCategoriesEffect()
 }

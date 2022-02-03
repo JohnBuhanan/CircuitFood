@@ -23,7 +23,7 @@ class FoodCategoriesViewModel @Inject constructor(
             setState {
                 copy(categories = categories, isLoading = false)
             }
-            setEffect { FoodCategoriesEffect.DataWasLoaded }
+            setEffect { FoodCategoriesEffect.ShowSnackbar("Food categories are loaded.") }
         }
     }
 

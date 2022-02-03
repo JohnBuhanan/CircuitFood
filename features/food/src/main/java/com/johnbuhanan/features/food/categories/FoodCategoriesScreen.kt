@@ -5,7 +5,7 @@ import androidx.compose.material.SnackbarDuration.Short
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import com.johnbuhanan.common.WithViewModel
-import com.johnbuhanan.features.food.categories.FoodCategoriesEffect.DataWasLoaded
+import com.johnbuhanan.features.food.categories.FoodCategoriesEffect.ShowSnackbar
 import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
@@ -26,10 +26,10 @@ fun FoodCategoriesScreen() {
         onEffect = { effect ->
             Timber.e("Composable - onEffect")
             when (effect) {
-                is DataWasLoaded -> {
+                is ShowSnackbar -> {
                     Timber.e("Composable - onEffect - DataWasLoaded")
                     scaffoldState.snackbarHostState.showSnackbar(
-                        message = "Food categories are loaded.",
+                        message = effect.message,
                         duration = Short
                     )
                 }
