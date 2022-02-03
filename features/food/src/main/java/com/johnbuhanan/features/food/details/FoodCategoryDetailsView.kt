@@ -28,7 +28,7 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.shared.FoodItem
-import com.johnbuhanan.features.food.shared.FoodItemRow
+import com.johnbuhanan.features.food.shared.composables.FoodItemRow
 import com.johnbuhanan.features.food.shared.composables.FoodItemDetails
 import timber.log.Timber
 import kotlin.math.min

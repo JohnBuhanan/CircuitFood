@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.6.10"
 coroutines = "1.5.0"
-dagger = "2.40.1"
+dagger = "2.40.5"
 compose = "1.1.0-rc03"
 compose-destinations = "1.1.4-beta"
 lifecycle = "2.4.0-rc01"
