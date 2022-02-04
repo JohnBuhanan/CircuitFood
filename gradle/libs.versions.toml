@@ -15,10 +15,6 @@ kspPlugin = '1.6.10-1.0.2'
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin"}
 
 [libraries]
-agp = "com.android.tools.build:gradle:7.2.0-beta01"
-assertk = "com.willowtreeapps.assertk:assertk-jvm:0.23.1"
-timber = "com.jakewharton.timber:timber:5.0.1"
-
 # Retrofit
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -80,12 +76,15 @@ dagger-hilt-androidGradlePlugin = { module = "com.google.dagger:hilt-android-gra
 # UnitTest
 androidx-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 junit4 = "junit:junit:4.13.2"
+assertk = "com.willowtreeapps.assertk:assertk-jvm:0.23.1"
 turbine = "app.cash.turbine:turbine:0.6.0"
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 
 # Misc
 material = "com.google.android.material:material:1.4.0"
 store = "com.dropbox.mobile.store:store4:4.0.2-KT15"
+agp = "com.android.tools.build:gradle:7.2.0-beta01"
+timber = "com.jakewharton.timber:timber:5.0.1"
 
 [bundles]
 compose = ["androidx-compose-ui", "androidx-compose-uitooling", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-activity", "androidx-compose-lifecycleviewmodel"]
