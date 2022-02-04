@@ -2,12 +2,16 @@ package com.johnbuhanan.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.navigation.NavController
 import com.johnbuhanan.app.destinations.StartDestination
 import com.johnbuhanan.common.FeatureNavGraphMap
+import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterEvent.GoBack
 import com.johnbuhanan.common.RouterEvent.GoToFeature
 import com.johnbuhanan.common.RouterEvent.GoToScreen
+import com.johnbuhanan.common.RouterEvent.SynthesizeBackStack
+import com.johnbuhanan.common.ScreenRoute
 import com.johnbuhanan.common.toGeneric
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.rememberNavHostEngine
@@ -20,28 +24,38 @@ fun NavigationComponent(router: Router, featureNavGraphMap: FeatureNavGraphMap) 
     val engine = rememberNavHostEngine()
     val navController = engine.rememberNavController()
 
+    fun FeatureRoute.getRoute(): String {
+        val clazz = this::class.java
+        return featureNavGraphMap[clazz]?.get()?.route ?: ""
+    }
+
     LaunchedEffect(navController) {
         router.routerEvents.collect {
             Timber.e("ROUTER")
             when (val event = it) {
                 is GoBack -> navController.navigateUp()
                 is GoToFeature -> {
-                    val featureRoute = event.featureRoute
-                    val clazz = featureRoute::class.java
-                    val route = featureNavGraphMap[clazz]?.get()?.route ?: ""
-
                     navController.navigate(
-                        route = route,
+                        route = event.featureRoute.getRoute(),
                         builder = event.builder,
                     )
                 }
                 is GoToScreen -> {
-                    val route = event.screenRoute.route
-
                     navController.navigate(
-                        route = route,
+                        route = event.screenRoute.route,
                         builder = event.builder,
                     )
+                }
+                is SynthesizeBackStack -> {
+                    val routes: List<String> = event.routes.map { eventRoute ->
+                        when (eventRoute) {
+                            is FeatureRoute -> eventRoute.getRoute()
+                            is ScreenRoute -> eventRoute.route
+                            else -> eventRoute as String
+                        }
+                    }
+
+                    navController.synthesizeBackStack(routes)
                 }
             }
         }
@@ -53,4 +67,8 @@ fun NavigationComponent(router: Router, featureNavGraphMap: FeatureNavGraphMap) 
         engine = engine,
         navController = navController,
     )
+}
+
+fun NavController.synthesizeBackStack(routes: List<String>) {
+    routes.forEach { navigate(it) }
 }

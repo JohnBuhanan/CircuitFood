@@ -10,6 +10,7 @@ import com.johnbuhanan.common.FeatureNavGraphMap
 import com.johnbuhanan.common.FeatureRoute
 import com.johnbuhanan.common.Router
 import com.johnbuhanan.common.RouterViewModel
+import com.johnbuhanan.features.food.destinations.FoodCategoryDetailsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -40,5 +41,12 @@ class EntryPointActivity : ComponentActivity() {
 fun Start() {
     Timber.e("Composable - Start")
     val routerViewModel = hiltViewModel<RouterViewModel>()
-    routerViewModel.goToFeature(FeatureRoute.Food)
+//    routerViewModel.goToFeature(FeatureRoute.Food)
+    routerViewModel.synthesizeBackStack(
+        listOf(
+            FeatureRoute.Food,
+            FoodCategoryDetailsScreenDestination("1"),
+            FeatureRoute.FeatureA,
+        )
+    )
 }
