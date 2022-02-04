@@ -22,7 +22,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
 
     fun initialize(categoryId: String) {
         Timber.e("launchFoodItems")
-        // I can't use IO dispatcher here for some reason???  It fails navigation when I do.
+
         viewModelScope.launch {
             val categories = repository.getFoodCategories()
             val category = categories.first { it.id == categoryId }
