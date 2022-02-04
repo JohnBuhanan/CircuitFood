@@ -43,10 +43,8 @@ fun Start() {
     val routerViewModel = hiltViewModel<RouterViewModel>()
 //    routerViewModel.goToFeature(FeatureRoute.Food)
     routerViewModel.synthesizeBackStack(
-        listOf(
-            FeatureRoute.Food,
-            FoodCategoryDetailsScreenDestination("1"),
-            FeatureRoute.FeatureA,
-        )
+        FeatureRoute.FeatureA,
+        FoodCategoryDetailsScreenDestination("1"),
+        FeatureRoute.Food,
     )
 }

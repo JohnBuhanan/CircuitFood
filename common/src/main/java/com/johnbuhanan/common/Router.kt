@@ -11,7 +11,7 @@ interface Router {
     fun goBack(): Boolean
     fun goToFeature(featureRoute: FeatureRoute, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
     fun goToScreen(screenRoute: ScreenRoute, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
-    fun synthesizeBackStack(routes: List<*>, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
+    fun synthesizeBackStack(vararg route: Any, builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }): Boolean
     val routerEvents: Flow<RouterEvent>
 }
 
@@ -27,6 +27,6 @@ class RouterImpl @Inject constructor() : Router {
     override fun goToScreen(screenRoute: ScreenRoute, builder: NavOptionsBuilder.() -> Unit): Boolean =
         _routerEvents.trySend(RouterEvent.GoToScreen(screenRoute, builder)).isSuccess
 
-    override fun synthesizeBackStack(routes: List<*>, builder: NavOptionsBuilder.() -> Unit): Boolean =
+    override fun synthesizeBackStack(vararg routes: Any, builder: NavOptionsBuilder.() -> Unit): Boolean =
         _routerEvents.trySend(RouterEvent.SynthesizeBackStack(routes, builder)).isSuccess
 }

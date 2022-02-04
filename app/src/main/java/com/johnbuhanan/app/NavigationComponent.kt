@@ -70,5 +70,5 @@ fun NavigationComponent(router: Router, featureNavGraphMap: FeatureNavGraphMap) 
 }
 
 fun NavController.synthesizeBackStack(routes: List<String>) {
-    routes.forEach { navigate(it) }
+    routes.reversed().forEach { navigate(it) }
 }
