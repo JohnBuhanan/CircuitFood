@@ -24,12 +24,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.shared.FoodItem
-import com.johnbuhanan.features.food.shared.composables.FoodItemRow
 import com.johnbuhanan.features.food.shared.composables.FoodItemDetails
+import com.johnbuhanan.features.food.shared.composables.FoodItemRow
 import timber.log.Timber
 import kotlin.math.min
 
@@ -71,6 +72,7 @@ fun FoodCategoryDetailsView(
     }
 }
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 private fun CategoryDetailsCollapsingToolbar(
     category: FoodItem?,
