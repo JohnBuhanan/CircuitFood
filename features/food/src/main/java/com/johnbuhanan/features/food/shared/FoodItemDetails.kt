@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.shared.composables
+package com.johnbuhanan.features.food.shared
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ContentAlpha
@@ -10,7 +10,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import com.johnbuhanan.features.food.shared.FoodItem
 
 @Composable
 fun FoodItemDetails(

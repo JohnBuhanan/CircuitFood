@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.shared.composables
+package com.johnbuhanan.features.food.shared
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
