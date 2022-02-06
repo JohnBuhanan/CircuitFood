@@ -13,7 +13,7 @@ dependencies {
   implementation project(":common")
   implementation project(":navigation")
   implementation project(":features:featureA")
-  implementation project(":features:food")
+  implementation project(":features:food:impl")
 
   implementation libs.material
 }
