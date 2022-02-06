@@ -1,7 +1,8 @@
 package com.johnbuhanan.app
 
 import android.app.Application
-import com.johnbuhanan.foodies.BuildConfig
+import cafe.adriel.voyager.core.registry.ScreenRegistry
+import com.johnbuhanan.features.food.di.featureScreenModule
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -10,8 +11,10 @@ import timber.log.Timber.DebugTree
 class MVIPublicApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree())
+        Timber.plant(DebugTree())
+
+        ScreenRegistry {
+            featureScreenModule()
         }
     }
 }

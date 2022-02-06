@@ -3,18 +3,20 @@ package com.johnbuhanan.common
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.hilt.getViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @Suppress("MoveLambdaOutsideParentheses")
 @Composable
-inline fun <reified VM : BaseViewModel<*, *, *>> WithViewModel(
+inline fun <reified VM : BaseViewModel<*, *, *>> Screen.WithViewModel(
     crossinline onEffect: suspend (UiEffect) -> Unit,
     initialize: (VM) -> Unit = {},
     start: (VM, (UiEvent) -> Unit) -> Unit,
 ) {
-    val viewModel: VM = hiltViewModel()
+    val viewModel: VM = getViewModel()
 
     LaunchedEffect(Unit) {
         viewModel.effect.collect { effect ->

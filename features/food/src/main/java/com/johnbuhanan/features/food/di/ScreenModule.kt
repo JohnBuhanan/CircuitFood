@@ -2,13 +2,14 @@ package com.johnbuhanan.features.food.di
 
 import cafe.adriel.voyager.core.registry.screenModule
 import com.johnbuhanan.features.food.categories.FoodCategoriesScreen
+import com.johnbuhanan.features.food.details.FoodCategoryDetailsScreen
 import com.johnbuhanan.navigation.SharedScreen
 
-val featurePostsScreenModule = screenModule {
+val featureScreenModule = screenModule {
     register<SharedScreen.FoodCategories> {
         FoodCategoriesScreen()
     }
-//    register<SharedScreen.PostDetails> { provider ->
-//        DetailsScreen(id = provider.id)
-//    }
+    register<SharedScreen.FoodCategoryDetails> {
+        FoodCategoryDetailsScreen(it.id)
+    }
 }

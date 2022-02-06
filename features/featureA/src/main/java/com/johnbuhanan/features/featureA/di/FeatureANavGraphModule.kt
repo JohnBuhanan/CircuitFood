@@ -1,24 +1,18 @@
 package com.johnbuhanan.features.featureA.di
 
-import com.johnbuhanan.common.FeatureRoute
-import com.johnbuhanan.common.NavGraphKey
-import com.johnbuhanan.features.featureA.NavGraphs
-import com.ramcosta.composedestinations.spec.NavGraphSpec
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.multibindings.IntoMap
 
 @Module
 @InstallIn(SingletonComponent::class)
 object FeatureANavGraphModule {
-    @Provides
-    @IntoMap
-    @NavGraphKey(FeatureRoute.FeatureA::class)
-    fun provideNavGraphSpec(): NavGraphSpec {
-        return NavGraphs.featureA
-    }
+//    @Provides
+//    @IntoMap
+//    @NavGraphKey(FeatureRoute.FeatureA::class)
+//    fun provideNavGraphSpec(): NavGraphSpec {
+//        return NavGraphs.featureA
+//    }
 
     // TODO add more destinations for featureA
 //    @Provides

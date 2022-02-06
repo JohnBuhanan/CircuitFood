@@ -11,6 +11,7 @@ android {
 
 dependencies {
   implementation project(":common")
+  implementation project(":navigation")
   implementation project(":features:featureA")
   implementation project(":features:food")
 

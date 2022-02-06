@@ -4,46 +4,37 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
+import cafe.adriel.voyager.androidx.AndroidScreen
+import cafe.adriel.voyager.core.registry.rememberScreen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.johnbuhanan.app.theme.ComposeSampleTheme
-import com.johnbuhanan.common.FeatureNavGraphMap
-import com.johnbuhanan.common.FeatureRoute
-import com.johnbuhanan.common.Router
-import com.johnbuhanan.common.RouterViewModel
-import com.johnbuhanan.features.food.destinations.FoodCategoryDetailsScreenDestination
-import com.ramcosta.composedestinations.annotation.Destination
+import com.johnbuhanan.navigation.SharedScreen
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import javax.inject.Inject
 
 // Single Activity per app
 @AndroidEntryPoint
 class EntryPointActivity : ComponentActivity() {
-    @Inject
-    lateinit var featureNavGraphMap: FeatureNavGraphMap
-
-    @Inject
-    lateinit var router: Router
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             ComposeSampleTheme {
-                NavigationComponent(router, featureNavGraphMap)
+                Navigator(StartScreen())
             }
         }
     }
 }
 
-@Composable
-fun Start() {
-    Timber.e("Composable - Start")
-    val routerViewModel = hiltViewModel<RouterViewModel>()
-//    routerViewModel.goToFeature(FeatureRoute.Food)
-//    routerViewModel.synthesizeBackStack(
-//        FeatureRoute.FeatureA,
-//        FoodCategoryDetailsScreenDestination("1"),
-//        FeatureRoute.Food,
-//    )
+class StartScreen : AndroidScreen() {
+    @Composable
+    override fun Content() {
+        Timber.e("Composable - Start")
+        val foodCategories = rememberScreen(SharedScreen.FoodCategories)
+        val navigator = LocalNavigator.currentOrThrow
+
+        navigator.push(foodCategories)
+    }
 }
