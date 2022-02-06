@@ -22,8 +22,4 @@ class FeatureAViewModel @Inject constructor(
     override fun handleEvents(event: FeatureAEvent) {
         Timber.e("handleEvents")
     }
-
-    companion object {
-        const val CATEGORY_ID = "categoryId"
-    }
 }

@@ -2,8 +2,6 @@ package com.johnbuhanan.features.food.details
 
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
-import com.johnbuhanan.common.FeatureRoute
-import com.johnbuhanan.common.Router
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.shared.FoodMenuRepository
@@ -17,7 +15,6 @@ import javax.inject.Inject
 class FoodCategoryDetailsViewModel @Inject constructor(
     dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
-    private val router: Router,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(dispatcher) {
 
     fun initialize(categoryId: String) {
@@ -38,8 +35,8 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoryDetailsEvent) {
         Timber.e("handleEvents")
         when (event) {
-            TappedBack -> router.goBack()
-            is TappedFoodItem -> router.goToFeature(FeatureRoute.FeatureA)
+            TappedBack -> {}//router.goBack()
+            is TappedFoodItem -> {}//router.goToFeature(FeatureRoute.FeatureA)
         }
     }
 
