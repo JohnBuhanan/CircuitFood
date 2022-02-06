@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
-  implementation project(':features:food:domain')
+  implementation project(':features:food:api')
+  implementation project(':features:food:impl:domain')
 }
 

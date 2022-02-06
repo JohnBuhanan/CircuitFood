@@ -1,7 +1,7 @@
-package com.johnbuhanan.features.food.shared.di
+package com.johnbuhanan.features.food.domain.di
 
-import com.johnbuhanan.features.food.shared.FoodMenuRepository
-import com.johnbuhanan.features.food.shared.FoodMenuRepositoryImpl
+import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.features.food.domain.FoodMenuRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.shared
+package com.johnbuhanan.features.food.domain
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding

@@ -1,7 +1,7 @@
-package com.johnbuhanan.features.food.shared.di
+package com.johnbuhanan.features.food.domain.di
 
-import com.johnbuhanan.features.food.shared.FoodMenuApi
-import com.johnbuhanan.features.food.shared.FoodMenuApi.Companion.API_URL
+import com.johnbuhanan.features.food.domain.FoodMenuApi
+import com.johnbuhanan.features.food.domain.FoodMenuApi.Companion.API_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

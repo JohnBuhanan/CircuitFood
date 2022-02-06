@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.shared
+package com.johnbuhanan.features.food.domain
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable

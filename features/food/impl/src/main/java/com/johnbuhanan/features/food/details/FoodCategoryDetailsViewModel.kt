@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
-import com.johnbuhanan.features.food.shared.FoodMenuRepository
+import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch

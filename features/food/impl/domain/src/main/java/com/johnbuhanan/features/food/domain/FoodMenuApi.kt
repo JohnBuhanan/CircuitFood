@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.shared
+package com.johnbuhanan.features.food.domain
 
 import retrofit2.http.GET
 import retrofit2.http.Query
