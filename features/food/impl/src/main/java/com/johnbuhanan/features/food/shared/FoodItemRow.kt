@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.domain
+package com.johnbuhanan.features.food.shared
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.request.ImageRequest
 import com.johnbuhanan.common.noRippleClickable
+import com.johnbuhanan.features.food.domain.FoodItem
 
 @Composable
 fun FoodItemRow(

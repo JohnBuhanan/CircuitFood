@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.CategorySelection
 import com.johnbuhanan.features.food.domain.FoodItem
-import com.johnbuhanan.features.food.domain.FoodItemRow
+import com.johnbuhanan.features.food.shared.FoodItemRow
 
 @Preview
 @Composable
