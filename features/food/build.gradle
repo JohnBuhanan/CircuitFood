@@ -3,5 +3,6 @@ plugins {
 }
 
 dependencies {
-  implementation project(':features:food:shared')
+  implementation project(':features:food:domain')
 }
+
