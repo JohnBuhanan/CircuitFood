@@ -7,6 +7,7 @@ plugins {
 
 dependencies {
     "implementation"(project(":common"))
+    "implementation"(project(":navigation"))
 
     // Retrofit
     "implementation"(libs.resolveDependency("retrofit"))

@@ -13,4 +13,5 @@ include(':app',
     ':features:featureA',
     ':features:food',
     ':features:food:shared',
+    ':navigation',
 )

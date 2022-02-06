@@ -29,8 +29,10 @@ with(the<BaseExtension>()) {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+//        sourceCompatibility = JavaVersion.VERSION_1_8
+//        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     buildFeatures.compose = true
@@ -67,9 +69,11 @@ dependencies {
     "testImplementation"(libs.resolveDependency("kotlin.coroutines.test"))
     "testImplementation"(libs.resolveDependency("turbine"))
 
+    // Voyager
+    "implementation"(libs.resolveBundle("voyager"))
+
     //  androidTestImplementation libs.androidx.compose.test.junit4
     //  androidTestImplementation libs.androidx.test.junit
     //  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-
 }

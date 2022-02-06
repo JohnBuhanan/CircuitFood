@@ -36,15 +36,14 @@ class EntryPointActivity : ComponentActivity() {
     }
 }
 
-@Destination(start = true)
 @Composable
 fun Start() {
     Timber.e("Composable - Start")
     val routerViewModel = hiltViewModel<RouterViewModel>()
 //    routerViewModel.goToFeature(FeatureRoute.Food)
-    routerViewModel.synthesizeBackStack(
-        FeatureRoute.FeatureA,
-        FoodCategoryDetailsScreenDestination("1"),
-        FeatureRoute.Food,
-    )
+//    routerViewModel.synthesizeBackStack(
+//        FeatureRoute.FeatureA,
+//        FoodCategoryDetailsScreenDestination("1"),
+//        FeatureRoute.Food,
+//    )
 }

@@ -4,12 +4,8 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import com.johnbuhanan.common.WithViewModel
-import com.ramcosta.composedestinations.annotation.Destination
 import timber.log.Timber
 
-@Destination(
-    navGraph = "food"
-)
 @Composable
 fun FoodCategoryDetailsScreen(
     categoryId: String,
