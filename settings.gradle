@@ -10,7 +10,7 @@ rootProject.name = "MVI-Public"
 
 include(':app',
     ':common',
-    ':features:featureA',
+    ':features:featureA:api', ':features:featureA:impl', //':features:featureA:impl:domain',
     ':features:food:api', ':features:food:impl', ':features:food:impl:domain',
     ':navigation', //
 )
