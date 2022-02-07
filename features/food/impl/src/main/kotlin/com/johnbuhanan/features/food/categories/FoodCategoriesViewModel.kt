@@ -2,7 +2,9 @@ package com.johnbuhanan.features.food.categories
 
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -13,6 +15,7 @@ import javax.inject.Inject
 class FoodCategoriesViewModel @Inject constructor(
     dispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
+    private val router: Router,
 ) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
     init {
         viewModelScope.launch(dispatcher) {
@@ -31,9 +34,9 @@ class FoodCategoriesViewModel @Inject constructor(
         when (event) {
             is FoodCategoriesEvent.CategorySelection -> {
                 Timber.e("handleEvents - CategorySelection")
-                //router.goToScreen(FoodCategoryDetailsScreenDestination(event.categoryName))
+                router.goTo(Food.Route.FoodCategoryDetails(event.categoryName))
             }
-            FoodCategoriesEvent.TappedBack -> {}//router.goBack()
+            FoodCategoriesEvent.TappedBack -> router.goBack()
         }
     }
 }
