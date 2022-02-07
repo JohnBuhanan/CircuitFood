@@ -44,6 +44,7 @@ with(the<BaseExtension>()) {
 
 dependencies {
     "implementation"(libs.resolveDependency("timber"))
+    "implementation"(libs.resolveDependency("kotlinReflect"))
 
     // Dagger
     "kapt"(libs.resolveBundle("daggerKapt"))
