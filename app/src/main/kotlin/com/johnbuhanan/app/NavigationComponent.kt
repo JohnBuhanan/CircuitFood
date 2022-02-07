@@ -9,8 +9,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import com.johnbuhanan.navigation.Route
 import com.johnbuhanan.navigation.Router
-import com.johnbuhanan.navigation.RouterEvent.GoBack
-import com.johnbuhanan.navigation.RouterEvent.GoTo
+import com.johnbuhanan.navigation.RouterEvent.Pop
+import com.johnbuhanan.navigation.RouterEvent.Push
 import timber.log.Timber
 import kotlin.reflect.KClass
 
@@ -22,15 +22,16 @@ private typealias ScreenFactory = (ScreenProvider) -> Screen
 fun NavigationComponent(router: Router) {
     LaunchedEffect(Unit) {
         Timber.e("BEFORE ROUTER")
-        router.routerEvents.collect {
-            Timber.e("routerEvent: $it")
-            when (val event = it) {
-                is GoBack -> {
+        router.routerEvents.collect { routerEvent ->
+            Timber.e("routerEvent: $routerEvent")
+            when (routerEvent) {
+                is Pop -> {
                     Timber.e("GoBack")
                     getNavigator!!().pop()
                 }
-                is GoTo -> {
-                    getNavigator!!().push(event.route.toScreen())
+                is Push -> {
+                    val screens = routerEvent.routes.map { it.toScreen() }
+                    getNavigator!!().push(screens)
                 }
             }
         }
