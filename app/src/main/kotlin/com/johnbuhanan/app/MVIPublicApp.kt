@@ -18,9 +18,7 @@ class MVIPublicApp : Application() {
         Timber.plant(DebugTree())
 
         ScreenRegistry {
-            screenModules.forEach {
-                it()
-            }
+            screenModules.forEach { it() }
         }
     }
 }
