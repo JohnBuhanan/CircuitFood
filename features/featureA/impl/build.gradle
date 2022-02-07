@@ -1,3 +1,8 @@
 plugins {
   id 'com.johnbuhanan.feature'
 }
+
+dependencies {
+  implementation project(':features:featureA:api')
+  //  implementation project(':features:featureA:impl:domain')
+}

@@ -2,8 +2,8 @@ package com.johnbuhanan.features.featureA.di
 
 import cafe.adriel.voyager.core.registry.screenModule
 import com.johnbuhanan.features.featureA.FeatureAScreen
+import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.navigation.ScreenModule
-import com.johnbuhanan.navigation.SharedScreen
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ object FeatureAScreenModule {
     @IntoSet
     fun provideScreenModule(): ScreenModule {
         return screenModule {
-            register<SharedScreen.FeatureA> {
+            register<FeatureA.Route.FeatureAScreen> {
                 FeatureAScreen()
             }
         }

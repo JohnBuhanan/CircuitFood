@@ -10,7 +10,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.johnbuhanan.app.theme.ComposeSampleTheme
-import com.johnbuhanan.navigation.SharedScreen
+import com.johnbuhanan.features.food.Food
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -32,7 +32,7 @@ class StartScreen : AndroidScreen() {
     @Composable
     override fun Content() {
         Timber.e("Composable - Start")
-        val foodCategories = rememberScreen(SharedScreen.FoodCategories)
+        val foodCategories = rememberScreen(Food.Route.FoodCategories)
         val navigator = LocalNavigator.currentOrThrow
 
         navigator.push(foodCategories)
