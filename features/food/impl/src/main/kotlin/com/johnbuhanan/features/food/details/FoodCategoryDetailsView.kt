@@ -64,7 +64,7 @@ fun FoodCategoryDetailsView(
                                 CircleCropTransformation()
                             )
                         },
-                        onItemClicked = { onEvent(TappedFoodItem(it)) }
+                        onItemClicked = { onEvent(TappedFoodItem("${item.name} was tapped!!!")) }
                     )
                 }
             }

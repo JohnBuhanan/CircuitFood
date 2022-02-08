@@ -40,7 +40,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
             TappedBack -> router.pop()
             is TappedFoodItem -> {
                 Timber.e("TappedFoodItem")
-                setEffect { FoodCategoryDetailsEffect.ShowSnackbar("TESTING") }
+                setEffect { FoodCategoryDetailsEffect.ShowToast(event.message) }
             }
         }
     }

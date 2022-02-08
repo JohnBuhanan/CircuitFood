@@ -1,8 +1,8 @@
 package com.johnbuhanan.features.food.details
 
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.rememberScaffoldState
+import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
 import timber.log.Timber
@@ -10,14 +10,15 @@ import timber.log.Timber
 data class FoodCategoryDetailsScreen(val categoryId: String) : AndroidScreen() {
     @Composable
     override fun Content() {
+        val context = LocalContext.current
         Timber.e("Composable - FoodCategoryDetails")
         WithViewModel<FoodCategoryDetailsViewModel>(
             onEffect = { effect ->
-                Timber.e("WithViewModel - onEffectInner")
+                Timber.e("FoodCategoryDetailsEffect")
                 when (effect) {
-                    is FoodCategoryDetailsEffect.ShowSnackbar -> {
-                        val scaffoldState: ScaffoldState = rememberScaffoldState()
-                        scaffoldState.snackbarHostState.showSnackbar(effect.message)
+                    is FoodCategoryDetailsEffect.ShowToast -> {
+                        Timber.e("FoodCategoryDetailsEffect.ShowSnackbar")
+                        Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             },

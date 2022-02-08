@@ -16,5 +16,5 @@ data class FoodCategoryDetailsState(
 ) : UiState
 
 sealed class FoodCategoryDetailsEffect : UiEffect {
-    data class ShowSnackbar(val message: String) : FoodCategoryDetailsEffect()
+    data class ShowToast(val message: String) : FoodCategoryDetailsEffect()
 }
