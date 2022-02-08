@@ -22,13 +22,10 @@ class Screen1Screen : AndroidScreen() {
                     }
                 }
             },
-            initialize = { viewModel ->
-                viewModel.initialize("categoryId")
-            },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.value) {
                     is Screen1State -> FeatureAView(
-                        thing = state.thing,
+                        message = state.message,
                         onEvent = onEvent
                     )
                 }

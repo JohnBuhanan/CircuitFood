@@ -2,6 +2,7 @@ package com.johnbuhanan.features.food.details
 
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
@@ -40,7 +41,8 @@ class FoodCategoryDetailsViewModel @Inject constructor(
             TappedBack -> router.pop()
             is TappedFoodItem -> {
                 Timber.e("TappedFoodItem")
-                setEffect { FoodCategoryDetailsEffect.ShowToast(event.message) }
+                router.push(FeatureA.Route.Screen1)
+                // setEffect { FoodCategoryDetailsEffect.ShowToast(event.message) }
             }
         }
     }
