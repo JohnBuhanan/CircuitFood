@@ -9,7 +9,7 @@ import javax.inject.Inject
 @HiltViewModel
 class Screen1ViewModel @Inject constructor(
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel<FeatureAEvent, FeatureAState, FeatureAEffect>(dispatcher) {
+) : BaseViewModel<Screen1Event, Screen1State, Screen1Effect>(dispatcher) {
 
     fun initialize(categoryId: String) {
         Timber.e("launchFoodItems")
@@ -17,9 +17,9 @@ class Screen1ViewModel @Inject constructor(
         setState { copy(thing = "LOADED!!!") }
     }
 
-    override fun setInitialState() = FeatureAState("")
+    override fun setInitialState() = Screen1State("")
 
-    override fun handleEvents(event: FeatureAEvent) {
+    override fun handleEvents(event: Screen1Event) {
         Timber.e("handleEvents")
     }
 }

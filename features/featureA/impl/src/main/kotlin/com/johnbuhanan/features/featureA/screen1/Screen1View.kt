@@ -14,7 +14,7 @@ import timber.log.Timber
 @Composable
 fun FeatureAView(
     thing: String = "Test string",
-    onEvent: (FeatureAEvent) -> Unit = {},
+    onEvent: (Screen1Event) -> Unit = {},
 ) {
     Timber.e("Composable - FeatureAView")
     Text(

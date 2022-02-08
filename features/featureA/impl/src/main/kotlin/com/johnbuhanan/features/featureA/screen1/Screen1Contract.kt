@@ -4,10 +4,12 @@ import com.johnbuhanan.common.UiEffect
 import com.johnbuhanan.common.UiEvent
 import com.johnbuhanan.common.UiState
 
-sealed class FeatureAEvent : UiEvent
+sealed class Screen1Event : UiEvent
 
-data class FeatureAState(
+data class Screen1State(
     val thing: String,
 ) : UiState
 
-sealed class FeatureAEffect : UiEffect
+sealed class Screen1Effect : UiEffect {
+    data class ShowToast(val message: String) : Screen1Effect()
+}

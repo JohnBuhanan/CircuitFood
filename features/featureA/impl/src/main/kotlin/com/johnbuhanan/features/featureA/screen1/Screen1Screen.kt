@@ -1,22 +1,24 @@
 package com.johnbuhanan.features.featureA.screen1
 
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.rememberScaffoldState
+import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
+import com.johnbuhanan.features.featureA.screen1.Screen1Effect.ShowToast
 import timber.log.Timber
 
 class Screen1Screen : AndroidScreen() {
     @Composable
     override fun Content() {
+        val context = LocalContext.current
         Timber.e("Composable - FeatureA")
         WithViewModel<Screen1ViewModel>(
             onEffect = { effect ->
                 when (effect) {
-                    is FeatureAEffect -> {
-                        val scaffoldState: ScaffoldState = rememberScaffoldState()
-                        scaffoldState.snackbarHostState.showSnackbar("blah")
+                    is ShowToast -> {
+                        Timber.e("Composable - onEffect - ShowToast")
+                        Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             },
@@ -25,7 +27,7 @@ class Screen1Screen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.value) {
-                    is FeatureAState -> FeatureAView(
+                    is Screen1State -> FeatureAView(
                         thing = state.thing,
                         onEvent = onEvent
                     )
