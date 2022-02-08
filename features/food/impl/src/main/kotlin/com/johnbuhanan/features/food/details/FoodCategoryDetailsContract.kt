@@ -15,4 +15,6 @@ data class FoodCategoryDetailsState(
     val categoryFoodItems: List<FoodItem>,
 ) : UiState
 
-sealed class FoodCategoryDetailsEffect : UiEffect
+sealed class FoodCategoryDetailsEffect : UiEffect {
+    data class ShowSnackbar(val message: String) : FoodCategoryDetailsEffect()
+}

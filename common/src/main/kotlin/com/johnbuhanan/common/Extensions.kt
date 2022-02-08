@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.repeatOnLifecycle
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlin.properties.PropertyDelegateProvider
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -35,7 +35,7 @@ fun <EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect> BaseViewModel<EVENT, S
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(effectFlow, lifecycleOwner) {
         lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            effect.collect { doEffect(it) }
+            effect.collect { launch { doEffect(it) } }
         }
     }
 }

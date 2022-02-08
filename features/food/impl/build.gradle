@@ -1,9 +1,11 @@
 plugins {
-  id 'com.johnbuhanan.feature'
+  id "com.johnbuhanan.feature"
 }
 
 dependencies {
-  implementation project(':features:food:api')
-  implementation project(':features:food:impl:domain')
+  implementation project(":features:food:api")
+  implementation project(":features:featureA:api")
+
+  implementation project(":features:food:impl:domain")
 }
 

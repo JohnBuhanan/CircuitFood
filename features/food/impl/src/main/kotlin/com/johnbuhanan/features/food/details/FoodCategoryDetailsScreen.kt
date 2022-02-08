@@ -13,10 +13,11 @@ data class FoodCategoryDetailsScreen(val categoryId: String) : AndroidScreen() {
         Timber.e("Composable - FoodCategoryDetails")
         WithViewModel<FoodCategoryDetailsViewModel>(
             onEffect = { effect ->
+                Timber.e("WithViewModel - onEffectInner")
                 when (effect) {
-                    is FoodCategoryDetailsEffect -> {
+                    is FoodCategoryDetailsEffect.ShowSnackbar -> {
                         val scaffoldState: ScaffoldState = rememberScaffoldState()
-                        scaffoldState.snackbarHostState.showSnackbar("blah")
+                        scaffoldState.snackbarHostState.showSnackbar(effect.message)
                     }
                 }
             },
