@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA
+package com.johnbuhanan.features.featureA.screen1
 
 import com.johnbuhanan.common.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -7,7 +7,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class FeatureAViewModel @Inject constructor(
+class Screen1ViewModel @Inject constructor(
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel<FeatureAEvent, FeatureAState, FeatureAEffect>(dispatcher) {
 

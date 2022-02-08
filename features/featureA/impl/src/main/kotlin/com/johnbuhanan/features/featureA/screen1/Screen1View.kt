@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA
+package com.johnbuhanan.features.featureA.screen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize

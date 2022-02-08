@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA
+package com.johnbuhanan.features.featureA.screen1
 
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
@@ -7,11 +7,11 @@ import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
 import timber.log.Timber
 
-class FeatureAScreen : AndroidScreen() {
+class Screen1Screen : AndroidScreen() {
     @Composable
     override fun Content() {
         Timber.e("Composable - FeatureA")
-        WithViewModel<FeatureAViewModel>(
+        WithViewModel<Screen1ViewModel>(
             onEffect = { effect ->
                 when (effect) {
                     is FeatureAEffect -> {

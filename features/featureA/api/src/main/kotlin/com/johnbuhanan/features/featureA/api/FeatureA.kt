@@ -6,6 +6,8 @@ interface FeatureA {
     object FeatureAInput
     object FeatureAOutput
     sealed class Route : ScreenProvider {
-        object FeatureAScreen : Route()
+        object Screen1 : Route()
+        object Screen2 : Route()
+        object Screen3 : Route()
     }
 }
