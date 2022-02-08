@@ -5,10 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
-import com.johnbuhanan.features.featureA.screen1.Screen1Effect.ShowToast
+import com.johnbuhanan.features.featureA.screen2.Screen1Effect.ShowToast
+import com.johnbuhanan.features.featureA.screen2.Screen1State
 import timber.log.Timber
 
-class Screen1Screen : AndroidScreen() {
+class Screen2Screen : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
@@ -24,7 +25,7 @@ class Screen1Screen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.value) {
-                    is Screen1State -> Screen1View(
+                    is Screen1State -> com.johnbuhanan.features.featureA.screen2.FeatureAView(
                         message = state.message,
                         onEvent = onEvent
                     )

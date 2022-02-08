@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA.screen1
+package com.johnbuhanan.features.featureA.screen2
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,14 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.johnbuhanan.features.featureA.screen1.Screen1Event.TappedNext
+import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedNext
 import timber.log.Timber
 
 @Preview
 @Composable
-fun Screen1View(
+fun Screen2View(
     message: String = "Test string",
-    onEvent: (Screen1Event) -> Unit = {},
+    onEvent: (Screen2Event) -> Unit = {},
 ) {
     Timber.e("Composable - FeatureAView")
     Box(
