@@ -27,7 +27,7 @@ class EntryPointActivity : ComponentActivity() {
 
         setContent {
             ComposeSampleTheme {
-                NavigationComponent(router)
+                NavigatorWrapper(router)
             }
         }
     }

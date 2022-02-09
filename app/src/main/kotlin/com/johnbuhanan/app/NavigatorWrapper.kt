@@ -22,7 +22,7 @@ private typealias ScreenFactory = (ScreenProvider) -> Screen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun NavigationComponent(router: Router) {
+fun NavigatorWrapper(router: Router) {
     LaunchedEffect(Unit) {
         Timber.e("BEFORE ROUTER")
         router.routerEvents.collect { routerEvent ->
