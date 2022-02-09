@@ -2,6 +2,7 @@ package com.johnbuhanan.features.food.categories
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
@@ -25,7 +26,7 @@ class FoodCategoriesScreen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 Timber.e("FoodCategoriesView - start")
-                val state = viewModel.state.value
+                val state = viewModel.state.collectAsState().value
                 FoodCategoriesView(state.categories, state.isLoading, onEvent)
             }
         )

@@ -2,6 +2,7 @@ package com.johnbuhanan.features.featureA.screen2
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
@@ -23,7 +24,7 @@ class Screen2Screen : AndroidScreen() {
                 }
             },
             start = { viewModel, onEvent ->
-                when (val state = viewModel.state.value) {
+                when (val state = viewModel.state.collectAsState().value) {
                     is Screen2State -> Screen2View(
                         message = state.message,
                         onEvent = onEvent

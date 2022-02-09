@@ -2,6 +2,7 @@ package com.johnbuhanan.features.food.details
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
@@ -26,7 +27,7 @@ data class FoodCategoryDetailsScreen(val categoryId: String) : AndroidScreen() {
                 viewModel.initialize(categoryId)
             },
             start = { viewModel, onEvent ->
-                when (val state = viewModel.state.value) {
+                when (val state = viewModel.state.collectAsState().value) {
                     is FoodCategoryDetailsState -> FoodCategoryDetailsView(
                         category = state.category,
                         categoryFoodItems = state.categoryFoodItems,
