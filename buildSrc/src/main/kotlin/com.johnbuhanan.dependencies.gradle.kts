@@ -35,6 +35,7 @@ dependencies {
     "testImplementation"(libs.resolveDependency("junit4"))
     "testImplementation"(libs.resolveDependency("kotlin.coroutines.test"))
     "testImplementation"(libs.resolveDependency("turbine"))
+    "testImplementation"(libs.resolveDependency("assertk"))
 
     // Voyager
     "implementation"(libs.resolveBundle("voyager"))
