@@ -5,8 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
-import com.johnbuhanan.features.featureA.screen1.Screen1State
-import com.johnbuhanan.features.featureA.screen1.Screen1View
 import com.johnbuhanan.features.featureA.screen2.Screen2Effect.ShowToast
 import timber.log.Timber
 
@@ -26,7 +24,7 @@ class Screen2Screen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.value) {
-                    is Screen1State -> Screen1View(
+                    is Screen2State -> Screen2View(
                         message = state.message,
                         onEvent = onEvent
                     )

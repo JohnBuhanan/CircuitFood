@@ -2,10 +2,7 @@ package com.johnbuhanan.features.featureA.screen2
 
 import com.johnbuhanan.common.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
-import com.johnbuhanan.features.featureA.screen1.Screen1Effect
-import com.johnbuhanan.features.featureA.screen1.Screen1Event
-import com.johnbuhanan.features.featureA.screen1.Screen1Event.TappedNext
-import com.johnbuhanan.features.featureA.screen1.Screen1State
+import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedNext
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,15 +13,15 @@ import javax.inject.Inject
 class Screen2ViewModel @Inject constructor(
     dispatcher: CoroutineDispatcher,
     private val router: Router,
-) : BaseViewModel<Screen1Event, Screen1State, Screen1Effect>(dispatcher) {
+) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>(dispatcher) {
 
     init {
-        setState { copy(message = "Screen1") }
+        setState { copy(message = "Screen2") }
     }
 
-    override fun setInitialState() = Screen1State("")
+    override fun setInitialState() = Screen2State("")
 
-    override fun handleEvents(event: Screen1Event) {
+    override fun handleEvents(event: Screen2Event) {
         Timber.e("handleEvents")
         when (event) {
             is TappedNext -> {
