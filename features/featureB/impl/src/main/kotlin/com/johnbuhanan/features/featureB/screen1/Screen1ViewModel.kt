@@ -2,6 +2,7 @@ package com.johnbuhanan.features.featureB.screen1
 
 import com.johnbuhanan.common.BaseViewModel
 import com.johnbuhanan.features.featureB.api.FeatureB
+import com.johnbuhanan.features.featureB.screen1.Screen1Event.TappedNext
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,7 +24,7 @@ class Screen1ViewModel @Inject constructor(
     override fun handleEvents(event: Screen1Event) {
         Timber.e("handleEvents")
         when (event) {
-            is Screen1Event.TappedNext -> {
+            is TappedNext -> {
                 router.push(FeatureB.Route.Screen2)
             }
         }

@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA.screen3
+package com.johnbuhanan.features.featureB.screen3
 
 import com.johnbuhanan.common.UiEffect
 import com.johnbuhanan.common.UiEvent
