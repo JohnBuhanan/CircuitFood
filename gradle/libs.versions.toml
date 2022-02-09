@@ -86,6 +86,8 @@ kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-te
 voyagerNavigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyagerAndroidX = { module = "cafe.adriel.voyager:voyager-androidx", version.ref = "voyager" }
 voyagerHilt = { module = "cafe.adriel.voyager:voyager-hilt", version.ref = "voyager" }
+voyagerTransitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+
 
 # Misc
 material = "com.google.android.material:material:1.4.0"
@@ -94,7 +96,7 @@ agp = "com.android.tools.build:gradle:7.2.0-beta01"
 timber = "com.jakewharton.timber:timber:5.0.1"
 
 [bundles]
-voyager = ["voyagerNavigator", "voyagerAndroidX", "voyagerHilt"]
+voyager = ["voyagerNavigator", "voyagerAndroidX", "voyagerHilt", "voyagerTransitions"]
 compose = ["androidx-compose-ui", "androidx-compose-uitooling", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-activity", "androidx-compose-lifecycleviewmodel"]
 daggerKapt = ["dagger-compiler", "dagger-android-processor", "dagger-hilt-android-compiler", "dagger-hilt-compiler"]
 dagger = ["dagger-lib", "dagger-android", "dagger-android-support", "dagger-hilt-android", "dagger-hilt-navigation-compose"]

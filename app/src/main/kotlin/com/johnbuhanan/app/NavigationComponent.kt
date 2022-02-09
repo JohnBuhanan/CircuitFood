@@ -1,5 +1,6 @@
 package com.johnbuhanan.app
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import cafe.adriel.voyager.core.concurrent.ThreadSafeMap
@@ -7,6 +8,7 @@ import cafe.adriel.voyager.core.registry.ScreenProvider
 import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 import com.johnbuhanan.navigation.Route
 import com.johnbuhanan.navigation.Router
 import com.johnbuhanan.navigation.RouterEvent.Pop
@@ -18,6 +20,7 @@ var getNavigator: (() -> Navigator)? = null
 private typealias ProviderKey = KClass<out ScreenProvider>
 private typealias ScreenFactory = (ScreenProvider) -> Screen
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavigationComponent(router: Router) {
     LaunchedEffect(Unit) {
@@ -37,7 +40,9 @@ fun NavigationComponent(router: Router) {
         }
     }
 
-    Navigator(StartScreen())
+    Navigator(StartScreen()) {
+        SlideTransition(it)
+    }
 }
 
 @Suppress("UNCHECKED_CAST")
