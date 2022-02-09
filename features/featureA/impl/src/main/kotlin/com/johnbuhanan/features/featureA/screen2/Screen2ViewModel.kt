@@ -25,7 +25,7 @@ class Screen2ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is TappedNext -> {
-                router.push(FeatureA.Route.Screen2)
+                router.push(FeatureA.Route.Screen3)
             }
         }
     }
