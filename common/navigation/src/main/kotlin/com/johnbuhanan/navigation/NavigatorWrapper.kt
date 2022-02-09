@@ -7,23 +7,25 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.concurrent.ThreadSafeMap
 import cafe.adriel.voyager.core.registry.ScreenProvider
 import cafe.adriel.voyager.core.registry.ScreenRegistry
+import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import com.johnbuhanan.features.food.Food.Route.FoodCategories
 import com.johnbuhanan.navigation.RouterEvent.Pop
 import com.johnbuhanan.navigation.RouterEvent.Push
-import com.johnbuhanan.navigation.router.InitAndStartScreen
 import timber.log.Timber
 import kotlin.reflect.KClass
 
-var getNavigator: (() -> Navigator)? = null
 private typealias ProviderKey = KClass<out ScreenProvider>
 private typealias ScreenFactory = (ScreenProvider) -> Screen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavigatorWrapper() {
+    var getNavigator: (() -> Navigator)? = null
     val router = hiltViewModel<RouterViewModel>()
+
     LaunchedEffect(Unit) {
         Timber.e("BEFORE ROUTER")
         router.routerEvents.collect { routerEvent ->
@@ -41,7 +43,9 @@ fun NavigatorWrapper() {
         }
     }
 
-    Navigator(InitAndStartScreen()) {
+    val screen = rememberScreen(FoodCategories)
+    Navigator(screen) {
+        getNavigator = { it }
         SlideTransition(it)
     }
 }
