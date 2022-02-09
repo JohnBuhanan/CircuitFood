@@ -18,8 +18,7 @@ I believe Compose navigation makes it extremely difficult to be type-safe becaus
 
 Once you eschew implicit deeplinks, all sorts of Compose navigation schemes become possible.
 
-Here is one of my favorite approaches I made a demo of: https://github.com/JohnBuhanan/MVI-Public
-(I wrapped a library called "Voyager": https://github.com/adrielcafe/voyager)
+This repo contains one of my favorite approaches I that I found.  Basically I just wrapped a library called "Voyager": https://github.com/adrielcafe/voyager)
 
 ### Goals:
 * navigate
