@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.featureA.screen3
+package com.johnbuhanan.features.featureB.screen3
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.johnbuhanan.features.featureA.screen3.Screen3Event.TappedNext
+import com.johnbuhanan.features.featureB.screen3.Screen3Event.TappedNext
 import timber.log.Timber
 
 @Preview
@@ -22,7 +22,7 @@ fun Screen3View(
     message: String = "Test string",
     onEvent: (Screen3Event) -> Unit = {},
 ) {
-    Timber.e("Composable - FeatureAView")
+    Timber.e("Composable - FeatureBView")
     Box(
         modifier = Modifier
             .fillMaxSize()

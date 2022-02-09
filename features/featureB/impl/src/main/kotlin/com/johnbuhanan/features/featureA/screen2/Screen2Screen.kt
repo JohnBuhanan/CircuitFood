@@ -1,18 +1,18 @@
-package com.johnbuhanan.features.featureA.screen2
+package com.johnbuhanan.features.featureB.screen2
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
-import com.johnbuhanan.features.featureA.screen2.Screen2Effect.ShowToast
+import com.johnbuhanan.features.featureB.screen2.Screen2Effect.ShowToast
 import timber.log.Timber
 
 class Screen2Screen : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
-        Timber.e("Composable - FeatureA")
+        Timber.e("Composable - FeatureB")
         WithViewModel<Screen2ViewModel>(
             onEffect = { effect ->
                 when (effect) {
