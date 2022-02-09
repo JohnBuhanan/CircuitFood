@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -19,7 +20,10 @@ interface UiEvent
 
 interface UiEffect
 
-abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>(private val dispatcher: CoroutineDispatcher) : ViewModel() {
+abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>(
+    private val ioDispatcher: CoroutineDispatcher,
+    private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main,
+) : ViewModel() {
     private val initialState: STATE by lazy { setInitialState() }
     abstract fun setInitialState(): STATE
 
@@ -37,18 +41,18 @@ abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect
 
     @Suppress("UNCHECKED_CAST")
     fun setEvent(event: UiEvent) {
-        viewModelScope.launch(dispatcher) { _event.emit(event as EVENT) }
+        viewModelScope.launch(ioDispatcher) { _event.emit(event as EVENT) }
     }
 
     protected fun setState(reducer: STATE.() -> STATE) {
-        viewModelScope.launch {
+        viewModelScope.launch(mainDispatcher) {
             val newState = state.value.reducer()
             _state.value = newState
         }
     }
 
     private fun subscribeToEvents() {
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(ioDispatcher) {
             _event.collect {
                 handleEvents(it)
             }
@@ -58,7 +62,7 @@ abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect
     abstract fun handleEvents(event: EVENT)
 
     protected fun setEffect(builder: () -> EFFECT) {
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(ioDispatcher) {
             val effectValue = builder()
             _effect.send(effectValue)
         }

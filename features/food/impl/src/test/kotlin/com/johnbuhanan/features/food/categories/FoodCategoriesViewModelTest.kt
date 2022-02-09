@@ -29,7 +29,8 @@ class FoodCategoriesViewModelTest {
     private val router = RouterImpl()
 
     private val foodCategoriesViewModel = FoodCategoriesViewModel(
-        dispatcher = dispatcher,
+        mainDispatcher = dispatcher,
+        ioDispatcher = dispatcher,
         repository = repository,
         router = router,
     )

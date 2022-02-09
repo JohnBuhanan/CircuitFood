@@ -13,12 +13,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodCategoriesViewModel @Inject constructor(
-    dispatcher: CoroutineDispatcher,
+    mainDispatcher: CoroutineDispatcher,
+    ioDispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
     private val router: Router,
-) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(dispatcher) {
+) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(ioDispatcher, mainDispatcher) {
     init {
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(ioDispatcher) {
             val categories = repository.getFoodCategories()
             setState {
                 copy(categories = categories, isLoading = false)
