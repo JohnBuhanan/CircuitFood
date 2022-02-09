@@ -4,6 +4,7 @@ import cafe.adriel.voyager.core.registry.screenModule
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.featureA.screen1.Screen1Screen
 import com.johnbuhanan.features.featureA.screen2.Screen2Screen
+import com.johnbuhanan.features.featureA.screen3.Screen3Screen
 import com.johnbuhanan.navigation.ScreenModule
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,9 @@ object FeatureAScreenModule {
             }
             register<FeatureA.Route.Screen2> {
                 Screen2Screen()
+            }
+            register<FeatureA.Route.Screen3> {
+                Screen3Screen()
             }
         }
     }
