@@ -1,4 +1,4 @@
-package com.johnbuhanan.common
+package com.johnbuhanan.common.viewmodel
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable

@@ -1,8 +1,8 @@
 package com.johnbuhanan.features.featureB.screen1
 
-import com.johnbuhanan.common.UiEffect
-import com.johnbuhanan.common.UiEvent
-import com.johnbuhanan.common.UiState
+import com.johnbuhanan.common.viewmodel.UiEffect
+import com.johnbuhanan.common.viewmodel.UiEvent
+import com.johnbuhanan.common.viewmodel.UiState
 
 sealed class Screen1Event : UiEvent {
     object TappedNext : Screen1Event()

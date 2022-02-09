@@ -1,4 +1,4 @@
-package com.johnbuhanan.common
+package com.johnbuhanan.common.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State

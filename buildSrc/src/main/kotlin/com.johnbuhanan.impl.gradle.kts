@@ -7,7 +7,7 @@ plugins {
 }
 
 dependencies {
-    "implementation"(project(":common"))
+    "implementation"(project(":common:viewmodel"))
     "implementation"(project(":navigation"))
 
     // Retrofit

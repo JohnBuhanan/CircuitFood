@@ -1,7 +1,7 @@
 package com.johnbuhanan.features.food.categories
 
 import androidx.lifecycle.viewModelScope
-import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import com.johnbuhanan.navigation.Router

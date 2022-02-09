@@ -4,7 +4,7 @@ import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
-import com.johnbuhanan.common.WithViewModel
+import com.johnbuhanan.common.viewmodel.WithViewModel
 import timber.log.Timber
 
 data class FoodCategoryDetailsScreen(val categoryId: String) : AndroidScreen() {

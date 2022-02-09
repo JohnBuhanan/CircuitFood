@@ -1,7 +1,7 @@
 package com.johnbuhanan.features.food.details
 
 import androidx.lifecycle.viewModelScope
-import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem

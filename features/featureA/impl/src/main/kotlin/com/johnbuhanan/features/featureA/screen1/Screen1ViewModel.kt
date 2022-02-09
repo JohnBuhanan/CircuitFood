@@ -1,6 +1,6 @@
 package com.johnbuhanan.features.featureA.screen1
 
-import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel

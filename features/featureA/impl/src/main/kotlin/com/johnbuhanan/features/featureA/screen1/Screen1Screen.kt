@@ -4,7 +4,7 @@ import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
-import com.johnbuhanan.common.WithViewModel
+import com.johnbuhanan.common.viewmodel.WithViewModel
 import com.johnbuhanan.features.featureA.screen1.Screen1Effect.ShowToast
 import timber.log.Timber
 

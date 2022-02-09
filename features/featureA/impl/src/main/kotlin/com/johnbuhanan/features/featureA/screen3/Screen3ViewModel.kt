@@ -1,6 +1,6 @@
 package com.johnbuhanan.features.featureA.screen3
 
-import com.johnbuhanan.common.BaseViewModel
+import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.screen3.Screen3Event.TappedNext
 import com.johnbuhanan.features.featureB.api.FeatureB
 import com.johnbuhanan.navigation.Router

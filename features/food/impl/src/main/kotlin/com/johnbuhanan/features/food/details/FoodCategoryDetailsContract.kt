@@ -1,8 +1,8 @@
 package com.johnbuhanan.features.food.details
 
-import com.johnbuhanan.common.UiEffect
-import com.johnbuhanan.common.UiEvent
-import com.johnbuhanan.common.UiState
+import com.johnbuhanan.common.viewmodel.UiEffect
+import com.johnbuhanan.common.viewmodel.UiEvent
+import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.food.domain.FoodItem
 
 sealed class FoodCategoryDetailsEvent : UiEvent {

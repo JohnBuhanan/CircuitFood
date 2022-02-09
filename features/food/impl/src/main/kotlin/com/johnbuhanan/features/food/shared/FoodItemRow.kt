@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.request.ImageRequest
-import com.johnbuhanan.common.noRippleClickable
+import com.johnbuhanan.common.viewmodel.noRippleClickable
 import com.johnbuhanan.features.food.domain.FoodItem
 
 @Composable
