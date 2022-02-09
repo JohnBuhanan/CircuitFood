@@ -2,9 +2,11 @@
 
 plugins {
     id("com.android.library")
-    id("com.johnbuhanan.android")
 }
+apply(plugin = "com.johnbuhanan.android")
 
 dependencies {
     "implementation"(libs.resolveDependency("voyagerNavigator"))
+    "implementation"(libs.resolveDependency("androidx.compose.ui"))
+
 }
