@@ -32,9 +32,9 @@ class FoodCategoriesViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoriesEvent) {
         Timber.e("handleEvents")
         when (event) {
-            is FoodCategoriesEvent.CategorySelection -> {
+            is FoodCategoriesEvent.TappedCategory -> {
                 Timber.e("handleEvents - CategorySelection")
-                router.push(Food.Route.FoodCategoryDetails(event.categoryName))
+                router.push(Food.Route.FoodCategoryDetails(event.id))
             }
             FoodCategoriesEvent.TappedBack -> router.pop()
         }
