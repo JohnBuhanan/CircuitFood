@@ -3,7 +3,6 @@ package com.johnbuhanan.features.food.categories
 import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.domain.FoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
@@ -44,12 +43,12 @@ class FoodCategoriesViewModelTest {
     fun `when TappedBack then emit Pop`() = runTest {
         router.routerEvents.test {
             foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedBack)
-            assertThat(awaitItem()).isInstanceOf(RouterEvent.Pop::class)
+            assertThat(awaitItem()).isEqualTo(RouterEvent.Pop)
         }
     }
 
     @Test
-    fun `when TappedCategory then emit Pop`() = runTest {
+    fun `when TappedCategory then emit Push`() = runTest {
         router.routerEvents.test {
             foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory("1"))
             val routerEvent = awaitItem()
