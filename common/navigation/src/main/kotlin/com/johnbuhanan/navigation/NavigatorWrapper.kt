@@ -23,7 +23,7 @@ private typealias ScreenFactory = (ScreenProvider) -> Screen
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavigatorWrapper() {
-    var getNavigator: (() -> Navigator)? = null
+    var navigator: Navigator? = null
     val router = hiltViewModel<RouterViewModel>()
 
     LaunchedEffect(Unit) {
@@ -33,11 +33,11 @@ fun NavigatorWrapper() {
             when (routerEvent) {
                 is Pop -> {
                     Timber.e("GoBack")
-                    getNavigator!!().pop()
+                    navigator?.pop()
                 }
                 is Push -> {
                     val screens = routerEvent.routes.map { it.toScreen() }
-                    getNavigator!!().push(screens)
+                    navigator?.push(screens)
                 }
             }
         }
@@ -45,7 +45,7 @@ fun NavigatorWrapper() {
 
     val screen = rememberScreen(FoodCategories)
     Navigator(screen) {
-        getNavigator = { it }
+        navigator = it
         SlideTransition(it)
     }
 }
