@@ -14,9 +14,11 @@ dependencies {
   implementation project(":navigation")
 
   implementation project(":features:featureA:api")
+  implementation project(":features:featureB:api")
   implementation project(":features:food:api")
 
   implementation project(":features:featureA:impl")
+  implementation project(":features:featureB:impl")
   implementation project(":features:food:impl")
 
   implementation libs.material

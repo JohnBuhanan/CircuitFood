@@ -1,8 +1,8 @@
 package com.johnbuhanan.features.featureA.screen3
 
 import com.johnbuhanan.common.BaseViewModel
-import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.featureA.screen3.Screen3Event.TappedNext
+import com.johnbuhanan.features.featureB.api.FeatureB
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -25,7 +25,7 @@ class Screen3ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is TappedNext -> {
-                router.push(FeatureA.Route.Screen3)
+                router.push(FeatureB.Route.Screen1)
             }
         }
     }

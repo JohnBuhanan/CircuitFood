@@ -4,5 +4,6 @@ plugins {
 
 dependencies {
   implementation project(':features:featureA:api')
+  implementation project(':features:featureB:api')
   //  implementation project(':features:featureA:impl:domain')
 }
