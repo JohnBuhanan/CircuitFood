@@ -3,6 +3,7 @@ package com.johnbuhanan.features.food.categories
 import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.domain.FoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
@@ -23,10 +24,9 @@ class FoodCategoriesViewModelTest {
         override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> = listOf()
     }
 
-    private val dispatcher = StandardTestDispatcher()
-
     private val router = RouterImpl()
 
+    private val dispatcher = StandardTestDispatcher()
     private val foodCategoriesViewModel = FoodCategoriesViewModel(
         mainDispatcher = dispatcher,
         ioDispatcher = dispatcher,
@@ -36,6 +36,9 @@ class FoodCategoriesViewModelTest {
 
     @Before
     fun setup() {
+        // Subsequently-called runTest,
+        // as well as TestScope and test dispatcher constructors,
+        // will use the TestCoroutineScheduler of the provided dispatcher.
         Dispatchers.setMain(dispatcher)
     }
 
@@ -52,7 +55,10 @@ class FoodCategoriesViewModelTest {
         router.routerEvents.test {
             foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory("1"))
             val routerEvent = awaitItem()
+            assertThat(routerEvent).isInstanceOf(RouterEvent.Push::class)
+
             val route = (routerEvent as RouterEvent.Push).routes.first()
+
             assertThat(route).isEqualTo(Food.Route.FoodCategoryDetails("1"))
         }
     }
