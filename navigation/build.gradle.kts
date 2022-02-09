@@ -1,4 +1,7 @@
 plugins {
-    id("com.android.library")
-    id("com.johnbuhanan.android")
+    id("com.johnbuhanan.lib")
+}
+
+dependencies {
+    implementation(projects.features.food.api)
 }

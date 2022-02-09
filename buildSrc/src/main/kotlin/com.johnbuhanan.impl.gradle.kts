@@ -3,6 +3,7 @@
 plugins {
     id("com.android.library")
     id("com.johnbuhanan.android")
+    id("com.johnbuhanan.dependencies")
 }
 
 dependencies {

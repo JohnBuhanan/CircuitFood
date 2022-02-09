@@ -1,18 +1,18 @@
-package com.johnbuhanan.app
+package com.johnbuhanan.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.concurrent.ThreadSafeMap
 import cafe.adriel.voyager.core.registry.ScreenProvider
 import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
-import com.johnbuhanan.navigation.Route
-import com.johnbuhanan.navigation.Router
 import com.johnbuhanan.navigation.RouterEvent.Pop
 import com.johnbuhanan.navigation.RouterEvent.Push
+import com.johnbuhanan.navigation.router.InitAndStartScreen
 import timber.log.Timber
 import kotlin.reflect.KClass
 
@@ -22,7 +22,8 @@ private typealias ScreenFactory = (ScreenProvider) -> Screen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun NavigatorWrapper(router: Router) {
+fun NavigatorWrapper() {
+    val router = hiltViewModel<RouterViewModel>()
     LaunchedEffect(Unit) {
         Timber.e("BEFORE ROUTER")
         router.routerEvents.collect { routerEvent ->
@@ -40,7 +41,7 @@ fun NavigatorWrapper(router: Router) {
         }
     }
 
-    Navigator(StartScreen()) {
+    Navigator(InitAndStartScreen()) {
         SlideTransition(it)
     }
 }

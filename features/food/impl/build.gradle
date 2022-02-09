@@ -1,5 +1,5 @@
 plugins {
-  id "com.johnbuhanan.feature"
+  id "com.johnbuhanan.impl"
 }
 
 dependencies {
