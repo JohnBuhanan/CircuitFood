@@ -10,7 +10,7 @@ android {
 
 dependencies {
   implementation project(":common:viewmodel")
-  implementation project(":navigation")
+  implementation project(":common:navigation")
 
   implementation project(":features:featureA:api")
   implementation project(":features:featureB:api")

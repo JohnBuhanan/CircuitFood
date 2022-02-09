@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     "implementation"(project(":common:viewmodel"))
-    "implementation"(project(":navigation"))
+    "implementation"(project(":common:navigation"))
 
     // Retrofit
     "implementation"(libs.resolveDependency("retrofit"))
