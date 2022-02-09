@@ -16,7 +16,7 @@ class Screen3ViewModel @Inject constructor(
 ) : BaseViewModel<Screen3Event, Screen3State, Screen3Effect>(dispatcher) {
 
     init {
-        setState { copy(message = "Screen3") }
+        setState { copy(message = "FeatureA - Screen3") }
     }
 
     override fun setInitialState() = Screen3State("")
