@@ -1,6 +1,8 @@
 package com.johnbuhanan.features.food.details
 
 import androidx.lifecycle.viewModelScope
+import com.johnbuhanan.common.coroutines.di.IODispatcher
+import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
@@ -15,15 +17,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodCategoryDetailsViewModel @Inject constructor(
-    private val dispatcher: CoroutineDispatcher,
+    @MainDispatcher mainDispatcher: CoroutineDispatcher,
+    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val repository: FoodMenuRepository,
     private val router: Router,
-) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(dispatcher) {
+) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(mainDispatcher, ioDispatcher) {
 
     fun initialize(categoryId: String) {
         Timber.e("initialize")
 
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(ioDispatcher) {
             val categories = repository.getFoodCategories()
             val category = categories.first { it.id == categoryId }
             setState { copy(category = category) }

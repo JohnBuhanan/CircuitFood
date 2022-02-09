@@ -1,5 +1,7 @@
 package com.johnbuhanan.features.featureA.screen1
 
+import com.johnbuhanan.common.coroutines.di.IODispatcher
+import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.navigation.Router
@@ -10,9 +12,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class Screen1ViewModel @Inject constructor(
-    dispatcher: CoroutineDispatcher,
+    @MainDispatcher mainDispatcher: CoroutineDispatcher,
+    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val router: Router,
-) : BaseViewModel<Screen1Event, Screen1State, Screen1Effect>(dispatcher) {
+) : BaseViewModel<Screen1Event, Screen1State, Screen1Effect>(mainDispatcher, ioDispatcher) {
 
     init {
         setState { copy(message = "FeatureA - Screen1") }

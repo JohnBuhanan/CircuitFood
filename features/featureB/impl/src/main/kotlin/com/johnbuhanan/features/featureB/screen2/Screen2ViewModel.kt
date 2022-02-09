@@ -1,5 +1,7 @@
 package com.johnbuhanan.features.featureB.screen2
 
+import com.johnbuhanan.common.coroutines.di.IODispatcher
+import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureB.api.FeatureB
 import com.johnbuhanan.features.featureB.screen2.Screen2Event.TappedNext
@@ -11,9 +13,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class Screen2ViewModel @Inject constructor(
-    dispatcher: CoroutineDispatcher,
+    @MainDispatcher mainDispatcher: CoroutineDispatcher,
+    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val router: Router,
-) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>(dispatcher) {
+) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>(mainDispatcher, ioDispatcher) {
 
     init {
         setState { copy(message = "FeatureB - Screen2") }

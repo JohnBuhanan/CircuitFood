@@ -10,6 +10,7 @@ dependencyResolutionManagement {
 rootProject.name = "MVI-Public"
 
 include(':app',
+    ':common:coroutines',
     ':common:navigation',
     ':common:viewmodel',
     ':features:featureA:api', ':features:featureA:impl', //':features:featureA:impl:domain',

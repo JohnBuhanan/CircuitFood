@@ -21,8 +21,8 @@ interface UiEvent
 interface UiEffect
 
 abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>(
+    private val mainDispatcher: CoroutineDispatcher,
     private val ioDispatcher: CoroutineDispatcher,
-    private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) : ViewModel() {
     private val initialState: STATE by lazy { setInitialState() }
     abstract fun setInitialState(): STATE
