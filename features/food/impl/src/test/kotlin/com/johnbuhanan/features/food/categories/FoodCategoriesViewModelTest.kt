@@ -54,7 +54,6 @@ class FoodCategoriesViewModelTest {
             val routerEvent = awaitItem()
             val route = (routerEvent as RouterEvent.Push).routes.first()
             assertThat(route).isEqualTo(Food.Route.FoodCategoryDetails("1"))
-            cancelAndIgnoreRemainingEvents()
         }
     }
 }
