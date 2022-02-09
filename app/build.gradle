@@ -9,7 +9,6 @@ android {
 }
 
 dependencies {
-  implementation project(":common:viewmodel")
   implementation project(":common:navigation")
 
   implementation project(":features:featureA:api")
