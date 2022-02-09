@@ -24,7 +24,7 @@ allprojects { project ->
     if (plugins.hasPlugin('com.johnbuhanan.android')) {
       android.kotlinOptions {
         useIR = true
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"

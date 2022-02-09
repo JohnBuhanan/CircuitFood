@@ -1,0 +1,11 @@
+plugins {
+  id "com.johnbuhanan.impl"
+}
+
+dependencies {
+  implementation project(":features:food:api")
+  implementation project(":features:featureA:api")
+
+  implementation project(":features:food:impl:domain")
+}
+

@@ -1,7 +1,0 @@
-plugins {
-  id 'com.johnbuhanan.feature'
-}
-
-dependencies {
-  implementation project(':features:food:shared')
-}

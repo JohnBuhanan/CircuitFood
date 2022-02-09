@@ -1,6 +1,5 @@
 plugins {
-  id 'com.android.application'
-  id 'com.johnbuhanan.android'
+  id 'com.johnbuhanan.app'
 }
 
 android {
@@ -11,8 +10,15 @@ android {
 
 dependencies {
   implementation project(":common")
-  implementation project(":features:featureA")
-  implementation project(":features:food")
+  implementation project(":navigation")
+
+  implementation project(":features:featureA:api")
+  implementation project(":features:featureB:api")
+  implementation project(":features:food:api")
+
+  implementation project(":features:featureA:impl")
+  implementation project(":features:featureB:impl")
+  implementation project(":features:food:impl")
 
   implementation libs.material
 }
