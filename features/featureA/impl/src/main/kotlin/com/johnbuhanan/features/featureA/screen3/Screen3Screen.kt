@@ -1,19 +1,19 @@
-package com.johnbuhanan.features.featureB.screen2
+package com.johnbuhanan.features.featureA.screen3
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.WithViewModel
-import com.johnbuhanan.features.featureB.screen2.Screen2Effect.ShowToast
+import com.johnbuhanan.features.featureA.screen3.Screen3Effect.ShowToast
 import timber.log.Timber
 
-class Screen2Screen : AndroidScreen() {
+class Screen3Screen : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
         Timber.e("Composable - FeatureA")
-        WithViewModel<Screen2ViewModel>(
+        WithViewModel<Screen3ViewModel>(
             onEffect = { effect ->
                 when (effect) {
                     is ShowToast -> {
@@ -24,7 +24,7 @@ class Screen2Screen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.value) {
-                    is Screen2State -> Screen2View(
+                    is Screen3State -> Screen3View(
                         message = state.message,
                         onEvent = onEvent
                     )
