@@ -19,8 +19,15 @@ import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
 class FoodCategoriesViewModelTest {
+    private val foodCategories = listOf(
+        FoodItem(
+            id = "id",
+            name = "name",
+            thumbnailUrl = "thumbnailUrl",
+        )
+    )
     private val repository = object : FoodMenuRepository {
-        override suspend fun getFoodCategories(): List<FoodItem> = listOf()
+        override suspend fun getFoodCategories(): List<FoodItem> = foodCategories
         override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> = listOf()
     }
 
@@ -40,6 +47,24 @@ class FoodCategoriesViewModelTest {
         // as well as TestScope and test dispatcher constructors,
         // will use the TestCoroutineScheduler of the provided dispatcher.
         Dispatchers.setMain(dispatcher)
+    }
+
+    @Test
+    fun `on init call repo and update State and emit effect`() = runTest {
+        val expected1 = FoodCategoriesState(
+            categories = emptyList(),
+            isLoading = true,
+        )
+        val expected2 = expected1.copy(foodCategories, false)
+
+        foodCategoriesViewModel.state.test {
+            assertThat(awaitItem()).isEqualTo(expected1)
+            assertThat(awaitItem()).isEqualTo(expected2)
+        }
+
+        foodCategoriesViewModel.effect.test {
+            assertThat(awaitItem()).isEqualTo(FoodCategoriesEffect.ShowToast(""))
+        }
     }
 
     @Test
