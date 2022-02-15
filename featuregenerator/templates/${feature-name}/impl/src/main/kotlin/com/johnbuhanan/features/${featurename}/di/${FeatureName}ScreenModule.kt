@@ -18,12 +18,7 @@ object `${FeatureName}ScreenModule` {
     @IntoSet
     fun provideScreenModule(): ScreenModule {
         return screenModule {
-            register<Food.Route.FoodCategories> {
-                FoodCategoriesScreen()
-            }
-            register<Food.Route.FoodCategoryDetails> {
-                FoodCategoryDetailsScreen(it.id)
-            }
+            register<${FeatureName}.Route.${EachScreen}> { ${EachScreen}Screen() }
         }
     }
 }

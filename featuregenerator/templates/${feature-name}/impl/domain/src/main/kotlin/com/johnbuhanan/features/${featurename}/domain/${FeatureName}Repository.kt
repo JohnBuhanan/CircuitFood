@@ -8,7 +8,7 @@ interface ${FeatureName}Repository {
 }
 
 @Singleton
-class ${FeatureName}Impl @Inject constructor(private val service: ${FeatureName}Service) : ${FeatureName}Repository {
+class ${FeatureName}RepositoryImpl @Inject constructor(private val service: ${FeatureName}Service) : ${FeatureName}Repository {
     override suspend fun getSomething(): String {
         return service.getSomething()
     }
