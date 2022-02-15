@@ -14,7 +14,7 @@ class FeatureGenerator(private val template: Template, private val screenList: L
         template.getTemplateFiles().forEach { generateFile(it) }
 
         val featureModuleName = template.getFeatureNameMap()[featureNamePlaceholders[PLACEHOLDER_INDEX_3]]
-        println("Your new feature is generated at `/feature/$featureModuleName`! Please sync your project.")
+        println("Your new feature is generated at `/features/$featureModuleName`! Please sync your project.")
     }
 
     private fun generateFile(templateFile: File) {
