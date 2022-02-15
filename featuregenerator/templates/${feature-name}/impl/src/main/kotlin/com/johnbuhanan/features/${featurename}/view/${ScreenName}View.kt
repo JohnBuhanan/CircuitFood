@@ -21,9 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.johnbuhanan.features.food.categories.${ScreenName}Event.TappedCategory
-import com.johnbuhanan.features.food.domain.FoodItem
-import com.johnbuhanan.features.food.shared.FoodItemRow
 
 @Preview
 @Composable
@@ -41,59 +38,9 @@ fun ${ScreenName}View(
         },
     ) {
         Box {
-            ${ScreenName}List(
-                foodItems = categories,
-                onItemClicked = { itemId ->
-                    onEvent(TappedCategory(itemId))
-                },
-            )
+
             if (isLoading)
                 LoadingBar()
         }
-    }
-}
-
-@Composable
-private fun CategoriesAppBar() {
-    TopAppBar(
-        navigationIcon = {
-            Icon(
-                imageVector = Icons.Default.Home,
-                modifier = Modifier.padding(horizontal = 12.dp),
-                contentDescription = "Action icon"
-            )
-        },
-        title = { Text("stringResource(R.string.app_name)") },
-        backgroundColor = MaterialTheme.colors.background
-    )
-}
-
-@Composable
-fun ${ScreenName}List(
-    foodItems: List<FoodItem>,
-    onItemClicked: (id: String) -> Unit = { },
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(bottom = 16.dp)
-    ) {
-        items(foodItems) { item ->
-            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = onItemClicked)
-        }
-    }
-}
-
-@Preview
-@Composable
-fun PreviewLoadingBar() {
-    LoadingBar()
-}
-
-@Composable
-fun LoadingBar() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        CircularProgressIndicator()
     }
 }
