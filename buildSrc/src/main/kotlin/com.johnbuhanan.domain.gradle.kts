@@ -7,9 +7,14 @@ plugins {
 }
 
 dependencies {
+    "ksp"(libs.resolveDependency("moshiCodeGen"))
+
     "implementation"(project(":common:coroutines"))
-    "implementation"(project(":common:navigation"))
-    "implementation"(project(":common:viewmodel"))
+
+    // Retrofit
+    "implementation"(libs.resolveDependency("retrofit"))
+    "implementation"(libs.resolveDependency("retrofit.converter.moshi"))
+    "implementation"(libs.resolveDependency("moshi"))
 
     // Image loading
     "implementation"(libs.resolveDependency("coil"))
