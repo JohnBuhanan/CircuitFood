@@ -1,5 +1,8 @@
 package com.johnbuhanan.features.food.domain
 
+import com.johnbuhanan.features.food.domain.model.FoodCategoriesResponse
+import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.features.food.domain.model.MealsResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -9,13 +12,13 @@ interface FoodMenuRepository {
 }
 
 @Singleton
-class FoodMenuRepositoryImpl @Inject constructor(private val foodMenuApi: FoodMenuApi) : FoodMenuRepository {
+class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodService) : FoodMenuRepository {
     private var cachedCategories: List<FoodItem>? = null
 
     override suspend fun getFoodCategories(): List<FoodItem> {
         var cachedCategories = cachedCategories
         if (cachedCategories == null) {
-            cachedCategories = foodMenuApi.getFoodCategories().mapCategoriesToItems()
+            cachedCategories = foodService.getFoodCategories().mapCategoriesToItems()
             this.cachedCategories = cachedCategories
         }
         return cachedCategories
@@ -23,7 +26,7 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodMenuApi: FoodMe
 
     override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> {
         val categoryName = getFoodCategories().first { it.id == categoryId }.name
-        return foodMenuApi.getMealsByCategory(categoryName).mapMealsToItems()
+        return foodService.getMealsByCategory(categoryName).mapMealsToItems()
     }
 
 

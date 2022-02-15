@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.domain
+package com.johnbuhanan.features.food.domain.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

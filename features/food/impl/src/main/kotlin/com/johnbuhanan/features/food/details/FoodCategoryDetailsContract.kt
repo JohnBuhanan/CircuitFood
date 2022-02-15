@@ -3,7 +3,7 @@ package com.johnbuhanan.features.food.details
 import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
-import com.johnbuhanan.features.food.domain.FoodItem
+import com.johnbuhanan.features.food.domain.model.FoodItem
 
 sealed class FoodCategoryDetailsEvent : UiEvent {
     data class TappedFoodItem(val message: String) : FoodCategoryDetailsEvent()

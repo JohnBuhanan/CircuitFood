@@ -1,6 +1,6 @@
 package com.johnbuhanan.features.food.domain.di
 
-import com.johnbuhanan.features.food.domain.FoodMenuApi
+import com.johnbuhanan.features.food.domain.FoodService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ import javax.inject.Singleton
 class FoodMenuApiProvider {
     @Provides
     @Singleton
-    fun provideFoodMenuApiService(retrofit: Retrofit): FoodMenuApi.Service = retrofit.create()
+    fun provideFoodMenuApiService(retrofit: Retrofit): FoodService = retrofit.create()
 }

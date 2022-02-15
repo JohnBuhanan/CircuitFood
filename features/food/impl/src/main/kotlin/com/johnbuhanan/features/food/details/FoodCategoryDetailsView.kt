@@ -28,7 +28,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
-import com.johnbuhanan.features.food.domain.FoodItem
+import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.shared.FoodItemDetails
 import com.johnbuhanan.features.food.shared.FoodItemRow
 import timber.log.Timber

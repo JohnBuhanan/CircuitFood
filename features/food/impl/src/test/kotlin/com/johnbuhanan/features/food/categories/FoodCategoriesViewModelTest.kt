@@ -5,7 +5,7 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.FoodItem
+import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import com.johnbuhanan.navigation.RouterEvent
 import com.johnbuhanan.navigation.RouterImpl

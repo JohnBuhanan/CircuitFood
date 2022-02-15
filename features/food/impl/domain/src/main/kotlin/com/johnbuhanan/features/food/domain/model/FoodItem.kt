@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.domain
+package com.johnbuhanan.features.food.domain.model
 
 data class FoodItem(
     val id: String,

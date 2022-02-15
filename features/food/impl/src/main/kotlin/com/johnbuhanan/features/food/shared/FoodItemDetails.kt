@@ -10,7 +10,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import com.johnbuhanan.features.food.domain.FoodItem
+import com.johnbuhanan.features.food.domain.model.FoodItem
 
 @Composable
 fun FoodItemDetails(
