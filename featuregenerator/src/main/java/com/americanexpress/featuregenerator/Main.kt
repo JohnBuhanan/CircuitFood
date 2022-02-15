@@ -4,7 +4,6 @@ package com.americanexpress.featuregenerator
 
 import com.americanexpress.featuregenerator.featuremodule.FeatureGenerator
 import com.americanexpress.featuregenerator.featuremodule.Template
-import com.americanexpress.featuregenerator.m1project.M1Project
 import kotlin.system.exitProcess
 
 const val FEATURE_NAME_RECOMMENDED = "\n* Recommended Feature Name Input Format - Single Word: Profile | Multi Word: Card Replacement *"
