@@ -61,6 +61,5 @@ fun main() {
 
     with(template) {
         FeatureGenerator(this, screenList).generate()
-        M1Project(this).update()
     }
 }
