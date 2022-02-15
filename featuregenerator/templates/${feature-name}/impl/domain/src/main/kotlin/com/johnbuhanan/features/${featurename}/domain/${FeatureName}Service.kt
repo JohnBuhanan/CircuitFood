@@ -1,10 +1,10 @@
-package com.johnbuhanan.features.food.domain
+package com.johnbuhanan.features.${featurename}.domain
 
 import retrofit2.http.GET
 
 interface ${FeatureName}Service
-    // @GET("")
-    // suspend fun getSomething(): SomeResponse
+     @GET("")
+     suspend fun getSomething(): String
 }
 
 
