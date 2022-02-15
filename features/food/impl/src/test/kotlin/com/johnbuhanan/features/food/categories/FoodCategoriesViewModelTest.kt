@@ -63,7 +63,7 @@ class FoodCategoriesViewModelTest {
         }
 
         foodCategoriesViewModel.effect.test {
-            assertThat(awaitItem()).isEqualTo(FoodCategoriesEffect.ShowToast(""))
+            assertThat(awaitItem()).isEqualTo(FoodCategoriesEffect.ShowToast("Food categories are loaded."))
         }
     }
 
