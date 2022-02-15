@@ -1,0 +1,10 @@
+plugins {
+  id 'com.johnbuhanan.lib'
+}
+
+dependencies {
+  // Retrofit
+  implementation libs.retrofit
+  implementation libs.retrofit.converter.gson
+  implementation libs.gson
+}
