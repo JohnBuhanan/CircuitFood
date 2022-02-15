@@ -6,7 +6,7 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.johnbuhanan.features.login.viewmodel.FirstEvent
+import com.johnbuhanan.features.login.viewmodel.${ScreenName}Event
 
 @Preview
 @Composable

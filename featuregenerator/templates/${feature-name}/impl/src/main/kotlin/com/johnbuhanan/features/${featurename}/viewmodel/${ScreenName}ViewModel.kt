@@ -7,7 +7,6 @@ import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
-import com.johnbuhanan.features.${featurename}.api.${FeatureName}
 import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
