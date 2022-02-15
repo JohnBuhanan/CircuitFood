@@ -1,9 +1,8 @@
 package com.johnbuhanan.features.${featurename}.di
 
 import cafe.adriel.voyager.core.registry.screenModule
-import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.categories.FoodCategoriesScreen
-import com.johnbuhanan.features.food.details.FoodCategoryDetailsScreen
+import com.johnbuhanan.features.${featurename}.api.${FeatureName}
+import com.johnbuhanan.features.${featurename}.screen.${EachScreen}Screen
 import com.johnbuhanan.navigation.ScreenModule
 import dagger.Module
 import dagger.Provides
