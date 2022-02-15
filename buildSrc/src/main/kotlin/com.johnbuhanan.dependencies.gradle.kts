@@ -19,10 +19,6 @@ dependencies {
     // Compose
     "implementation"(libs.resolveBundle("compose"))
 
-    // Compose Destinations
-    "ksp"(libs.resolveDependency("compose.destinations.ksp"))
-    "implementation"(libs.resolveDependency("compose.destinations.core"))
-
     // Coroutines
     "implementation"(libs.resolveDependency("kotlin.coroutines.core"))
     "implementation"(libs.resolveDependency("kotlin.coroutines.android"))

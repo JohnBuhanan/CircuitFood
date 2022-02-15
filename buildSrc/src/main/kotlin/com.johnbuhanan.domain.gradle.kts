@@ -15,7 +15,4 @@ dependencies {
     "implementation"(libs.resolveDependency("retrofit"))
     "implementation"(libs.resolveDependency("retrofit.converter.moshi"))
     "implementation"(libs.resolveDependency("moshi"))
-
-    // Image loading
-    "implementation"(libs.resolveDependency("coil"))
 }
