@@ -12,6 +12,7 @@ rootProject.name = "MVI-Public-DD"
 include(
     // !!!
     ':app',
+    ':common:android',
     ':common:coroutines',
     ':common:navigation',
     ':common:viewmodel',
