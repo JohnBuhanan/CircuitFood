@@ -1,7 +1,7 @@
-package com.johnbuhanan.features.food.domain.di
+package com.johnbuhanan.features.${featurename}.domain.di
 
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
-import com.johnbuhanan.features.food.domain.FoodMenuRepositoryImpl
+import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
+import com.johnbuhanan.features.${featurename}.domain.${FeatureName}RepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -10,8 +10,8 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-abstract class `${FeatureName}BindingModule` {
+abstract class ${FeatureName}BindingModule {
     @Binds
     @Singleton
-    abstract fun binds(impl: FoodMenuRepositoryImpl): FoodMenuRepository
+    abstract fun binds(impl: ${FeatureName}RepositoryImpl): ${FeatureName}Repository
 }

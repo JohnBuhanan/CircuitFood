@@ -1,12 +1,12 @@
-package com.johnbuhanan.features.food
+package com.johnbuhanan.features.${featurename}
 
 import cafe.adriel.voyager.core.registry.ScreenProvider
 
-interface `${FeatureName}` {
-    object FoodScreenInput
-    object FoodScreenOutput
+interface ${FeatureName} {
+    object ${FeatureName}Input
+    object ${FeatureName}Output
     sealed class Route : ScreenProvider {
-        object FoodCategories : Route()
-        data class FoodCategoryDetails(val id: String) : Route()
+        // object Screen1 : Route()
+        // object Screen2 : Route()
     }
 }
