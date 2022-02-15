@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.coroutines.di.IODispatcher
 import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
-import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.features.${featurename}.${FeatureName}
+import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
