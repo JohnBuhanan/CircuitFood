@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-  implementation project(":features:${feature - name}:api")
-  implementation project(":features:${feature - name}:impl:domain")
+  implementation project(":features:${feature-name}:api")
+  implementation project(":features:${feature-name}:impl:domain")
 }
