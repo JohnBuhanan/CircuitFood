@@ -18,7 +18,7 @@ import org.junit.Test
 import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
-class ${FeatureName}ViewModelTest {
+class ${ScreenName}ViewModelTest {
 
     private val repository = object : ${FeatureName}Repository {
     }
@@ -26,7 +26,7 @@ class ${FeatureName}ViewModelTest {
     private val router = RouterImpl()
 
     private val dispatcher = StandardTestDispatcher()
-    private val viewModel = ${FeatureName}ViewModel(
+    private val viewModel = ${ScreenName}ViewModel(
         mainDispatcher = dispatcher,
         ioDispatcher = dispatcher,
         repository = repository,
@@ -43,7 +43,7 @@ class ${FeatureName}ViewModelTest {
 
     @Test
     fun `on init call repo and update State and emit effect`() = runTest {
-        val expected1 = FoodCategoriesState(
+        val expected1 = ${ScreenName}State(
             categories = emptyList(),
             isLoading = true,
         )
@@ -55,14 +55,14 @@ class ${FeatureName}ViewModelTest {
         }
 
         viewModel.effect.test {
-            assertThat(awaitItem()).isEqualTo(FoodCategoriesEffect.ShowToast("Food categories are loaded."))
+            assertThat(awaitItem()).isEqualTo(${ScreenName}Effect.ShowToast("Food categories are loaded."))
         }
     }
 
     @Test
     fun `when TappedBack then emit Pop`() = runTest {
         router.routerEvents.test {
-            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedBack)
+            viewModel.setEvent(${ScreenName}Event.TappedBack)
             assertThat(awaitItem()).isEqualTo(RouterEvent.Pop)
         }
     }
@@ -70,7 +70,7 @@ class ${FeatureName}ViewModelTest {
     @Test
     fun `when TappedCategory then emit Push`() = runTest {
         router.routerEvents.test {
-            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory("1"))
+            viewModel.setEvent(${ScreenName}Event.TappedCategory("1"))
             val routerEvent = awaitItem()
             assertThat(routerEvent).isInstanceOf(RouterEvent.Push::class)
 
