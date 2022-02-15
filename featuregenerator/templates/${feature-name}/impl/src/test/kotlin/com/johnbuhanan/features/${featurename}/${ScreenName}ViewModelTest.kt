@@ -1,12 +1,11 @@
-package com.johnbuhanan.features.food.categories
+package com.johnbuhanan.features.${featurename}.viewmodel
 
 import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
-import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.FoodItem
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.features.${featurename}.api.${FeatureName}
+import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
 import com.johnbuhanan.navigation.RouterEvent
 import com.johnbuhanan.navigation.RouterImpl
 import kotlinx.coroutines.Dispatchers
