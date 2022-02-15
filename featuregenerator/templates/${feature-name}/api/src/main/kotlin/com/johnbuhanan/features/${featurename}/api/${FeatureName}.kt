@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.api.${featurename}
+package com.johnbuhanan.features.${featurename}.api
 
 import cafe.adriel.voyager.core.registry.ScreenProvider
 

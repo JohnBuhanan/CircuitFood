@@ -20,6 +20,9 @@ import kotlin.time.ExperimentalTime
 class ${ScreenName}ViewModelTest {
 
     private val repository = object : ${FeatureName}Repository {
+        override suspend fun getSomething(): String {
+            TODO("Not yet implemented")
+        }
     }
 
     private val router = RouterImpl()
@@ -43,10 +46,9 @@ class ${ScreenName}ViewModelTest {
     @Test
     fun `on init call repo and update State and emit effect`() = runTest {
         val expected1 = ${ScreenName}State(
-            categories = emptyList(),
             isLoading = true,
         )
-        val expected2 = expected1.copy(foodCategories, false)
+        val expected2 = expected1.copy(false)
 
         viewModel.state.test {
             assertThat(awaitItem()).isEqualTo(expected1)

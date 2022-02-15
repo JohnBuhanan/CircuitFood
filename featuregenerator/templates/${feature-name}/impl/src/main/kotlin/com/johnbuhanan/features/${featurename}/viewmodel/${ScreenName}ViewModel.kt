@@ -4,6 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.coroutines.di.IODispatcher
 import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
+import com.johnbuhanan.common.viewmodel.UiEffect
+import com.johnbuhanan.common.viewmodel.UiEvent
+import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.${featurename}.${FeatureName}
 import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
 import com.johnbuhanan.navigation.Router
