@@ -1,0 +1,34 @@
+import amex.gradle.Libs
+
+apply plugin: 'amex.gradle.android'
+apply plugin: 'amex.gradle.dagger'
+
+android {
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+}
+
+dependencies {
+
+  api Libs.Support.constraintLayout
+
+  implementation project(':rx-workflow:rxworkflow')
+  implementation project(':rx-workflow:rxworkflow-android')
+  implementation project(':shared:rxworkflow-components-android')
+
+  implementation project(':shared:android-ui')
+  implementation project(':shared:android-utils')
+  implementation project(':shared:retrofit')
+  implementation project(':shared:moshi')
+
+  testImplementation project(':rx-workflow:rxworkflow-test')
+
+  testImplementation project(':feature:test-generator:test-generator-test-support')
+
+  testImplementation Libs.assertk
+  testImplementation Libs.junit
+  testImplementation Libs.Mockito.inline
+  testImplementation Libs.Mockito.kotlin
+
+}

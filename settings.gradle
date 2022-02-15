@@ -7,7 +7,7 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
-rootProject.name = "MVI-Public"
+rootProject.name = "MVI-Public-DD"
 
 include(':app',
     ':common:coroutines',
