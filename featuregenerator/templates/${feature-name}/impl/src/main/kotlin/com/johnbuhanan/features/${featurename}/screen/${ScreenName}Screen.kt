@@ -24,7 +24,7 @@ class ${ScreenName}Screen : AndroidScreen() {
             },
             start = { viewModel, onEvent ->
                 val state = viewModel.state.collectAsState().value
-                ${ScreenName}View(state.categories, state.isLoading, onEvent)
+                ${ScreenName}View(state.isLoading, onEvent)
             }
         )
     }

@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.categories
+package com.johnbuhanan.features.${featurename}.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,16 +21,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.TappedCategory
+import com.johnbuhanan.features.food.categories.${ScreenName}Event.TappedCategory
 import com.johnbuhanan.features.food.domain.FoodItem
 import com.johnbuhanan.features.food.shared.FoodItemRow
 
 @Preview
 @Composable
-fun FoodCategoriesView(
+fun ${ScreenName}View(
     categories: List<FoodItem> = emptyList(),
     isLoading: Boolean = false,
-    onEvent: (FoodCategoriesEvent) -> Unit = {},
+    onEvent: (${ScreenName}Event) -> Unit = {},
 ) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
@@ -41,7 +41,7 @@ fun FoodCategoriesView(
         },
     ) {
         Box {
-            FoodCategoriesList(
+            ${ScreenName}List(
                 foodItems = categories,
                 onItemClicked = { itemId ->
                     onEvent(TappedCategory(itemId))
@@ -69,7 +69,7 @@ private fun CategoriesAppBar() {
 }
 
 @Composable
-fun FoodCategoriesList(
+fun ${ScreenName}List(
     foodItems: List<FoodItem>,
     onItemClicked: (id: String) -> Unit = { },
 ) {
