@@ -12,7 +12,7 @@ import dagger.multibindings.IntoSet
 
 @Module
 @InstallIn(SingletonComponent::class)
-object `${FeatureName}ScreenModule` {
+object ${FeatureName}ScreenModule {
     @Provides
     @IntoSet
     fun provideScreenModule(): ScreenModule {
