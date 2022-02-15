@@ -9,12 +9,12 @@ import com.johnbuhanan.common.viewmodel.WithViewModel
 import com.johnbuhanan.features.food.categories.FoodCategoriesEffect.ShowToast
 import timber.log.Timber
 
-class `${ScreenName}Screen` : AndroidScreen() {
+class ${ScreenName}Screen : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
 
-        WithViewModel<FoodCategoriesViewModel>(
+        WithViewModel<${ScreeName}ViewModel>(
             onEffect = { effect ->
                 Timber.e("Composable - onEffect")
                 when (effect) {
