@@ -1,4 +1,4 @@
-package com.johnbuhanan.features.food.categories
+package com.johnbuhanan.features.${featurename}.screen
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
@@ -6,7 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
-import com.johnbuhanan.features.food.categories.FoodCategoriesEffect.ShowToast
+import com.johnbuhanan.features.${featurename}.viewmodel.${ScreenName}Effect.ShowToast
 import timber.log.Timber
 
 class ${ScreenName}Screen : AndroidScreen() {
@@ -14,20 +14,17 @@ class ${ScreenName}Screen : AndroidScreen() {
     override fun Content() {
         val context = LocalContext.current
 
-        WithViewModel<${ScreeName}ViewModel>(
+        WithViewModel<${ScreenName}ViewModel>(
             onEffect = { effect ->
-                Timber.e("Composable - onEffect")
                 when (effect) {
                     is ShowToast -> {
-                        Timber.e("Composable - onEffect - ShowToast")
                         Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             },
             start = { viewModel, onEvent ->
-                Timber.e("FoodCategoriesView - start")
                 val state = viewModel.state.collectAsState().value
-                FoodCategoriesView(state.categories, state.isLoading, onEvent)
+                ${ScreenName}View(state.categories, state.isLoading, onEvent)
             }
         )
     }
