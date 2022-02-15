@@ -16,7 +16,7 @@ const val PLACEHOLDER_INDEX_3 = 3
 class Template(
     private val featureName: String,
     val m1ProjectDir: Path = Paths.get("").toAbsolutePath().parent,
-    val m1FeatureDir: String = "${m1ProjectDir}/feature/"
+    val m1FeatureDir: String = "${m1ProjectDir}/features/"
 ) {
 
     private val featureGeneratorAppDir: String = "$m1ProjectDir/featuregenerator"
