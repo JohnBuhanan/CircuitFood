@@ -27,12 +27,23 @@ class FoodCategoryDetailsViewModel @Inject constructor(
         Timber.e("initialize")
 
         viewModelScope.launch(ioDispatcher) {
-            val categories = repository.getFoodCategories()
-            val category = categories.first { it.id == categoryId }
-            setState { copy(category = category) }
-
-            val foodItems = repository.getMealsByCategory(categoryId)
-            setState { copy(categoryFoodItems = foodItems) }
+            repository.getFoodCategories().fold(
+                onSuccess = { categories ->
+                    val category = categories.first { it.id == categoryId }
+                    setState { copy(category = category) }
+                },
+                onFailure = {
+                    setEffect { FoodCategoryDetailsEffect.ShowToast(it.message!!) }
+                }
+            )
+            repository.getMealsByCategory(categoryId).fold(
+                onSuccess = { foodItems ->
+                    setState { copy(categoryFoodItems = foodItems) }
+                },
+                onFailure = {
+                    setEffect { FoodCategoryDetailsEffect.ShowToast(it.message!!) }
+                }
+            )
         }
     }
 

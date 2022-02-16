@@ -5,8 +5,8 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.navigation.RouterEvent
 import com.johnbuhanan.navigation.RouterImpl
 import kotlinx.coroutines.Dispatchers
@@ -27,8 +27,8 @@ class FoodCategoriesViewModelTest {
         )
     )
     private val repository = object : FoodMenuRepository {
-        override suspend fun getFoodCategories(): List<FoodItem> = foodCategories
-        override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> = listOf()
+        override suspend fun getFoodCategories(): Result<List<FoodItem>> = Result.success(foodCategories)
+        override suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>> = Result.success(listOf())
     }
 
     private val router = RouterImpl()

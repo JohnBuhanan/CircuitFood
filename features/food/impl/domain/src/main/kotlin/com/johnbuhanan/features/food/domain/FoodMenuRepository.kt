@@ -7,30 +7,33 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 interface FoodMenuRepository {
-    suspend fun getFoodCategories(): List<FoodItem>
-    suspend fun getMealsByCategory(categoryId: String): List<FoodItem>
+    suspend fun getFoodCategories(): Result<List<FoodItem>>
+    suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>>
 }
 
 @Singleton
 class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodService) : FoodMenuRepository {
     private var cachedCategories: List<FoodItem>? = null
 
-    override suspend fun getFoodCategories(): List<FoodItem> {
-        var cachedCategories = cachedCategories
-        if (cachedCategories == null) {
-            cachedCategories = foodService.getFoodCategories().mapCategoriesToItems()
-            this.cachedCategories = cachedCategories
+    override suspend fun getFoodCategories(): Result<List<FoodItem>> {
+        cachedCategories?.let {
+            return Result.success(it)
         }
-        return cachedCategories
+
+        return foodService.getFoodCategories().runCatching {
+            val categories = this.toFoodItems()
+            cachedCategories = categories
+            categories
+        }
     }
 
-    override suspend fun getMealsByCategory(categoryId: String): List<FoodItem> {
-        val categoryName = getFoodCategories().first { it.id == categoryId }.name
-        return foodService.getMealsByCategory(categoryName).mapMealsToItems()
+    override suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>> {
+        return getFoodCategories().mapCatching {
+            foodService.getMealsByCategory(categoryId).toFoodItems()
+        }
     }
 
-
-    private fun FoodCategoriesResponse.mapCategoriesToItems(): List<FoodItem> {
+    private fun FoodCategoriesResponse.toFoodItems(): List<FoodItem> {
         return this.categories.map { category ->
             FoodItem(
                 id = category.id,
@@ -41,7 +44,7 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodSe
         }
     }
 
-    private fun MealsResponse.mapMealsToItems(): List<FoodItem> {
+    private fun MealsResponse.toFoodItems(): List<FoodItem> {
         return this.meals.map { category ->
             FoodItem(
                 id = category.id,
