@@ -29,7 +29,7 @@ fun FoodItemRow(
     item: FoodItem,
     itemShouldExpand: Boolean = false,
     iconTransformationBuilder: ImageRequest.Builder.() -> Unit = { },
-    onItemClicked: (categoryName: String) -> Unit = { },
+    onItemClicked: (foodItem: FoodItem) -> Unit = { },
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -38,7 +38,7 @@ fun FoodItemRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
-            .clickable { onItemClicked(item.name) }
+            .clickable { onItemClicked(item) }
     ) {
         var expanded by remember { mutableStateOf(false) }
         Row(modifier = Modifier.animateContentSize()) {

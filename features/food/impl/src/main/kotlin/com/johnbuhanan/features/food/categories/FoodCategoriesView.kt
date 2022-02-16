@@ -75,7 +75,7 @@ fun FoodItemList(
         contentPadding = PaddingValues(bottom = 16.dp)
     ) {
         items(foodItems) { item ->
-            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = { onEvent(TappedCategory(it)) })
+            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = { onEvent(TappedCategory(it.name)) })
         }
     }
 }
