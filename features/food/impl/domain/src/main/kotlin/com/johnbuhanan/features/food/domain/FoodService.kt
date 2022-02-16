@@ -10,5 +10,5 @@ interface FoodService {
     suspend fun getFoodCategories(): FoodCategoriesResponse
 
     @GET("filter.php")
-    suspend fun getMealsByCategory(@Query("c") categoryId: String): MealsResponse
+    suspend fun getMealsByCategoryName(@Query("c") categoryName: String): MealsResponse
 }

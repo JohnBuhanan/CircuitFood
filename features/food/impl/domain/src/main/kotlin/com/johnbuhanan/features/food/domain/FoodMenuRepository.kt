@@ -31,7 +31,7 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodSe
         return getFoodCategories().fold(
             onSuccess = { foodCategories ->
                 val categoryName = foodCategories.first { it.id == categoryId }.name
-                foodService.getMealsByCategory(categoryName).runCatching {
+                foodService.getMealsByCategoryName(categoryName).runCatching {
                     this.toFoodItems()
                 }
             },
@@ -42,7 +42,7 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodSe
     }
 
     private fun FoodCategoriesResponse.toFoodItems(): List<FoodItem> {
-        return this.categories.map { category ->
+        return this.foodCategories.map { category ->
             FoodItem(
                 id = category.id,
                 name = category.name,
