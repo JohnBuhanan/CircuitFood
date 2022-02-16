@@ -28,9 +28,17 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodSe
     }
 
     override suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>> {
-        return getFoodCategories().mapCatching {
-            foodService.getMealsByCategory(categoryId).toFoodItems()
-        }
+        return getFoodCategories().fold(
+            onSuccess = { foodCategories ->
+                val categoryName = foodCategories.first { it.id == categoryId }.name
+                foodService.getMealsByCategory(categoryName).runCatching {
+                    this.toFoodItems()
+                }
+            },
+            onFailure = {
+                Result.failure(it)
+            }
+        )
     }
 
     private fun FoodCategoriesResponse.toFoodItems(): List<FoodItem> {
