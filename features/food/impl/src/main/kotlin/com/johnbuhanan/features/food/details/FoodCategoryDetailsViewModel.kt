@@ -23,20 +23,20 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     private val router: Router,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(mainDispatcher, ioDispatcher) {
 
-    fun initialize(categoryId: String) {
+    fun initialize(categoryName: String) {
         Timber.e("initialize")
 
         viewModelScope.launch(ioDispatcher) {
             repository.getFoodCategories().fold(
                 onSuccess = { categories ->
-                    val category = categories.first { it.id == categoryId }
+                    val category = categories.first { it.name == categoryName }
                     setState { copy(category = category) }
                 },
                 onFailure = {
                     setEffect { FoodCategoryDetailsEffect.ShowToast(it.message!!) }
                 }
             )
-            repository.getMealsByCategory(categoryId).fold(
+            repository.getMealsByCategory(categoryName).fold(
                 onSuccess = { foodItems ->
                     setState { copy(categoryFoodItems = foodItems) }
                 },

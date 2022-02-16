@@ -28,7 +28,7 @@ class FoodCategoriesViewModelTest {
     )
     private val repository = object : FoodMenuRepository {
         override suspend fun getFoodCategories(): Result<List<FoodItem>> = Result.success(foodCategories)
-        override suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>> = Result.success(listOf())
+        override suspend fun getMealsByCategory(categoryName: String): Result<List<FoodItem>> = Result.success(listOf())
     }
 
     private val router = RouterImpl()

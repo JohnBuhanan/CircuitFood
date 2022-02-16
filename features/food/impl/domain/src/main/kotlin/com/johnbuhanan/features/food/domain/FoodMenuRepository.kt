@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 interface FoodMenuRepository {
     suspend fun getFoodCategories(): Result<List<FoodItem>>
-    suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>>
+    suspend fun getMealsByCategory(categoryName: String): Result<List<FoodItem>>
 }
 
 @Singleton
@@ -27,18 +27,10 @@ class FoodMenuRepositoryImpl @Inject constructor(private val foodService: FoodSe
         }
     }
 
-    override suspend fun getMealsByCategory(categoryId: String): Result<List<FoodItem>> {
-        return getFoodCategories().fold(
-            onSuccess = { foodCategories ->
-                val categoryName = foodCategories.first { it.id == categoryId }.name
-                foodService.getMealsByCategoryName(categoryName).runCatching {
-                    this.toFoodItems()
-                }
-            },
-            onFailure = {
-                Result.failure(it)
-            }
-        )
+    override suspend fun getMealsByCategory(categoryName: String): Result<List<FoodItem>> {
+        return foodService.getMealsByCategoryName(categoryName).runCatching {
+            this.toFoodItems()
+        }
     }
 
     private fun FoodCategoriesResponse.toFoodItems(): List<FoodItem> {

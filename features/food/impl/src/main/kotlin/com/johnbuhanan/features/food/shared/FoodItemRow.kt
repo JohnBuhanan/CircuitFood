@@ -21,12 +21,15 @@ import coil.request.ImageRequest
 import com.johnbuhanan.common.viewmodel.noRippleClickable
 import com.johnbuhanan.features.food.domain.model.FoodItem
 
+/**
+ * This is shared between `categories` and `details`.
+ */
 @Composable
 fun FoodItemRow(
     item: FoodItem,
     itemShouldExpand: Boolean = false,
     iconTransformationBuilder: ImageRequest.Builder.() -> Unit = { },
-    onItemClicked: (id: String) -> Unit = { },
+    onItemClicked: (categoryName: String) -> Unit = { },
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -35,7 +38,7 @@ fun FoodItemRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
-            .clickable { onItemClicked(item.id) }
+            .clickable { onItemClicked(item.name) }
     ) {
         var expanded by remember { mutableStateOf(false) }
         Row(modifier = Modifier.animateContentSize()) {

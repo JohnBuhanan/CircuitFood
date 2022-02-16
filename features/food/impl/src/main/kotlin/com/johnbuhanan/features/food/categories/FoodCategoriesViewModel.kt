@@ -41,7 +41,7 @@ class FoodCategoriesViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoriesEvent) {
         when (event) {
             is FoodCategoriesEvent.TappedCategory -> {
-                router.push(Food.Route.FoodCategoryDetails(event.id))
+                router.push(Food.Route.FoodCategoryDetails(event.categoryName))
             }
             FoodCategoriesEvent.TappedBack -> router.pop()
         }

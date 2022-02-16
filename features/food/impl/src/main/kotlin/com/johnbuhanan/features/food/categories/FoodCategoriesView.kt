@@ -28,7 +28,7 @@ import com.johnbuhanan.features.food.shared.FoodItemRow
 @Preview
 @Composable
 fun FoodCategoriesView(
-    categories: List<FoodItem> = emptyList(),
+    foodItems: List<FoodItem> = emptyList(),
     isLoading: Boolean = false,
     onEvent: (FoodCategoriesEvent) -> Unit = {},
 ) {
@@ -41,11 +41,9 @@ fun FoodCategoriesView(
         },
     ) {
         Box {
-            FoodCategoriesList(
-                foodItems = categories,
-                onItemClicked = { itemId ->
-                    onEvent(TappedCategory(itemId))
-                },
+            FoodItemList(
+                foodItems = foodItems,
+                onEvent = onEvent,
             )
             if (isLoading)
                 LoadingBar()
@@ -69,15 +67,15 @@ private fun CategoriesAppBar() {
 }
 
 @Composable
-fun FoodCategoriesList(
+fun FoodItemList(
     foodItems: List<FoodItem>,
-    onItemClicked: (id: String) -> Unit = { },
+    onEvent: (FoodCategoriesEvent) -> Unit = {},
 ) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 16.dp)
     ) {
         items(foodItems) { item ->
-            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = onItemClicked)
+            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = { onEvent(TappedCategory(it)) })
         }
     }
 }

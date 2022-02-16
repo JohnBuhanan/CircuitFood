@@ -6,7 +6,7 @@ import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.food.domain.model.FoodItem
 
 sealed class FoodCategoriesEvent : UiEvent {
-    data class TappedCategory(val id: String) : FoodCategoriesEvent()
+    data class TappedCategory(val categoryName: String) : FoodCategoriesEvent()
     object TappedBack : FoodCategoriesEvent()
 }
 
