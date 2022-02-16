@@ -4,10 +4,14 @@ import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.coroutines.di.IODispatcher
 import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
+import com.johnbuhanan.common.viewmodel.UiEffect
+import com.johnbuhanan.common.viewmodel.UiEvent
+import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.domain.FoodMenuRepository
+import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -60,4 +64,18 @@ class FoodCategoryDetailsViewModel @Inject constructor(
             }
         }
     }
+}
+
+sealed class FoodCategoryDetailsEvent : UiEvent {
+    data class TappedFoodItem(val message: String) : FoodCategoryDetailsEvent()
+    object TappedBack : FoodCategoryDetailsEvent()
+}
+
+data class FoodCategoryDetailsState(
+    val category: FoodItem?,
+    val categoryFoodItems: List<FoodItem>,
+) : UiState
+
+sealed class FoodCategoryDetailsEffect : UiEffect {
+    data class ShowToast(val message: String) : FoodCategoryDetailsEffect()
 }
