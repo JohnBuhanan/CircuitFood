@@ -9,7 +9,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MVI-Public-Tinder"
 
-include(//
+include(
     ":app",
     ":common:android",
     ":common:coroutines",
@@ -19,5 +19,4 @@ include(//
     ":features:featureA:api", ":features:featureA:impl", //":features:featureA:impl:domain",
     ":features:featureB:api", ":features:featureB:impl", //":features:featureA:impl:domain",
     ":features:food:api", ":features:food:impl", ":features:food:impl:domain",
-    //
 )
