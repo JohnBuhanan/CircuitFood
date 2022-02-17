@@ -5,8 +5,8 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoriesAsItems
 import com.johnbuhanan.navigation.RouterEvent
 import com.johnbuhanan.navigation.RouterImpl
 import kotlinx.coroutines.Dispatchers
@@ -19,16 +19,18 @@ import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
 class FoodCategoriesViewModelTest {
-    private val foodCategories = listOf(
+    private val foodItems = listOf(
         FoodItem(
-            id = "id",
+            id = "1",
             name = "name",
             thumbnailUrl = "thumbnailUrl",
         )
     )
-    private val repository = object : FoodMenuRepository {
-        override suspend fun getFoodCategories(): Result<List<FoodItem>> = Result.success(foodCategories)
-        override suspend fun getMealsByCategory(categoryName: String): Result<List<FoodItem>> = Result.success(listOf())
+
+    private val getFoodCategoriesAsItems = object : GetFoodCategoriesAsItems {
+        override suspend fun invoke(): Result<List<FoodItem>> {
+            return Result.success(foodItems)
+        }
     }
 
     private val router = RouterImpl()
@@ -37,7 +39,7 @@ class FoodCategoriesViewModelTest {
     private val foodCategoriesViewModel = FoodCategoriesViewModel(
         mainDispatcher = dispatcher,
         ioDispatcher = dispatcher,
-        repository = repository,
+        getFoodCategoriesAsItems = getFoodCategoriesAsItems,
         router = router,
     )
 
@@ -55,7 +57,7 @@ class FoodCategoriesViewModelTest {
             categories = emptyList(),
             isLoading = true,
         )
-        val expected2 = expected1.copy(foodCategories, false)
+        val expected2 = expected1.copy(foodItems, false)
 
         foodCategoriesViewModel.state.test {
             assertThat(awaitItem()).isEqualTo(expected1)
@@ -78,7 +80,7 @@ class FoodCategoriesViewModelTest {
     @Test
     fun `when TappedCategory then emit Push`() = runTest {
         router.routerEvents.test {
-            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory("1"))
+            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory(foodItems.first()))
             val routerEvent = awaitItem()
             assertThat(routerEvent).isInstanceOf(RouterEvent.Push::class)
 

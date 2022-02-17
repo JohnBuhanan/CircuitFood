@@ -11,8 +11,8 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class FoodMenuApiProvider {
+class FoodModule {
     @Provides
     @Singleton
-    fun provideFoodMenuApiService(retrofit: Retrofit): FoodService = retrofit.create()
+    fun provideFoodService(retrofit: Retrofit): FoodService = retrofit.create()
 }

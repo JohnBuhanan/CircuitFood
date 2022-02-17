@@ -6,12 +6,16 @@ import com.johnbuhanan.features.food.domain.repository.MealRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
+interface GetMealsAsItemsById {
+    suspend operator fun invoke(id: String): Result<List<FoodItem>>
+}
+
 @Singleton
-class GetMealsAsItemsById @Inject constructor(
+class GetMealsAsItemsByIdImpl @Inject constructor(
     private val repository: MealRepository,
     private val getFoodCategoryAsItemById: GetFoodCategoryAsItemById,
-) {
-    suspend operator fun invoke(id: String): Result<List<FoodItem>> {
+) : GetMealsAsItemsById {
+    override suspend operator fun invoke(id: String): Result<List<FoodItem>> {
         return getFoodCategoryAsItemById(id).flatMap { foodItem ->
             repository.getMealsByCategoryName(foodItem.name).mapCatching { meals ->
                 meals.map { it.toFoodItem() }
