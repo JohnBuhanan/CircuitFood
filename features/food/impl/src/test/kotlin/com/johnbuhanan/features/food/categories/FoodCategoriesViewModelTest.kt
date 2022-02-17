@@ -80,7 +80,7 @@ class FoodCategoriesViewModelTest {
     @Test
     fun `when TappedCategory then emit Push`() = runTest {
         router.routerEvents.test {
-            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory(foodItems.first()))
+            foodCategoriesViewModel.setEvent(FoodCategoriesEvent.TappedCategory("1"))
             val routerEvent = awaitItem()
             assertThat(routerEvent).isInstanceOf(RouterEvent.Push::class)
 
