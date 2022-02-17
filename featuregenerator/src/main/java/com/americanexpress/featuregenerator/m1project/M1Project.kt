@@ -3,7 +3,7 @@ package com.americanexpress.featuregenerator.m1project
 import com.americanexpress.featuregenerator.featuremodule.Template
 
 const val SETTINGS_GRADLE_FILE_NAME = "/settings.gradle"
-const val APP_GRADLE_FILE_NAME = "/app/build.gradle"
+const val APP_GRADLE_FILE_NAME = "/app/app.gradle"
 
 const val APP_SRC = "/app/src"
 const val JAVA_INIT = "/java/com/americanexpress/android/intl/app/dagger/initialization"
@@ -22,24 +22,24 @@ class M1Project(template: Template) {
         appGradlePath: String = APP_GRADLE_FILE_NAME,
     ) {
         updateSettingsGradle(settingsGradlePath)
-        updateAppGradle(appGradlePath)
+//        updateAppGradle(appGradlePath)
     }
 
     private fun updateSettingsGradle(settingsGradlePath: String) {
         contentUpdater.addLine(
             fileName = settingsGradlePath,
-            startIndexFunc = { it.indexOf("// !!!") },
-            endIndexFunc = { it.indexOf("// @@@") },
-            newLine = "\":feature:\${feature-name}\"",
-            delimiter = ",\n    "
-        )
-        contentUpdater.addLine(
-            fileName = settingsGradlePath,
             startIndexFunc = { it.indexOf("include(") + 8 },
             endIndexFunc = { it.indexOf(")", startIndex = it.indexOf("include(")) - 1 },
-            newLine = "\":feature:\${feature-name}:\${feature-name}-test-support\"",
+            newLine = "\":features:\${feature-name}\"",
             delimiter = ",\n    "
         )
+//        contentUpdater.addLine(
+//            fileName = settingsGradlePath,
+//            startIndexFunc = { it.indexOf("include(") + 8 },
+//            endIndexFunc = { it.indexOf(")", startIndex = it.indexOf("include(")) - 1 },
+//            newLine = "\":feature:\${feature-name}:\${feature-name}-test-support\"",
+//            delimiter = ",\n    "
+//        )
     }
 
     private fun updateAppGradle(appGradlePath: String) {
