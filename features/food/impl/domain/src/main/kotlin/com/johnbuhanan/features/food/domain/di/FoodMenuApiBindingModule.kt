@@ -1,7 +1,9 @@
 package com.johnbuhanan.features.food.domain.di
 
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
-import com.johnbuhanan.features.food.domain.FoodMenuRepositoryImpl
+import com.johnbuhanan.features.food.domain.repository.FoodCategoryRepository
+import com.johnbuhanan.features.food.domain.repository.FoodCategoryRepositoryImpl
+import com.johnbuhanan.features.food.domain.repository.MealRepository
+import com.johnbuhanan.features.food.domain.repository.MealRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +15,9 @@ import javax.inject.Singleton
 abstract class FoodMenuApiBindingModule {
     @Binds
     @Singleton
-    abstract fun binds(impl: FoodMenuRepositoryImpl): FoodMenuRepository
+    abstract fun bindsFoodCategoryRepository(impl: FoodCategoryRepositoryImpl): FoodCategoryRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsMealRepository(impl: MealRepositoryImpl): MealRepository
 }

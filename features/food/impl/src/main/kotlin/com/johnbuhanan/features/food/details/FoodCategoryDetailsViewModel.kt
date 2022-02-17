@@ -10,8 +10,9 @@ import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoryAsItemById
+import com.johnbuhanan.features.food.domain.usecase.GetMealsAsItemsById
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,26 +24,26 @@ import javax.inject.Inject
 class FoodCategoryDetailsViewModel @Inject constructor(
     @MainDispatcher mainDispatcher: CoroutineDispatcher,
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val repository: FoodMenuRepository,
+    private val getFoodCategoryById: GetFoodCategoryAsItemById,
+    private val getMealsAsItemsById: GetMealsAsItemsById,
     private val router: Router,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(mainDispatcher, ioDispatcher) {
 
-    fun initialize(categoryName: String) {
+    fun initialize(id: String) {
         Timber.e("initialize")
 
         viewModelScope.launch(ioDispatcher) {
-            repository.getFoodCategories().fold(
-                onSuccess = { categories ->
-                    val category = categories.first { it.name == categoryName }
-                    setState { copy(category = category) }
+            getFoodCategoryById(id).fold(
+                onSuccess = { foodCategory ->
+                    setState { copy(category = foodCategory) }
                 },
                 onFailure = {
                     setEffect { FoodCategoryDetailsEffect.ShowToast(it.message!!) }
                 }
             )
-            repository.getMealsByCategory(categoryName).fold(
+            getMealsAsItemsById(id).fold(
                 onSuccess = { foodItems ->
-                    setState { copy(categoryFoodItems = foodItems) }
+                    setState { copy(foodItems = foodItems) }
                 },
                 onFailure = {
                     setEffect { FoodCategoryDetailsEffect.ShowToast(it.message!!) }
@@ -73,7 +74,7 @@ sealed class FoodCategoryDetailsEvent : UiEvent {
 
 data class FoodCategoryDetailsState(
     val category: FoodItem?,
-    val categoryFoodItems: List<FoodItem>,
+    val foodItems: List<FoodItem>,
 ) : UiState
 
 sealed class FoodCategoryDetailsEffect : UiEffect {

@@ -8,7 +8,7 @@ import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
 import timber.log.Timber
 
-data class FoodCategoryDetailsScreen(val categoryName: String) : AndroidScreen() {
+data class FoodCategoryDetailsScreen(val id: String) : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
@@ -24,13 +24,13 @@ data class FoodCategoryDetailsScreen(val categoryName: String) : AndroidScreen()
                 }
             },
             initialize = { viewModel ->
-                viewModel.initialize(categoryName)
+                viewModel.initialize(id)
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.collectAsState().value) {
                     is FoodCategoryDetailsState -> FoodCategoryDetailsView(
                         category = state.category,
-                        categoryFoodItems = state.categoryFoodItems,
+                        categoryFoodItems = state.foodItems,
                         onEvent = onEvent
                     )
                 }

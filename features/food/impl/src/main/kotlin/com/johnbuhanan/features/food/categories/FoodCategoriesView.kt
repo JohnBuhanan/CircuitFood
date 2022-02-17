@@ -21,8 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.TappedCategory
 import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.TappedCategory
 import com.johnbuhanan.features.food.shared.FoodItemRow
 
 @Preview
@@ -75,7 +75,7 @@ fun FoodItemList(
         contentPadding = PaddingValues(bottom = 16.dp)
     ) {
         items(foodItems) { item ->
-            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = { onEvent(TappedCategory(it.name)) })
+            FoodItemRow(item = item, itemShouldExpand = true, onItemClicked = { onEvent(TappedCategory(it)) })
         }
     }
 }

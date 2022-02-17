@@ -8,8 +8,8 @@ import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.FoodMenuRepository
 import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoriesAsItems
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,12 +20,12 @@ import javax.inject.Inject
 class FoodCategoriesViewModel @Inject constructor(
     @MainDispatcher mainDispatcher: CoroutineDispatcher,
     @IODispatcher ioDispatcher: CoroutineDispatcher,
-    private val repository: FoodMenuRepository,
+    private val getFoodCategoriesAsItems: GetFoodCategoriesAsItems,
     private val router: Router,
 ) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(mainDispatcher, ioDispatcher) {
     init {
         viewModelScope.launch(ioDispatcher) {
-            repository.getFoodCategories().fold(
+            getFoodCategoriesAsItems().fold(
                 onSuccess = { categories ->
                     setState {
                         copy(categories = categories, isLoading = false)
@@ -45,7 +45,7 @@ class FoodCategoriesViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoriesEvent) {
         when (event) {
             is FoodCategoriesEvent.TappedCategory -> {
-                router.push(Food.Route.FoodCategoryDetails(event.categoryName))
+                router.push(Food.Route.FoodCategoryDetails(event.foodItem.id))
             }
             FoodCategoriesEvent.TappedBack -> router.pop()
         }
@@ -53,7 +53,7 @@ class FoodCategoriesViewModel @Inject constructor(
 }
 
 sealed class FoodCategoriesEvent : UiEvent {
-    data class TappedCategory(val categoryName: String) : FoodCategoriesEvent()
+    data class TappedCategory(val foodItem: FoodItem) : FoodCategoriesEvent()
     object TappedBack : FoodCategoriesEvent()
 }
 
