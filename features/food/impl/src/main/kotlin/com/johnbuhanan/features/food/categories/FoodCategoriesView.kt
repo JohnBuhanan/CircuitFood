@@ -21,8 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.TappedCategory
+import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.shared.FoodItemRow
 
 @Preview
@@ -61,7 +61,7 @@ private fun CategoriesAppBar() {
                 contentDescription = "Action icon"
             )
         },
-        title = { Text("stringResource(R.string.app_name)") },
+        title = { Text("Tinder Interview") },
         backgroundColor = MaterialTheme.colors.background
     )
 }
