@@ -20,7 +20,7 @@ class M1Project(template: Template) {
         settingsGradlePath: String = SETTINGS_GRADLE_FILE_NAME,
         appGradlePath: String = APP_GRADLE_FILE_NAME,
     ) {
-//        updateSettingsGradle(settingsGradlePath)
+        updateSettingsGradle(settingsGradlePath)
         updateAppGradle(appGradlePath)
     }
 
@@ -43,13 +43,5 @@ class M1Project(template: Template) {
             newLine = """${"  "}implementation project(":features:${'$'}{feature-name}:api")
 ${"  "}implementation project(":features:${'$'}{feature-name}:impl")"""
         )
-
-//        val startIndexFuncAndroidTestImplementation: (content: String) -> Int = { it.indexOf("  androidTestImplementation") }
-//        contentUpdater.addLine(
-//            fileName = appGradlePath,
-//            startIndexFunc = startIndexFuncAndroidTestImplementation,
-//            endIndexFunc = { it.indexOf("  androidTestImplementation") },
-//            newLine = "  androidTestImplementation project(':feature:\${feature-name}:\${feature-name}-test-support')\n"
-//        )
     }
 }

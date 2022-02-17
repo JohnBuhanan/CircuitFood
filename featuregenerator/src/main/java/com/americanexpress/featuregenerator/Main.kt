@@ -60,7 +60,7 @@ fun main() {
     val template = Template(featureNameInput)
 
     with(template) {
-//        FeatureGenerator(this, screenList).generate()
+        FeatureGenerator(this, screenList).generate()
         M1Project(this).update()
     }
 }
