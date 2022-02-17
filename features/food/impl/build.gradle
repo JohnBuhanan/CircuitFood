@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-  implementation project(":features:food:api")
+  api project(":features:food:api")
   implementation project(":features:featureA:api")
 
   implementation project(":features:food:impl:domain")

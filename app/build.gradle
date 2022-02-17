@@ -14,10 +14,7 @@ dependencies {
   implementation project(":common:coroutines")
   implementation project(":common:navigation")
   implementation project(":common:retrofit")
-  implementation project(":features:featureA:api")
   implementation project(":features:featureA:impl")
-  implementation project(":features:featureB:api")
   implementation project(":features:featureB:impl")
-  implementation project(":features:food:api")
   implementation project(":features:food:impl")
 }
