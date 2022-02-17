@@ -5,7 +5,7 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import com.johnbuhanan.features.${featurename}.api.${FeatureName}
-import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
+import com.johnbuhanan.features.${featurename}.domain.repository.${FeatureName}Repository
 import com.johnbuhanan.navigation.RouterEvent
 import com.johnbuhanan.navigation.RouterImpl
 import kotlinx.coroutines.Dispatchers
