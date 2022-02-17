@@ -30,7 +30,7 @@ class M1Project(template: Template) {
             fileName = settingsGradlePath,
             startIndexFunc = { it.indexOf("include(") + 8 },
             endIndexFunc = { it.indexOf(")", startIndex = it.indexOf("include(")) - 1 },
-            newLine = "\":features:\${feature-name}\"",
+            newLine = """":features:${'$'}{feature-name}:api", ":features:${'$'}{feature-name}:impl", ":features:${'$'}{feature-name}:impl:domain"""".trimMargin(),
             delimiter = ",\n    "
         )
 //        contentUpdater.addLine(
