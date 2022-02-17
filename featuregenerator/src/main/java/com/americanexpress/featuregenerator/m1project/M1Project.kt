@@ -40,10 +40,8 @@ class M1Project(template: Template) {
             fileName = appGradlePath,
             startIndexFunc = startIndexFuncImplementation,
             endIndexFunc = { it.indexOf("}", startIndexFuncImplementation(it)) - 1 },
-            newLine = """
-                  ${"  "}implementation project(":features:${'$'}{feature-name}:api")
-                  ${"  "}implementation project(":features:${'$'}{feature-name}:impl")
-            """.trimIndent()
+            newLine = """${"  "}implementation project(":features:${'$'}{feature-name}:api")
+${"  "}implementation project(":features:${'$'}{feature-name}:impl")"""
         )
 
 //        val startIndexFuncAndroidTestImplementation: (content: String) -> Int = { it.indexOf("  androidTestImplementation") }
