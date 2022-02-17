@@ -45,7 +45,7 @@ class FoodCategoriesViewModel @Inject constructor(
     override fun handleEvents(event: FoodCategoriesEvent) {
         when (event) {
             is FoodCategoriesEvent.TappedCategory -> {
-                router.push(Food.Route.FoodCategoryDetails(event.foodItem.id))
+                router.push(Food.Route.FoodCategoryDetails(event.id))
             }
             FoodCategoriesEvent.TappedBack -> router.pop()
         }
@@ -53,7 +53,7 @@ class FoodCategoriesViewModel @Inject constructor(
 }
 
 sealed class FoodCategoriesEvent : UiEvent {
-    data class TappedCategory(val foodItem: FoodItem) : FoodCategoriesEvent()
+    data class TappedCategory(val id: String) : FoodCategoriesEvent()
     object TappedBack : FoodCategoriesEvent()
 }
 
