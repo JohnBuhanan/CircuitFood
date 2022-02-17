@@ -1,6 +1,6 @@
 package com.johnbuhanan.features.${featurename}.domain.di
 
-import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Service
+import com.johnbuhanan.features.${featurename}.domain.service.${FeatureName}Service
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
