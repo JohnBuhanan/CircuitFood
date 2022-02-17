@@ -1,5 +1,6 @@
-package com.johnbuhanan.features.${featurename}.domain
+package com.johnbuhanan.features.${featurename}.domain.repository
 
+import com.johnbuhanan.features.${featurename}.domain.service.${FeatureName}Service
 import javax.inject.Inject
 import javax.inject.Singleton
 
