@@ -6,6 +6,8 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.johnbuhanan.common.ui.AppBar
+import com.johnbuhanan.common.ui.LoadingBar
 import com.johnbuhanan.features.login.viewmodel.${ScreenName}Event
 
 @Preview
@@ -19,7 +21,7 @@ fun ${ScreenName}View(
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            CategoriesAppBar()
+            AppBar()
         },
     ) {
         Box {
