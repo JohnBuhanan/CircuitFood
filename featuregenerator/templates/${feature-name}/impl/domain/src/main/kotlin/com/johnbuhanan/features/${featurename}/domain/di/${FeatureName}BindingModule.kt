@@ -1,7 +1,7 @@
 package com.johnbuhanan.features.${featurename}.domain.di
 
-import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Repository
-import com.johnbuhanan.features.${featurename}.domain.${FeatureName}RepositoryImpl
+import com.johnbuhanan.features.${featurename}.domain.repository.${FeatureName}Repository
+import com.johnbuhanan.features.${featurename}.domain.repository.${FeatureName}RepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
