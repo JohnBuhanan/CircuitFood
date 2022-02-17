@@ -1,6 +1,6 @@
-package com.johnbuhanan.features.food.domain.di
+package com.johnbuhanan.features.${featurename}.domain.di
 
-import com.johnbuhanan.features.food.domain.FoodService
+import com.johnbuhanan.features.${featurename}.domain.${FeatureName}Service
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,8 +11,8 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object FoodModule {
+object ${FeatureName}Module {
     @Provides
     @Singleton
-    fun provideFoodService(retrofit: Retrofit): FoodService = retrofit.create()
+    fun provide${FeatureName}Service(retrofit: Retrofit): ${FeatureName}Service = retrofit.create()
 }
