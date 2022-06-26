@@ -5,6 +5,7 @@ import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
 
 sealed class Screen2Event : UiEvent {
+    object TappedBack : Screen2Event()
     object TappedNext : Screen2Event()
 }
 

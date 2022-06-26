@@ -27,7 +27,9 @@ class Screen1ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is Screen1Event.TappedNext -> {
-                router.push(FeatureA.Route.Screen2)
+                router.push(FeatureA.Route.Screen2 {
+                    setState { copy(message = "New message at: $it") }
+                })
             }
         }
     }

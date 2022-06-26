@@ -7,7 +7,7 @@ interface FeatureA {
     object FeatureAOutput
     sealed class Route : ScreenProvider {
         object Screen1 : Route()
-        object Screen2 : Route()
+        data class Screen2(val onResult: (Long) -> Unit) : Route()
         object Screen3 : Route()
     }
 }

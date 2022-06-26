@@ -18,6 +18,8 @@ class Screen2ViewModel @Inject constructor(
     private val router: Router,
 ) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>(mainDispatcher, ioDispatcher) {
 
+    lateinit var onResult: (Long) -> Unit
+
     init {
         setState { copy(message = "FeatureA - Screen2") }
     }
@@ -27,6 +29,10 @@ class Screen2ViewModel @Inject constructor(
     override fun handleEvents(event: Screen2Event) {
         Timber.e("handleEvents")
         when (event) {
+            is Screen2Event.TappedBack -> {
+                onResult(System.currentTimeMillis())
+                router.pop()
+            }
             is TappedNext -> {
                 router.push(FeatureA.Route.Screen3)
             }
