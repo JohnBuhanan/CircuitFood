@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedNext
+import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedShowBottomSheet
 import timber.log.Timber
 
 @Preview
@@ -30,7 +31,9 @@ fun Screen2View(
             .wrapContentSize(Alignment.Center),
         contentAlignment = Alignment.BottomCenter,
     ) {
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = message,
                 textAlign = TextAlign.Center,
@@ -41,6 +44,11 @@ fun Screen2View(
                 onClick = { onEvent(TappedNext) }
             ) {
                 Text("Next")
+            }
+            Button(
+                onClick = { onEvent(TappedShowBottomSheet) },
+            ) {
+                Text("Show Bottom Sheet")
             }
         }
     }

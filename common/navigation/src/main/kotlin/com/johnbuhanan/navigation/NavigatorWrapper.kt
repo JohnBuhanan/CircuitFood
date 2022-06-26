@@ -1,10 +1,12 @@
 package com.johnbuhanan.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.concurrent.ThreadSafeMap
 import cafe.adriel.voyager.core.registry.ScreenProvider
@@ -54,7 +56,11 @@ fun NavigatorWrapper() {
 
     val screen = rememberScreen(FoodCategories)
     BottomSheetNavigator(
-        scrimColor = MaterialTheme.colors.surface.copy(alpha = 0.32f)
+        scrimColor = MaterialTheme.colors.surface.copy(alpha = 0.32f),
+        sheetShape = MaterialTheme.shapes.large.copy(
+            topStart = RoundedCornerShape(16.dp).topStart,
+            topEnd = RoundedCornerShape(16.dp).topEnd
+        ),
     ) { bottomSheetNav ->
         bottomSheetNavigator = bottomSheetNav
 

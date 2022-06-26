@@ -34,7 +34,9 @@ class Screen2ViewModel @Inject constructor(
                 router.pop()
             }
             is TappedNext -> {
-//                router.push(FeatureA.Route.Screen3)
+                router.push(FeatureA.Route.Screen3)
+            }
+            is Screen2Event.TappedShowBottomSheet -> {
                 router.pushBottomSheet(FeatureA.Route.Screen3)
             }
         }

@@ -7,6 +7,7 @@ import com.johnbuhanan.common.viewmodel.UiState
 sealed class Screen2Event : UiEvent {
     object TappedBack : Screen2Event()
     object TappedNext : Screen2Event()
+    object TappedShowBottomSheet : Screen2Event()
 }
 
 data class Screen2State(
