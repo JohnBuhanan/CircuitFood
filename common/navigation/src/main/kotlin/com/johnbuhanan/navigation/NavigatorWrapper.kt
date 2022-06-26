@@ -1,6 +1,8 @@
 package com.johnbuhanan.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -10,20 +12,23 @@ import cafe.adriel.voyager.core.registry.ScreenRegistry
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.transitions.SlideTransition
 import com.johnbuhanan.features.food.Food.Route.FoodCategories
 import com.johnbuhanan.navigation.RouterEvent.Pop
 import com.johnbuhanan.navigation.RouterEvent.Push
+import com.johnbuhanan.navigation.RouterEvent.PushBottomSheet
 import timber.log.Timber
 import kotlin.reflect.KClass
 
 private typealias ProviderKey = KClass<out ScreenProvider>
 private typealias ScreenFactory = (ScreenProvider) -> Screen
 
-@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun NavigatorWrapper() {
     var navigator: Navigator? = null
+    var bottomSheetNavigator: BottomSheetNavigator? = null
     val router = hiltViewModel<RouterViewModel>()
 
     LaunchedEffect(Unit) {
@@ -39,14 +44,24 @@ fun NavigatorWrapper() {
                     val screens = routerEvent.routes.map { it.toScreen() }
                     navigator?.push(screens)
                 }
+                is PushBottomSheet -> {
+                    val bottomSheetScreen = routerEvent.route.toScreen()
+                    bottomSheetNavigator?.show(bottomSheetScreen)
+                }
             }
         }
     }
 
     val screen = rememberScreen(FoodCategories)
-    Navigator(screen) {
-        navigator = it
-        SlideTransition(it)
+    BottomSheetNavigator(
+        scrimColor = MaterialTheme.colors.surface.copy(alpha = 0.32f)
+    ) { bottomSheetNav ->
+        bottomSheetNavigator = bottomSheetNav
+
+        Navigator(screen) { nav ->
+            navigator = nav
+            SlideTransition(nav)
+        }
     }
 }
 
