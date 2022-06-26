@@ -88,7 +88,7 @@ voyagerTransitions = { module = "cafe.adriel.voyager:voyager-transitions", versi
 # Misc
 material = "com.google.android.material:material:1.4.0"
 store = "com.dropbox.mobile.store:store4:4.0.2-KT15"
-agp = "com.android.tools.build:gradle:7.2.0-beta04"
+agp = "com.android.tools.build:gradle:7.2.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
 
 [bundles]
