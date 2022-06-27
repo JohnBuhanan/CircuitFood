@@ -13,16 +13,19 @@ import dagger.multibindings.IntoSet
 
 @Module
 @InstallIn(SingletonComponent::class)
-object FoodScreenModule {
-    @Provides
-    @IntoSet
-    fun provideScreenModule(): ScreenModule {
-        return screenModule {
-            register<Food.Route.FoodCategories> {
-                FoodCategoriesScreen()
-            }
-            register<Food.Route.FoodCategoryDetails> {
-                FoodCategoryDetailsScreen(it.id)
+interface FoodScreenModule {
+
+    companion object {
+        @Provides
+        @IntoSet
+        fun provideScreenModule(): ScreenModule {
+            return screenModule {
+                register<Food.Route.FoodCategories> {
+                    FoodCategoriesScreen()
+                }
+                register<Food.Route.FoodCategoryDetails> {
+                    FoodCategoryDetailsScreen(it.id)
+                }
             }
         }
     }
