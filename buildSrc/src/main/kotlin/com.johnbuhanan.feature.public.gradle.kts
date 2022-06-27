@@ -8,5 +8,4 @@ apply(plugin = "com.johnbuhanan.android")
 dependencies {
     "implementation"(libs.resolveDependency("voyagerNavigator"))
     "implementation"(libs.resolveDependency("androidx.compose.ui"))
-
 }
