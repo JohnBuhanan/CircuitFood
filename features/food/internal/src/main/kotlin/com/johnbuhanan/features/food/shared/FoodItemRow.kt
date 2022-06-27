@@ -9,17 +9,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.request.ImageRequest
 import com.johnbuhanan.common.viewmodel.noRippleClickable
-import com.johnbuhanan.features.food.domain.model.FoodItem
+import com.johnbuhanan.libraries.food.model.FoodItem
 
 /**
  * This is shared between `categories` and `details`.

@@ -1,7 +1,7 @@
-package com.johnbuhanan.features.food.domain.repository
+package com.johnbuhanan.libraries.food.repository
 
-import com.johnbuhanan.features.food.domain.FoodService
-import com.johnbuhanan.features.food.domain.model.Meal
+import com.johnbuhanan.libraries.food.FoodService
+import com.johnbuhanan.libraries.food.model.Meal
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -10,7 +10,9 @@ interface MealRepository {
 }
 
 @Singleton
-class MealRepositoryImpl @Inject constructor(private val foodService: FoodService) : MealRepository {
+class MealRepositoryImpl @Inject constructor(
+    private val foodService: FoodService
+) : MealRepository {
     override suspend fun getMealsByCategoryName(categoryName: String): Result<List<Meal>> {
         return foodService.getMealsByCategoryName(categoryName).runCatching { meals }
     }

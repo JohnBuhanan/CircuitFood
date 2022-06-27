@@ -10,9 +10,9 @@ import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
-import com.johnbuhanan.features.food.domain.model.FoodItem
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoryAsItemById
-import com.johnbuhanan.features.food.domain.usecase.GetMealsAsItemsById
+import com.johnbuhanan.libraries.food.model.FoodItem
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
+import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

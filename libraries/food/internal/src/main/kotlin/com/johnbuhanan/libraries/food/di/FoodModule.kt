@@ -1,6 +1,6 @@
-package com.johnbuhanan.features.food.domain.di
+package com.johnbuhanan.libraries.food.di
 
-import com.johnbuhanan.features.food.domain.FoodService
+import com.johnbuhanan.libraries.food.FoodService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

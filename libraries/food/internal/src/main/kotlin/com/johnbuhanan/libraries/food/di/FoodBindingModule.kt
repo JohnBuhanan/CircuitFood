@@ -1,15 +1,15 @@
-package com.johnbuhanan.features.food.domain.di
+package com.johnbuhanan.libraries.food.di
 
-import com.johnbuhanan.features.food.domain.repository.FoodCategoryRepository
-import com.johnbuhanan.features.food.domain.repository.FoodCategoryRepositoryImpl
-import com.johnbuhanan.features.food.domain.repository.MealRepository
-import com.johnbuhanan.features.food.domain.repository.MealRepositoryImpl
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoriesAsItems
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoriesAsItemsImpl
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoryAsItemById
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoryAsItemByIdImpl
-import com.johnbuhanan.features.food.domain.usecase.GetMealsAsItemsById
-import com.johnbuhanan.features.food.domain.usecase.GetMealsAsItemsByIdImpl
+import com.johnbuhanan.libraries.food.repository.FoodCategoryRepository
+import com.johnbuhanan.libraries.food.repository.FoodCategoryRepositoryImpl
+import com.johnbuhanan.libraries.food.repository.MealRepository
+import com.johnbuhanan.libraries.food.repository.MealRepositoryImpl
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoriesAsItems
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoriesAsItemsImpl
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemByIdImpl
+import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
+import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsByIdImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

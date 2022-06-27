@@ -3,14 +3,7 @@ package com.johnbuhanan.features.food.details
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -28,9 +21,9 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
-import com.johnbuhanan.features.food.domain.model.FoodItem
 import com.johnbuhanan.features.food.shared.FoodItemDetails
 import com.johnbuhanan.features.food.shared.FoodItemRow
+import com.johnbuhanan.libraries.food.model.FoodItem
 import timber.log.Timber
 import kotlin.math.min
 

@@ -1,14 +1,10 @@
-package com.johnbuhanan.features.food.domain.usecase
+package com.johnbuhanan.libraries.food.usecase
 
-import com.johnbuhanan.features.food.domain.mapper.toFoodItem
-import com.johnbuhanan.features.food.domain.model.FoodItem
-import com.johnbuhanan.features.food.domain.repository.MealRepository
+import com.johnbuhanan.libraries.food.mapper.toFoodItem
+import com.johnbuhanan.libraries.food.model.FoodItem
+import com.johnbuhanan.libraries.food.repository.MealRepository
 import javax.inject.Inject
 import javax.inject.Singleton
-
-interface GetMealsAsItemsById {
-    suspend operator fun invoke(id: String): Result<List<FoodItem>>
-}
 
 @Singleton
 class GetMealsAsItemsByIdImpl @Inject constructor(

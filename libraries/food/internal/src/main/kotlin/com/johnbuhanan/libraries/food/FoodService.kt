@@ -1,7 +1,7 @@
-package com.johnbuhanan.features.food.domain
+package com.johnbuhanan.libraries.food
 
-import com.johnbuhanan.features.food.domain.model.FoodCategoriesResponse
-import com.johnbuhanan.features.food.domain.model.MealsResponse
+import com.johnbuhanan.libraries.food.model.FoodCategoriesResponse
+import com.johnbuhanan.libraries.food.model.MealsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

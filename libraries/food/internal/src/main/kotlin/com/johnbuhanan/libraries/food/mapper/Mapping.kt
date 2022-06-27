@@ -1,8 +1,8 @@
-package com.johnbuhanan.features.food.domain.mapper
+package com.johnbuhanan.libraries.food.mapper
 
-import com.johnbuhanan.features.food.domain.model.FoodCategory
-import com.johnbuhanan.features.food.domain.model.FoodItem
-import com.johnbuhanan.features.food.domain.model.Meal
+import com.johnbuhanan.libraries.food.model.FoodCategory
+import com.johnbuhanan.libraries.food.model.FoodItem
+import com.johnbuhanan.libraries.food.model.Meal
 
 fun FoodCategory.toFoodItem(): FoodItem = FoodItem(
     id = id,

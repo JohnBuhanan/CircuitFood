@@ -8,8 +8,8 @@ import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.food.Food
-import com.johnbuhanan.features.food.domain.model.FoodItem
-import com.johnbuhanan.features.food.domain.usecase.GetFoodCategoriesAsItems
+import com.johnbuhanan.libraries.food.model.FoodItem
+import com.johnbuhanan.libraries.food.usecase.GetFoodCategoriesAsItems
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -22,7 +22,10 @@ class FoodCategoriesViewModel @Inject constructor(
     @IODispatcher ioDispatcher: CoroutineDispatcher,
     private val getFoodCategoriesAsItems: GetFoodCategoriesAsItems,
     private val router: Router,
-) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(mainDispatcher, ioDispatcher) {
+) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(
+    mainDispatcher,
+    ioDispatcher
+) {
     init {
         viewModelScope.launch(ioDispatcher) {
             getFoodCategoriesAsItems().fold(
@@ -57,7 +60,10 @@ sealed class FoodCategoriesEvent : UiEvent {
     object TappedBack : FoodCategoriesEvent()
 }
 
-data class FoodCategoriesState(val categories: List<FoodItem> = listOf(), val isLoading: Boolean = false) : UiState
+data class FoodCategoriesState(
+    val categories: List<FoodItem> = listOf(),
+    val isLoading: Boolean = false
+) : UiState
 
 sealed class FoodCategoriesEffect : UiEffect {
     data class ShowToast(val message: String) : FoodCategoriesEffect()

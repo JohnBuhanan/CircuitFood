@@ -1,3 +1,7 @@
 plugins {
-  id 'com.johnbuhanan.domain'
+    id 'com.johnbuhanan.domain'
+}
+
+dependencies {
+    implementation project(":libraries:food:public")
 }

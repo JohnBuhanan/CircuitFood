@@ -20,5 +20,5 @@ include(
         ':features:featureA:public', ':features:featureA:internal',
         ':features:featureB:public', ':features:featureB:internal',
         ':features:food:public', ':features:food:internal',
-        ":libraries:food:internal"
+        ":libraries:food:public", ":libraries:food:internal"
 )

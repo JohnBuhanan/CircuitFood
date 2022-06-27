@@ -17,4 +17,5 @@ dependencies {
   implementation project(":features:featureA:internal")
   implementation project(':features:featureB:internal')
   implementation project(':features:food:internal')
+  implementation project(':libraries:food:internal')
 }
