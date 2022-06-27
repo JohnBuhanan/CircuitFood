@@ -18,6 +18,6 @@ include(
     ":common:ui",
     ":common:viewmodel",
     ':features:featureA:public', ':features:featureA:internal', //":features:featureA:impl:domain",
-    ":features:featureB:api", ":features:featureB:impl", //":features:featureA:impl:domain",
+    ':features:featureB:public', ':features:featureB:internal', //":features:featureA:impl:domain",
     ":features:food:api", ":features:food:impl", ":features:food:impl:domain"
 )
