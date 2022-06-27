@@ -1,5 +1,5 @@
 plugins {
-    id 'com.johnbuhanan.domain'
+    id 'com.johnbuhanan.libraries.internal'
 }
 
 dependencies {
