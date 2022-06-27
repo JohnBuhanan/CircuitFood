@@ -5,6 +5,6 @@ plugins {
 dependencies {
     implementation project(':features:food:public')
     implementation project(':features:featureA:public')
-    implementation project(":features:food:internal:domain")
+    implementation project(":libraries:food:internal")
 }
 
