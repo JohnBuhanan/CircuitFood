@@ -1,11 +1,11 @@
 plugins {
-  id "com.johnbuhanan.impl"
+    id "com.johnbuhanan.impl"
 }
 
 dependencies {
-  api project(":features:food:api")
-  implementation project(":features:featureA:api")
+    api project(":features:food:api")
+    implementation project(':features:featureA:public')
 
-  implementation project(":features:food:impl:domain")
+    implementation project(":features:food:impl:domain")
 }
 

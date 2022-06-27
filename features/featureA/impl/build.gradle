@@ -1,9 +1,0 @@
-plugins {
-  id 'com.johnbuhanan.impl'
-}
-
-dependencies {
-  api project(':features:featureA:api')
-  implementation project(':features:featureB:api')
-  //  implementation project(':features:featureA:impl:domain')
-}
