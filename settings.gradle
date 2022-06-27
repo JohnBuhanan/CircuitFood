@@ -19,5 +19,5 @@ include(
     ":common:viewmodel",
     ':features:featureA:public', ':features:featureA:internal', //":features:featureA:impl:domain",
     ':features:featureB:public', ':features:featureB:internal', //":features:featureA:impl:domain",
-    ":features:food:api", ":features:food:impl", ":features:food:impl:domain"
+    ':features:food:public', ':features:food:internal', ":features:food:internal:domain"
 )

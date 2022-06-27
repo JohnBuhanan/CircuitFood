@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.features.food.api)
+    implementation(projects.features.food.public)
 }

@@ -16,5 +16,5 @@ dependencies {
   implementation project(":common:retrofit")
   implementation project(":features:featureA:internal")
   implementation project(':features:featureB:internal')
-  implementation project(":features:food:impl")
+  implementation project(':features:food:internal')
 }
