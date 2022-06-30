@@ -8,8 +8,8 @@ import timber.log.Timber
 @Suppress("MoveLambdaOutsideParentheses")
 @Composable
 inline fun <reified VM : BaseViewModel<*, *, *>> Screen.WithViewModel(
+    assistedInjection: (VM) -> Unit = {},
     crossinline onEffect: suspend (UiEffect) -> Unit,
-    initialize: (VM) -> Unit = {},
     start: (VM, (UiEvent) -> Unit) -> Unit,
 ) {
     val viewModel: VM = getViewModel()
@@ -19,7 +19,8 @@ inline fun <reified VM : BaseViewModel<*, *, *>> Screen.WithViewModel(
         onEffect(effect)
     }
 
-    initialize(viewModel)
+    assistedInjection(viewModel)
+    viewModel.afterAssistedInjection()
 
     val onEvent: (UiEvent) -> Unit = { event -> viewModel.setEvent(event) }
 

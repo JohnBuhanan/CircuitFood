@@ -6,25 +6,21 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
-import timber.log.Timber
 
 data class FoodCategoryDetailsScreen(val id: String) : AndroidScreen() {
     @Composable
     override fun Content() {
         val context = LocalContext.current
-        Timber.e("Composable - FoodCategoryDetails")
         WithViewModel<FoodCategoryDetailsViewModel>(
+            assistedInjection = { viewModel ->
+                viewModel.id = id
+            },
             onEffect = { effect ->
-                Timber.e("FoodCategoryDetailsEffect")
                 when (effect) {
                     is FoodCategoryDetailsEffect.ShowToast -> {
-                        Timber.e("FoodCategoryDetailsEffect.ShowSnackbar")
                         Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                     }
                 }
-            },
-            initialize = { viewModel ->
-                viewModel.initialize(id)
             },
             start = { viewModel, onEvent ->
                 when (val state = viewModel.state.collectAsState().value) {

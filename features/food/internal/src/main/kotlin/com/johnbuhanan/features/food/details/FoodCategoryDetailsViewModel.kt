@@ -15,10 +15,10 @@ import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
 import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltViewModel
 class FoodCategoryDetailsViewModel @Inject constructor(
@@ -27,11 +27,15 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     private val getFoodCategoryById: GetFoodCategoryAsItemById,
     private val getMealsAsItemsById: GetMealsAsItemsById,
     private val router: Router,
-) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(mainDispatcher, ioDispatcher) {
+) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(
+    mainDispatcher,
+    ioDispatcher
+) {
 
-    fun initialize(id: String) {
-        Timber.e("initialize")
+    // assisted injection
+    lateinit var id: String
 
+    override fun afterAssistedInjection() {
         viewModelScope.launch(ioDispatcher) {
             getFoodCategoryById(id).fold(
                 onSuccess = { foodCategory ->

@@ -64,4 +64,6 @@ abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect
             _effect.send(effectValue)
         }
     }
+
+    open fun afterAssistedInjection() {}
 }
