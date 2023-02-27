@@ -9,11 +9,11 @@ apply(plugin = "kotlin-kapt")
 apply(plugin = "com.google.devtools.ksp")
 
 with(the<BaseExtension>()) {
-    compileSdkVersion(31)
+    compileSdkVersion(33)
     buildToolsVersion = "30.0.3"
     defaultConfig {
         minSdk = 24
-        targetSdk = 31
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

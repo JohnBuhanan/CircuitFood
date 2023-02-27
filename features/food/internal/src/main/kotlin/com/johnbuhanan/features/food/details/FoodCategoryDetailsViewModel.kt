@@ -8,12 +8,14 @@ import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.features.featureA.api.FeatureA
+import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
 import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
 import com.johnbuhanan.navigation.Router
+import com.johnbuhanan.navigation.getRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -31,11 +33,10 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     mainDispatcher,
     ioDispatcher
 ) {
+    private val foodCategoryDetails: Food.Route.FoodCategoryDetails = router.getRoute()
+    private val id = foodCategoryDetails.id
 
-    // assisted injection
-    lateinit var id: String
-
-    override fun afterAssistedInjection() {
+    init {
         viewModelScope.launch(ioDispatcher) {
             getFoodCategoryById(id).fold(
                 onSuccess = { foodCategory ->

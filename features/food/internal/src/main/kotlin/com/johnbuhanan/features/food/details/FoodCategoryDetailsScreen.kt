@@ -12,9 +12,6 @@ data class FoodCategoryDetailsScreen(val id: String) : AndroidScreen() {
     override fun Content() {
         val context = LocalContext.current
         WithViewModel<FoodCategoryDetailsViewModel>(
-            assistedInjection = { viewModel ->
-                viewModel.id = id
-            },
             onEffect = { effect ->
                 when (effect) {
                     is FoodCategoryDetailsEffect.ShowToast -> {

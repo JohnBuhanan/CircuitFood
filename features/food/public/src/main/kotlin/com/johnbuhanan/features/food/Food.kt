@@ -7,6 +7,6 @@ interface Food {
     object FoodScreenOutput
     sealed class Route : ScreenProvider {
         object FoodCategories : Route()
-        data class FoodCategoryDetails(val id: String) : Route()
+        data class FoodCategoryDetails(val id: String) : Route(), java.io.Serializable
     }
 }
