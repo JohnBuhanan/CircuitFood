@@ -2,7 +2,7 @@ package com.johnbuhanan.common.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,10 +17,7 @@ interface UiEvent
 
 interface UiEffect
 
-abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>(
-    private val mainDispatcher: CoroutineDispatcher,
-    private val ioDispatcher: CoroutineDispatcher,
-) : ViewModel() {
+abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect>() : ViewModel() {
     private val initialState: STATE by lazy { setInitialState() }
     abstract fun setInitialState(): STATE
 
@@ -38,18 +35,18 @@ abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect
 
     @Suppress("UNCHECKED_CAST")
     fun setEvent(event: UiEvent) {
-        viewModelScope.launch(ioDispatcher) { _event.emit(event as EVENT) }
+        viewModelScope.launch { _event.emit(event as EVENT) }
     }
 
     protected fun setState(reducer: STATE.() -> STATE) {
-        viewModelScope.launch(mainDispatcher) {
+        viewModelScope.launch {
             val newState = state.value.reducer()
             _state.value = newState
         }
     }
 
     private fun subscribeToEvents() {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(Dispatchers.Main) {
             _event.collect {
                 handleEvents(it)
             }
@@ -59,7 +56,7 @@ abstract class BaseViewModel<EVENT : UiEvent, STATE : UiState, EFFECT : UiEffect
     abstract fun handleEvents(event: EVENT)
 
     protected fun setEffect(builder: () -> EFFECT) {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch {
             val effectValue = builder()
             _effect.send(effectValue)
         }

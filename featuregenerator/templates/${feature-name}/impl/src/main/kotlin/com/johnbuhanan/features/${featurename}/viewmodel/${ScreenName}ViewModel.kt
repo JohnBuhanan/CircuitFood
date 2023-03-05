@@ -21,7 +21,7 @@ class ${ScreenName}ViewModel @Inject constructor(
     @IODispatcher ioDispatcher: CoroutineDispatcher,
     private val repository: ${FeatureName}Repository,
     private val router: Router,
-) : BaseViewModel<${ScreenName}Event, ${ScreenName}State, ${ScreenName}Effect>(mainDispatcher, ioDispatcher) {
+) : BaseViewModel<${ScreenName}Event, ${ScreenName}State, ${ScreenName}Effect>() {
     init {
         viewModelScope.launch(ioDispatcher) {
             val categories = repository.getSomething()

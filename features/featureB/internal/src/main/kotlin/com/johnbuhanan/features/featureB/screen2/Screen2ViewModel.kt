@@ -16,7 +16,7 @@ class Screen2ViewModel @Inject constructor(
     @MainDispatcher mainDispatcher: CoroutineDispatcher,
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val router: Router,
-) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>(mainDispatcher, ioDispatcher) {
+) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>() {
 
     init {
         setState { copy(message = "FeatureB - Screen2") }

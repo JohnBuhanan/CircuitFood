@@ -16,7 +16,7 @@ class Screen3ViewModel @Inject constructor(
     @MainDispatcher mainDispatcher: CoroutineDispatcher,
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val router: Router,
-) : BaseViewModel<Screen3Event, Screen3State, Screen3Effect>(mainDispatcher, ioDispatcher) {
+) : BaseViewModel<Screen3Event, Screen3State, Screen3Effect>() {
 
     init {
         setState { copy(message = "FeatureB - Screen3") }

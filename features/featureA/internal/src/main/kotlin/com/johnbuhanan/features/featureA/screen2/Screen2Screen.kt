@@ -19,6 +19,9 @@ class Screen2Screen() : AndroidScreen() {
     override fun Content() {
         val context = LocalContext.current
         Timber.e("Composable - FeatureA")
+        val screen1ViewModel: Screen1ViewModel = viewModel()
+        val router: RouterViewModel = viewModel()
+
         WithViewModel<Screen2ViewModel>(
             onEffect = { effect ->
                 when (effect) {
@@ -27,9 +30,7 @@ class Screen2Screen() : AndroidScreen() {
                         Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                     }
                     is Screen2Effect.SetResult -> {
-                        val screen1ViewModel: Screen1ViewModel = viewModel()
                         screen1ViewModel.setEvent(Screen1Event.Screen2ResultSet(effect.value))
-                        val router: RouterViewModel = viewModel()
                         router.pop()
                     }
                 }

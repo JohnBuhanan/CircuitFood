@@ -29,10 +29,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     private val getFoodCategoryById: GetFoodCategoryAsItemById,
     private val getMealsAsItemsById: GetMealsAsItemsById,
     private val router: Router,
-) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>(
-    mainDispatcher,
-    ioDispatcher
-) {
+) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>() {
     private val foodCategoryDetails: Food.Route.FoodCategoryDetails = router.getRoute()
     private val id = foodCategoryDetails.id
 

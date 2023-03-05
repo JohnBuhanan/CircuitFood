@@ -22,10 +22,7 @@ class FoodCategoriesViewModel @Inject constructor(
     @IODispatcher ioDispatcher: CoroutineDispatcher,
     private val getFoodCategoriesAsItems: GetFoodCategoriesAsItems,
     private val router: Router,
-) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>(
-    mainDispatcher,
-    ioDispatcher
-) {
+) : BaseViewModel<FoodCategoriesEvent, FoodCategoriesState, FoodCategoriesEffect>() {
     init {
         viewModelScope.launch(ioDispatcher) {
             getFoodCategoriesAsItems().fold(
