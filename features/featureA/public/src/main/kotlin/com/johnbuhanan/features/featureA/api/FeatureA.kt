@@ -1,13 +1,14 @@
 package com.johnbuhanan.features.featureA.api
 
 import cafe.adriel.voyager.core.registry.ScreenProvider
+import java.io.Serializable
 
 interface FeatureA {
     object FeatureAInput
     object FeatureAOutput
-    sealed class Route : ScreenProvider {
+    sealed class Route : ScreenProvider, Serializable {
         object Screen1 : Route()
-        data class Screen2(val onResult: (Long) -> Unit) : Route()
+        object Screen2 : Route()
         object Screen3 : Route()
     }
 }

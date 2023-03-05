@@ -20,8 +20,8 @@ import com.johnbuhanan.features.food.Food.Route.FoodCategories
 import com.johnbuhanan.navigation.RouterEvent.Pop
 import com.johnbuhanan.navigation.RouterEvent.Push
 import com.johnbuhanan.navigation.RouterEvent.PushBottomSheet
-import timber.log.Timber
 import kotlin.reflect.KClass
+import timber.log.Timber
 
 private typealias ProviderKey = KClass<out ScreenProvider>
 private typealias ScreenFactory = (ScreenProvider) -> Screen

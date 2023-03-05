@@ -6,9 +6,9 @@ import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltViewModel
 class Screen1ViewModel @Inject constructor(
@@ -27,9 +27,10 @@ class Screen1ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is Screen1Event.TappedNext -> {
-                router.push(FeatureA.Route.Screen2 {
-                    setState { copy(message = "New message at: $it") }
-                })
+                router.push(FeatureA.Route.Screen2)
+            }
+            is Screen1Event.Screen2ResultSet -> {
+                setState { copy(message = "It bloody worked! ${event.value}") }
             }
         }
     }

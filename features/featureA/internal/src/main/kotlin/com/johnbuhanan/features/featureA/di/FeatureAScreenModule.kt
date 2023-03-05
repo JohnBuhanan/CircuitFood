@@ -23,7 +23,7 @@ object FeatureAScreenModule {
                 Screen1Screen()
             }
             register<FeatureA.Route.Screen2> {
-                Screen2Screen(it.onResult)
+                Screen2Screen()
             }
             register<FeatureA.Route.Screen3> {
                 Screen3Screen()

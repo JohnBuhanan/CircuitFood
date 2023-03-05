@@ -41,11 +41,3 @@ class RouterImpl @Inject constructor() : Router {
 inline fun <reified T> Router.getRoute(): T {
     return savedStateHandle.get<T>(T::class.java.name) as T
 }
-
-inline fun <reified T> Router.setResult(result: T) {
-    return savedStateHandle.set(T::class.java.name, result)
-}
-
-inline fun <reified T> Router.getResult(): T {
-    return savedStateHandle.get<T>(T::class.java.name) as T
-}
