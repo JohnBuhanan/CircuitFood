@@ -9,7 +9,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -36,32 +40,32 @@ fun FoodItemRow(
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
             .clickable { onItemClicked(item) }
     ) {
-//        var expanded by remember { mutableStateOf(false) }
-//        Row(modifier = Modifier.animateContentSize()) {
-//            Box(modifier = Modifier.align(alignment = Alignment.CenterVertically)) {
-//                FoodItemThumbnail(item.thumbnailUrl, iconTransformationBuilder)
-//            }
-//            FoodItemDetails(
-//                item = item,
-//                expandedLines = if (expanded) 10 else 2,
-//                modifier = Modifier
-//                    .padding(
-//                        start = 8.dp,
-//                        end = 8.dp,
-//                        top = 24.dp,
-//                        bottom = 24.dp
-//                    )
-//                    .fillMaxWidth(0.80f)
-//                    .align(Alignment.CenterVertically)
-//            )
-//            if (itemShouldExpand)
-//                Box(
-//                    modifier = Modifier
-//                        .align(if (expanded) Alignment.Bottom else Alignment.CenterVertically)
-//                        .noRippleClickable { expanded = !expanded }
-//                ) {
-//                    ExpandableContentIcon(expanded)
-//                }
-//        }
+        var expanded by remember { mutableStateOf(false) }
+        Row(modifier = Modifier.animateContentSize()) {
+            Box(modifier = Modifier.align(alignment = Alignment.CenterVertically)) {
+                FoodItemThumbnail(item.thumbnailUrl, iconTransformationBuilder)
+            }
+            FoodItemDetails(
+                item = item,
+                expandedLines = if (expanded) 10 else 2,
+                modifier = Modifier
+                    .padding(
+                        start = 8.dp,
+                        end = 8.dp,
+                        top = 24.dp,
+                        bottom = 24.dp
+                    )
+                    .fillMaxWidth(0.80f)
+                    .align(Alignment.CenterVertically)
+            )
+            if (itemShouldExpand)
+                Box(
+                    modifier = Modifier
+                        .align(if (expanded) Alignment.Bottom else Alignment.CenterVertically)
+                        .noRippleClickable { expanded = !expanded }
+                ) {
+                    ExpandableContentIcon(expanded)
+                }
+        }
     }
 }

@@ -10,7 +10,7 @@ repositories {
 
 dependencies {
     implementation(libs.dagger.hilt.androidGradlePlugin)
-    implementation(libs.agp)
+    implementation(libs.androidGradlePlugin)
     implementation(libs.kotlin.gradle)
     implementation(gradleApi())
     implementation(localGroovy())

@@ -5,8 +5,8 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.2.0'
-    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+    classpath libs.androidGradlePlugin
+    classpath libs.kotlin.gradle
     classpath libs.dagger.hilt.androidGradlePlugin
   }
 }
@@ -23,7 +23,6 @@ allprojects { project ->
   project.afterEvaluate {
     if (plugins.hasPlugin('com.johnbuhanan.android')) {
       android.kotlinOptions {
-        useIR = true
         jvmTarget = JavaVersion.VERSION_11.toString()
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
