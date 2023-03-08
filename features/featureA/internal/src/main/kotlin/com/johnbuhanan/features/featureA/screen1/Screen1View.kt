@@ -20,6 +20,7 @@ import timber.log.Timber
 @Composable
 fun Screen1View(
     message: String = "Test string",
+    buttonText: String = "Test button",
     onEvent: (Screen1Event) -> Unit = {},
 ) {
     Timber.e("Composable - FeatureAView")
@@ -40,7 +41,7 @@ fun Screen1View(
             Button(
                 onClick = { onEvent(TappedNext) }
             ) {
-                Text("Next")
+                Text(buttonText)
             }
         }
     }

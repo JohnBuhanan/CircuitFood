@@ -1,17 +1,17 @@
 [versions]
 coroutines = "1.5.0"
 
-kotlin = "1.7.10" #1.8.10
+kotlin = "1.8.10"
 agp = "7.4.1"
-compose = "1.3.1" #1.3.1
-kotlinCompilerExtensionVersion = "1.3.1" #1.4.3
-dagger = "2.44.2" #2.44
+compose = "1.3.1"
+kotlinCompilerExtensionVersion = "1.4.3"
+dagger = "2.44.2"
 
 lifecycle = "2.5.1"
 orchestrator = "1.3.0"
 retrofit = "2.9.0"
 coil = "1.3.0"
-kspPlugin = "1.7.10-1.0.6"
+kspPlugin = "1.8.10-1.0.9"
 voyager = "1.0.0-rc03"
 moshi = "1.13.0"
 

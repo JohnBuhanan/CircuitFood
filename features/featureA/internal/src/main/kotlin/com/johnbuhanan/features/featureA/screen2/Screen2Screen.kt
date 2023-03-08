@@ -5,13 +5,9 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.androidx.AndroidScreen
 import com.johnbuhanan.common.viewmodel.WithViewModel
-import com.johnbuhanan.features.featureA.screen1.Screen1Event
-import com.johnbuhanan.features.featureA.screen1.Screen1ViewModel
 import com.johnbuhanan.features.featureA.screen2.Screen2Effect.ShowToast
-import com.johnbuhanan.navigation.RouterViewModel
 import timber.log.Timber
 
 class Screen2Screen() : AndroidScreen() {
@@ -19,8 +15,6 @@ class Screen2Screen() : AndroidScreen() {
     override fun Content() {
         val context = LocalContext.current
         Timber.e("Composable - FeatureA")
-        val screen1ViewModel: Screen1ViewModel = viewModel()
-        val router: RouterViewModel = viewModel()
 
         WithViewModel<Screen2ViewModel>(
             onEffect = { effect ->
@@ -28,10 +22,6 @@ class Screen2Screen() : AndroidScreen() {
                     is ShowToast -> {
                         Timber.e("Composable - onEffect - ShowToast")
                         Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
-                    }
-                    is Screen2Effect.SetResult -> {
-                        screen1ViewModel.setEvent(Screen1Event.Screen2ResultSet(effect.value))
-                        router.pop()
                     }
                 }
             },

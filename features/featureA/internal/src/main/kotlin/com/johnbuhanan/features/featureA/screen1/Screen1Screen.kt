@@ -27,6 +27,7 @@ class Screen1Screen : AndroidScreen() {
                 when (val state = viewModel.state.collectAsState().value) {
                     is Screen1State -> Screen1View(
                         message = state.message,
+                        buttonText = state.buttonText,
                         onEvent = onEvent
                     )
                 }

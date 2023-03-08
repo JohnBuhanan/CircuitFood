@@ -16,5 +16,4 @@ data class Screen2State(
 
 sealed class Screen2Effect : UiEffect {
     data class ShowToast(val message: String) : Screen2Effect()
-    data class SetResult(val value: String) : Screen2Effect()
 }

@@ -1,20 +1,16 @@
 package com.johnbuhanan.features.featureA.screen2
 
-import com.johnbuhanan.common.coroutines.di.IODispatcher
-import com.johnbuhanan.common.coroutines.di.MainDispatcher
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedNext
 import com.johnbuhanan.navigation.Router
+import com.johnbuhanan.navigation.setResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.CoroutineDispatcher
 import timber.log.Timber
 
 @HiltViewModel
 class Screen2ViewModel @Inject constructor(
-    @MainDispatcher mainDispatcher: CoroutineDispatcher,
-    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val router: Router,
 ) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>() {
 
@@ -28,7 +24,7 @@ class Screen2ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is Screen2Event.TappedBack -> {
-                setEffect { Screen2Effect.SetResult("BLAHBALBHBLAH") }
+                router.setResult(FeatureA.Screen2Result("TESTING"))
                 router.pop()
             }
             is TappedNext -> {
