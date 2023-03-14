@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.featureA.screen1
 
+import androidx.lifecycle.SavedStateHandle
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.navigation.Router
@@ -11,12 +12,13 @@ import timber.log.Timber
 @HiltViewModel
 class Screen1ViewModel @Inject constructor(
     private val router: Router,
+    private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel<Screen1Event, Screen1State, Screen1Effect>() {
 
     init {
         setState { copy(message = "FeatureA - Screen1", buttonText = "Launch for result!") }
 
-        router.listenForResult<FeatureA.Screen2Result>(this) {
+        savedStateHandle.listenForResult<FeatureA.Screen2Result>(this) {
             setState { copy(message = "Screen2Result: ${it.value}") }
         }
     }

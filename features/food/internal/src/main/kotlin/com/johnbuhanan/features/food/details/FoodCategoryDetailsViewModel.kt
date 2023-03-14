@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.food.details
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.johnbuhanan.common.coroutines.di.IODispatcher
 import com.johnbuhanan.common.coroutines.di.MainDispatcher
@@ -29,8 +30,10 @@ class FoodCategoryDetailsViewModel @Inject constructor(
     private val getFoodCategoryById: GetFoodCategoryAsItemById,
     private val getMealsAsItemsById: GetMealsAsItemsById,
     private val router: Router,
+    savedStateHandle: SavedStateHandle,
 ) : BaseViewModel<FoodCategoryDetailsEvent, FoodCategoryDetailsState, FoodCategoryDetailsEffect>() {
-    private val foodCategoryDetails: Food.Route.FoodCategoryDetails = router.getRoute()
+
+    private val foodCategoryDetails: Food.Route.FoodCategoryDetails = savedStateHandle.getRoute()
     private val id = foodCategoryDetails.id
 
     init {

@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.featureA.screen2
 
+import androidx.lifecycle.SavedStateHandle
 import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.featureA.screen2.Screen2Event.TappedNext
@@ -12,6 +13,7 @@ import timber.log.Timber
 @HiltViewModel
 class Screen2ViewModel @Inject constructor(
     private val router: Router,
+    private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel<Screen2Event, Screen2State, Screen2Effect>() {
 
     init {
@@ -24,7 +26,7 @@ class Screen2ViewModel @Inject constructor(
         Timber.e("handleEvents")
         when (event) {
             is Screen2Event.TappedBack -> {
-                router.setResult(FeatureA.Screen2Result("TESTING"))
+                savedStateHandle.setResult(FeatureA.Screen2Result("TESTING"))
                 router.pop()
             }
             is TappedNext -> {
