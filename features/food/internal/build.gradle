@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.features.food.public)
-    implementation(projects.libraries.food.public)
+    api projects.features.food.public
+    implementation projects.libraries.food.public
 }
 
