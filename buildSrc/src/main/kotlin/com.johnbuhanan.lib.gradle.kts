@@ -3,3 +3,7 @@ plugins {
     id("com.johnbuhanan.dependencies")
     id("com.johnbuhanan.android")
 }
+
+dependencies {
+    "implementation"(project(":common:di"))
+}

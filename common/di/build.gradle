@@ -1,3 +1,8 @@
 plugins {
-  id 'com.johnbuhanan.lib'
+    id "com.android.library"
+    id "com.johnbuhanan.android"
+}
+
+android {
+    buildFeatures.compose = false
 }

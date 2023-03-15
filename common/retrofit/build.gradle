@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
   // Retrofit
-  implementation libs.retrofit
+  api libs.retrofit
   implementation libs.retrofit.converter.moshi
   implementation libs.moshi
 }
