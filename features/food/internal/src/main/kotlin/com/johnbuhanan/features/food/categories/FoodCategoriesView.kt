@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.food.categories
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,6 +17,7 @@ import com.johnbuhanan.features.food.categories.FoodCategoriesEvent.TappedCatego
 import com.johnbuhanan.features.food.shared.FoodItemRow
 import com.johnbuhanan.libraries.food.model.FoodItem
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview
 @Composable
 fun FoodCategoriesView(
