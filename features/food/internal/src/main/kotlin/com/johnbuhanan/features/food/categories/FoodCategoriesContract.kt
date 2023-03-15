@@ -1,11 +1,8 @@
 package com.johnbuhanan.features.food.categories
 
-import com.johnbuhanan.common.viewmodel.UiEffect
-import com.johnbuhanan.common.viewmodel.UiEvent
-import com.johnbuhanan.common.viewmodel.UiState
 import com.johnbuhanan.libraries.food.model.FoodItem
 
-sealed class FoodCategoriesEvent : UiEvent {
+sealed class FoodCategoriesEvent {
     data class TappedCategory(val id: String) : FoodCategoriesEvent()
     object TappedBack : FoodCategoriesEvent()
 }
@@ -13,8 +10,8 @@ sealed class FoodCategoriesEvent : UiEvent {
 data class FoodCategoriesState(
     val categories: List<FoodItem> = listOf(),
     val isLoading: Boolean = false
-) : UiState
+)
 
-sealed class FoodCategoriesEffect : UiEffect {
+sealed class FoodCategoriesEffect {
     data class ShowToast(val message: String) : FoodCategoriesEffect()
 }

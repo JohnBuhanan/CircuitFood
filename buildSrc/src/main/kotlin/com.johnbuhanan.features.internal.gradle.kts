@@ -9,8 +9,6 @@ plugins {
 dependencies {
     "implementation"(project(":common:coroutines"))
     "implementation"(project(":common:di"))
-    "implementation"(project(":common:navigation"))
-    "implementation"(project(":common:viewmodel"))
     "implementation"(project(":common:ui"))
 
     // Image loading

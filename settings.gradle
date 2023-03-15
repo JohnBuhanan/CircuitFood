@@ -15,10 +15,8 @@ include(
         ":common:android",
         ":common:coroutines",
         ":common:di",
-        ":common:navigation",
         ":common:retrofit",
         ":common:ui",
-        ":common:viewmodel",
         ':features:food:public', ':features:food:internal',
         ":libraries:food:public", ":libraries:food:internal"
 )

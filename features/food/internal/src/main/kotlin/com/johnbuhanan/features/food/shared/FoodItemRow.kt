@@ -2,6 +2,7 @@ package com.johnbuhanan.features.food.shared
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,9 +17,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.unit.dp
 import coil.request.ImageRequest
-import com.johnbuhanan.common.viewmodel.noRippleClickable
 import com.johnbuhanan.libraries.food.model.FoodItem
 
 /**
@@ -67,5 +68,12 @@ fun FoodItemRow(
                     ExpandableContentIcon(expanded)
                 }
         }
+    }
+}
+
+inline fun Modifier.noRippleClickable(crossinline onClick: () -> Unit): Modifier = composed {
+    clickable(indication = null,
+        interactionSource = remember { MutableInteractionSource() }) {
+        onClick()
     }
 }
