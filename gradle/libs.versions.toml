@@ -14,6 +14,7 @@ coil = "1.3.0"
 kspPlugin = "1.8.10-1.0.9"
 voyager = "1.0.0-rc03"
 moshi = "1.13.0"
+circuit = "0.7.0"
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin" }
@@ -89,6 +90,10 @@ voyagerHilt = { module = "cafe.adriel.voyager:voyager-hilt", version.ref = "voya
 voyagerTransitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 voyagerBottomSheet = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 
+# Circuit
+circuitCodegenAnnotations = { module = "com.slack.circuit:circuit-codegen-annotations", version.ref = "circuit" }
+circuitCodegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuit" }
+circuitCore = { module = "com.slack.circuit:circuit-core", version.ref = "circuit" }
 
 # Misc
 material = "com.google.android.material:material:1.4.0"
@@ -101,3 +106,4 @@ voyager = ["voyagerNavigator", "voyagerAndroidX", "voyagerHilt", "voyagerTransit
 compose = ["androidx-compose-ui", "androidx-compose-uitooling", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-activity", "androidx-compose-lifecycleviewmodel"]
 daggerKapt = ["dagger-compiler", "dagger-android-processor", "dagger-hilt-android-compiler", "dagger-hilt-compiler"]
 dagger = ["dagger-lib", "dagger-android", "dagger-android-support", "dagger-hilt-android", "dagger-hilt-navigation-compose"]
+circuit = ["circuitCore", "circuitCodegenAnnotations", "circuitCodegen"]
