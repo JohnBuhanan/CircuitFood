@@ -5,3 +5,7 @@ plugins {
     id("com.johnbuhanan.android")
     id("com.johnbuhanan.dependencies")
 }
+
+dependencies {
+    "implementation"(project(":common:di"))
+}

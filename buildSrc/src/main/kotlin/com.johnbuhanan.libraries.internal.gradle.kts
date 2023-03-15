@@ -10,6 +10,7 @@ dependencies {
     "ksp"(libs.resolveDependency("moshiCodeGen"))
 
     "implementation"(project(":common:coroutines"))
+    "implementation"(project(":common:di"))
 
     // Retrofit
     "implementation"(libs.resolveDependency("retrofit"))

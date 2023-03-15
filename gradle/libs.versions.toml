@@ -104,6 +104,6 @@ timber = "com.jakewharton.timber:timber:5.0.1"
 [bundles]
 voyager = ["voyagerNavigator", "voyagerAndroidX", "voyagerHilt", "voyagerTransitions", "voyagerBottomSheet"]
 compose = ["androidx-compose-ui", "androidx-compose-uitooling", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-activity", "androidx-compose-lifecycleviewmodel"]
-daggerKapt = ["dagger-compiler", "dagger-android-processor", "dagger-hilt-android-compiler", "dagger-hilt-compiler"]
-dagger = ["dagger-lib", "dagger-android", "dagger-android-support", "dagger-hilt-android", "dagger-hilt-navigation-compose"]
+daggerKapt = ["dagger-compiler", "dagger-android-processor"]
+dagger = ["dagger-lib", "dagger-android", "dagger-android-support"]
 circuit = ["circuitCore", "circuitCodegenAnnotations", "circuitCodegen"]

@@ -2,8 +2,9 @@ plugins {
     kotlin("android")
 }
 apply(plugin = "kotlin-kapt")
-apply(plugin = "dagger.hilt.android.plugin")
 apply(plugin = "com.google.devtools.ksp")
+apply(plugin = "kotlin-parcelize")
+apply(plugin = "com.squareup.anvil")
 
 dependencies {
     "implementation"(libs.resolveDependency("timber"))
@@ -34,7 +35,9 @@ dependencies {
     "implementation"(libs.resolveBundle("voyager"))
 
     // Circuit
-    "implementation"(libs.resolveBundle("circuit"))
+    "implementation"(libs.resolveDependency("circuitCore"))
+    "api"(libs.resolveDependency("circuitCodegenAnnotations"))
+    "ksp"(libs.resolveDependency("circuitCodegen"))
     //  androidTestImplementation libs.androidx.compose.test.junit4
     //  androidTestImplementation libs.androidx.test.junit
     //  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

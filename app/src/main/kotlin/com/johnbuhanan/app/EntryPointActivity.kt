@@ -3,20 +3,27 @@ package com.johnbuhanan.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.johnbuhanan.app.theme.ComposeSampleTheme
-import com.johnbuhanan.navigation.NavigatorWrapper
-import dagger.hilt.android.AndroidEntryPoint
+import com.johnbuhanan.features.food.categories.CounterScreen
+import com.slack.circuit.CircuitConfig
+import com.slack.circuit.CircuitContent
+import javax.inject.Inject
 
 // Single Activity per app
-@AndroidEntryPoint
 class EntryPointActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var circuitConfig: CircuitConfig
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        DaggerAppComponent.create().inject(this)
+
         setContent {
-            ComposeSampleTheme {
-                NavigatorWrapper()
-            }
+            CircuitContent(
+                circuitConfig = circuitConfig,
+                screen = CounterScreen,
+            )
         }
     }
 }

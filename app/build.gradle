@@ -10,7 +10,7 @@ android {
 
 dependencies {
   implementation libs.material
-  implementation project(":common:android")
+  implementation projects.common.android
   implementation project(":common:coroutines")
   implementation project(":common:navigation")
   implementation project(":common:retrofit")

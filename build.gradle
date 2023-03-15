@@ -8,6 +8,7 @@ buildscript {
     classpath libs.androidGradlePlugin
     classpath libs.kotlin.gradle
     classpath libs.dagger.hilt.androidGradlePlugin
+    classpath "com.squareup.anvil:gradle-plugin:2.4.4"
   }
 }
 

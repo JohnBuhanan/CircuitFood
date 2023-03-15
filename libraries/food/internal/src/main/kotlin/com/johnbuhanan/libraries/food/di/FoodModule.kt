@@ -1,18 +1,18 @@
-package com.johnbuhanan.libraries.food.di
-
-import com.johnbuhanan.libraries.food.FoodService
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import retrofit2.Retrofit
-import retrofit2.create
-import javax.inject.Singleton
-
-@InstallIn(SingletonComponent::class)
-@Module
-object FoodModule {
-    @Provides
-    @Singleton
-    fun provideFoodService(retrofit: Retrofit): FoodService = retrofit.create()
-}
+//package com.johnbuhanan.libraries.food.di
+//
+//import com.johnbuhanan.common.di.AppScope
+//import com.johnbuhanan.libraries.food.FoodService
+//import com.squareup.anvil.annotations.ContributesTo
+//import dagger.Module
+//import dagger.Provides
+//import javax.inject.Singleton
+//import retrofit2.Retrofit
+//import retrofit2.create
+//
+//@ContributesTo(AppScope::class)
+//@Module
+//object FoodModule {
+//    @Provides
+//    @Singleton
+//    fun provideFoodService(retrofit: Retrofit): FoodService = retrofit.create()
+//}
