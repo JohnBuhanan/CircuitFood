@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation project(":libraries:food:public")
+    api projects.libraries.food.public
 }
