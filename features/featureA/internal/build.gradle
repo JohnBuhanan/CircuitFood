@@ -1,9 +1,0 @@
-plugins {
-    id 'com.johnbuhanan.features.internal'
-}
-
-dependencies {
-    implementation project(':features:featureA:public')
-    implementation project(':features:featureB:public')
-    //  implementation project(':features:featureA:impl:domain')
-}

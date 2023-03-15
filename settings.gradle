@@ -17,8 +17,6 @@ include(
         ":common:retrofit",
         ":common:ui",
         ":common:viewmodel",
-        ':features:featureA:public', ':features:featureA:internal',
-        ':features:featureB:public', ':features:featureB:internal',
         ':features:food:public', ':features:food:internal',
         ":libraries:food:public", ":libraries:food:internal"
 )

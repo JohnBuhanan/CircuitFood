@@ -3,8 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(':features:food:public')
-    implementation project(':features:featureA:public')
-    implementation project(":libraries:food:public")
+    implementation(projects.features.food.public)
+    implementation(projects.libraries.food.public)
 }
 

@@ -1,7 +1,0 @@
-plugins {
-    id 'com.johnbuhanan.features.internal'
-}
-
-dependencies {
-    api project(':features:featureB:public')
-}

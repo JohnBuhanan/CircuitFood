@@ -8,7 +8,6 @@ import com.johnbuhanan.common.viewmodel.BaseViewModel
 import com.johnbuhanan.common.viewmodel.UiEffect
 import com.johnbuhanan.common.viewmodel.UiEvent
 import com.johnbuhanan.common.viewmodel.UiState
-import com.johnbuhanan.features.featureA.api.FeatureA
 import com.johnbuhanan.features.food.Food
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedBack
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
@@ -65,7 +64,7 @@ class FoodCategoryDetailsViewModel @Inject constructor(
             TappedBack -> router.pop()
             is TappedFoodItem -> {
                 Timber.e("TappedFoodItem")
-                router.push(FeatureA.Route.Screen1)
+//                router.push(FeatureA.Route.Screen1)
                 // setEffect { FoodCategoryDetailsEffect.ShowToast(event.message) }
             }
         }
