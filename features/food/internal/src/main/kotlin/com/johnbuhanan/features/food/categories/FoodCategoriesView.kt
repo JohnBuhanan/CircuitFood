@@ -1,123 +1,63 @@
 package com.johnbuhanan.features.food.categories
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import com.johnbuhanan.common.di.AppScope
-import com.johnbuhanan.features.food.CounterScreen
-import com.slack.circuit.CircuitUiEvent
-import com.slack.circuit.CircuitUiState
-import com.slack.circuit.Presenter
+import com.johnbuhanan.common.ui.AppBar
+import com.johnbuhanan.common.ui.LoadingBar
+import com.johnbuhanan.features.food.FoodCategoriesScreen
+import com.johnbuhanan.features.food.shared.FoodItemRow
+import com.johnbuhanan.libraries.food.model.FoodItem
 import com.slack.circuit.codegen.annotations.CircuitInject
-import javax.inject.Inject
 
-data class CounterState(
-    val count: Int,
-    val eventSink: (CounterEvent) -> Unit,
-) : CircuitUiState
-
-sealed interface CounterEvent : CircuitUiEvent {
-    object Increment : CounterEvent
-    object Decrement : CounterEvent
-}
-
-@CircuitInject(CounterScreen::class, AppScope::class)
-class CounterPresenter @Inject constructor() : Presenter<CounterState> {
-    @Composable
-    override fun present(): CounterState {
-        var count by remember { mutableStateOf(0) }
-
-        return CounterState(count) { event ->
-            when (event) {
-                is CounterEvent.Increment -> count++
-                is CounterEvent.Decrement -> count--
-            }
-        }
-    }
-}
-
-@CircuitInject(CounterScreen::class, AppScope::class)
+@CircuitInject(FoodCategoriesScreen::class, AppScope::class)
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Counter(state: CounterState, modifier: Modifier) {
-    Box(Modifier.fillMaxSize()) {
-        Column(Modifier.align(Alignment.Center)) {
-            Text(
-                modifier = Modifier.align(CenterHorizontally),
-                text = "Count: ${state.count}",
-//                style = MaterialTheme.typography.displayLarge
+fun FoodCategoriesView(
+    foodCategoriesState: FoodCategoriesState,
+    modifier: Modifier,
+) {
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            AppBar()
+        },
+    ) {
+        Box {
+            FoodItemList(
+                foodItems = foodCategoriesState.categories,
+                onEvent = foodCategoriesState.eventSink,
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            val eventSink = state.eventSink
-            Button(
-                modifier = Modifier.align(CenterHorizontally),
-                onClick = { eventSink(CounterEvent.Increment) }
-            ) { Icon(rememberVectorPainter(Icons.Filled.Add), "Increment") }
-            Button(
-                modifier = Modifier.align(CenterHorizontally),
-                onClick = { eventSink(CounterEvent.Decrement) }
-            ) { Icon(rememberVectorPainter(Icons.Filled.AddCircle), "Decrement") }
+            if (foodCategoriesState.isLoading)
+                LoadingBar()
         }
     }
 }
 
-//@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-//@Preview
-//@Composable
-//fun FoodCategoriesView(
-//    foodItems: List<FoodItem> = emptyList(),
-//    isLoading: Boolean = false,
-//    onEvent: (FoodCategoriesEvent) -> Unit = {},
-//) {
-//    val scaffoldState: ScaffoldState = rememberScaffoldState()
-//
-//    Scaffold(
-//        scaffoldState = scaffoldState,
-//        topBar = {
-//            AppBar()
-//        },
-//    ) {
-//        Box {
-//            FoodItemList(
-//                foodItems = foodItems,
-//                onEvent = onEvent,
-//            )
-//            if (isLoading)
-//                LoadingBar()
-//        }
-//    }
-//}
-//
-//@Composable
-//fun FoodItemList(
-//    foodItems: List<FoodItem>,
-//    onEvent: (FoodCategoriesEvent) -> Unit = {},
-//) {
-//    LazyColumn(
-//        contentPadding = PaddingValues(bottom = 16.dp)
-//    ) {
-//        items(foodItems) { item ->
-//            FoodItemRow(
-//                item = item,
-//                itemShouldExpand = true,
-//                onItemClicked = { onEvent(TappedCategory(it.id)) })
-//        }
-//    }
-//}
+@Composable
+fun FoodItemList(
+    foodItems: List<FoodItem>,
+    onEvent: (FoodCategoriesEvent) -> Unit = {},
+) {
+    LazyColumn(
+        contentPadding = PaddingValues(bottom = 16.dp)
+    ) {
+        items(foodItems) { item ->
+            FoodItemRow(
+                item = item,
+                itemShouldExpand = true,
+                onItemClicked = { onEvent(FoodCategoriesEvent.TappedCategory(it.id)) })
+        }
+    }
+}

@@ -3,7 +3,7 @@ package com.johnbuhanan.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.johnbuhanan.features.food.CounterScreen
+import com.johnbuhanan.features.food.FoodCategoriesScreen
 import com.slack.circuit.CircuitConfig
 import com.slack.circuit.CircuitContent
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class EntryPointActivity : ComponentActivity() {
         setContent {
             CircuitContent(
                 circuitConfig = circuitConfig,
-                screen = CounterScreen,
+                screen = FoodCategoriesScreen,
             )
         }
     }
