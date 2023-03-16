@@ -20,18 +20,21 @@ import androidx.compose.ui.unit.max
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
+import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
 import com.johnbuhanan.features.food.details.FoodCategoryDetailsEvent.TappedFoodItem
 import com.johnbuhanan.features.food.shared.FoodItemDetails
 import com.johnbuhanan.features.food.shared.FoodItemRow
 import com.johnbuhanan.libraries.food.model.FoodItem
-import timber.log.Timber
+import com.slack.circuit.codegen.annotations.CircuitInject
 import kotlin.math.min
+import timber.log.Timber
 
+@CircuitInject(FoodCategoryDetailsScreen::class, AppScope::class)
 @Composable
 fun FoodCategoryDetailsView(
-    category: FoodItem?,
-    categoryFoodItems: List<FoodItem>,
-    onEvent: (FoodCategoryDetailsEvent) -> Unit = {},
+    state: FoodCategoryDetailsState,
+    modifier: Modifier,
 ) {
     Timber.e("Composable - FoodCategoryDetailsView")
     val scrollState = rememberLazyListState()
@@ -42,14 +45,14 @@ fun FoodCategoryDetailsView(
     Surface(color = MaterialTheme.colors.background) {
         Column {
             Surface(elevation = 4.dp) {
-                CategoryDetailsCollapsingToolbar(category, scrollOffset)
+                CategoryDetailsCollapsingToolbar(state.category, scrollOffset)
             }
             Spacer(modifier = Modifier.height(2.dp))
             LazyColumn(
                 state = scrollState,
                 contentPadding = PaddingValues(bottom = 16.dp)
             ) {
-                items(categoryFoodItems) { item ->
+                items(state.foodItems) { item ->
                     FoodItemRow(
                         item = item,
                         iconTransformationBuilder = {
@@ -57,7 +60,7 @@ fun FoodCategoryDetailsView(
                                 CircleCropTransformation()
                             )
                         },
-                        onItemClicked = { onEvent(TappedFoodItem("${item.name} was tapped!!!")) }
+                        onItemClicked = { state.eventSink(TappedFoodItem("${item.name} was tapped!!!")) }
                     )
                 }
             }

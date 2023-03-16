@@ -45,11 +45,9 @@ class FoodCategoriesPresenter @AssistedInject constructor(
         ) { event ->
             when (event) {
                 FoodCategoriesEvent.TappedBack -> navigator.pop()
-                is FoodCategoriesEvent.TappedCategory -> navigator.goTo(
-                    FoodCategoryDetailsScreen(
-                        event.id
-                    )
-                )
+                is FoodCategoriesEvent.TappedCategory -> {
+                    navigator.goTo(FoodCategoryDetailsScreen(event.id))
+                }
             }
         }
     }
