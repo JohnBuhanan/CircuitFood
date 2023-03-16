@@ -41,7 +41,7 @@ class FoodCategoriesPresenter @AssistedInject constructor(
 
         return FoodCategoriesState(
             categories = categories,
-            isLoading = false
+            isLoading = isLoading,
         ) { event ->
             when (event) {
                 FoodCategoriesEvent.TappedBack -> navigator.pop()
