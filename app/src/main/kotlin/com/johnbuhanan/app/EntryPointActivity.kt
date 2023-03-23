@@ -3,6 +3,7 @@ package com.johnbuhanan.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.johnbuhanan.app.theme.ComposeSampleTheme
 import com.johnbuhanan.features.food.FoodCategoriesScreen
 import com.slack.circuit.CircuitConfig
 import com.slack.circuit.NavigableCircuitContent
@@ -26,11 +27,13 @@ class EntryPointActivity : ComponentActivity() {
             val backstack = rememberSaveableBackStack { push(FoodCategoriesScreen) }
             val circuitNavigator = rememberCircuitNavigator(backstack)
 
-            NavigableCircuitContent(
-                navigator = circuitNavigator,
-                backstack = backstack,
-                circuitConfig = circuitConfig,
-            )
+            ComposeSampleTheme {
+                NavigableCircuitContent(
+                    navigator = circuitNavigator,
+                    backstack = backstack,
+                    circuitConfig = circuitConfig,
+                )
+            }
         }
     }
 }

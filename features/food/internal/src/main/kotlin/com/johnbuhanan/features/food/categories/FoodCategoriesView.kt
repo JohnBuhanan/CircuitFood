@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,6 +36,7 @@ fun FoodCategoriesView(
         },
     ) {
         Box {
+            Text(foodCategoriesState.resultText)
             FoodItemList(
                 foodItems = foodCategoriesState.categories,
                 onEvent = foodCategoriesState.eventSink,
