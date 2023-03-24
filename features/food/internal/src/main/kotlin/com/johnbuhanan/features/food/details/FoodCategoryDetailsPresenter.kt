@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import com.johnbuhanan.common.di.AppScope
 import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
-import com.johnbuhanan.features.food.categories.BridgeImpl
+import com.johnbuhanan.features.food.categories.DetailsResult
+import com.johnbuhanan.features.food.categories.ResultListener
+import com.johnbuhanan.features.food.categories.setResult
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
 import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
@@ -20,7 +22,7 @@ import dagger.assisted.AssistedInject
 class FoodCategoryDetailsPresenter @AssistedInject constructor(
     private val getFoodCategoryById: GetFoodCategoryAsItemById,
     private val getMealsAsItemsById: GetMealsAsItemsById,
-    private val bridge: BridgeImpl,
+    private val resultListener: ResultListener,
     @Assisted private val screen: FoodCategoryDetailsScreen,
     @Assisted private val navigator: Navigator,
 ) : Presenter<FoodCategoryDetailsState> {
@@ -55,7 +57,7 @@ class FoodCategoryDetailsPresenter @AssistedInject constructor(
                 FoodCategoryDetailsEvent.TappedBack -> navigator.pop()
                 is FoodCategoryDetailsEvent.TappedFoodItem -> {
 //                    navigator.goTo()
-                    bridge.setResult("BLAH")
+                    resultListener.setResult(DetailsResult("BLAH"))
                     navigator.pop()
                 }
             }

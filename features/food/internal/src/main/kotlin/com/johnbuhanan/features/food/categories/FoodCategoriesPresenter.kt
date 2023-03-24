@@ -1,13 +1,13 @@
 package com.johnbuhanan.features.food.categories
 
+import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.johnbuhanan.common.di.AppScope
 import com.johnbuhanan.features.food.FoodCategoriesScreen
@@ -17,75 +17,48 @@ import com.johnbuhanan.libraries.food.usecase.GetFoodCategoriesAsItems
 import com.slack.circuit.Navigator
 import com.slack.circuit.Presenter
 import com.slack.circuit.codegen.annotations.CircuitInject
+import com.squareup.anvil.annotations.ContributesBinding
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Stable
-data class DetailsResult(val value: String)
+data class DetailsResult(val value: String) : Parcelable
 
-//interface Bridge {
-//    fun setResult(result: Any)
-////    fun onResult(lambda: (Any) -> Unit)
-//}
-
-@Singleton
-//@ContributesBinding(AppScope::class)
-class BridgeImpl @Inject constructor() { // : Bridge {
-    val map = mutableMapOf<String, State<*>>()
-
-    //    val test = mutableStateOf()
-//    private val map = mutableStateMapOf<Any, Any>()
-//    private lateinit var _onResult: (State<Any>) -> Unit
-//    private val channel = Channel<Any>()
-//    private val mutableSharedFlow = MutableSharedFlow<Any>()
-    private val mutableState = mutableStateOf<String?>(null)
-
-    //    private val mutableStateFlow: MutableStateFlow<Any?> = MutableStateFlow(null)
-//    private lateinit var _lambda: (Any) -> Unit
-    fun setResult(result: String) {
-//        _lambda(result)
-//        mutableStateFlow.value = result
-//        channel.trySend(result)
-//        mutableSharedFlow.tryEmit(result)
-//        mutableSharedFlow.emit(result)
-        mutableState.value = result
-    }
-
-
-    //    fun onResult(lambda: (Any) -> Unit) {
-//        _lambda = lambda
-//    }
-    fun onResult(): MutableState<String?> {
-//        val state = map.
-//    fun onResult(): Flow<Any?> {
-//        return channel.receiveAsFlow()
-//        return mutableStateFlow
-        return mutableState
-    }
+interface ResultListener {
+    val map: MutableMap<String, MutableState<*>>
 }
 
-//inline fun <reified T> BridgeImpl.onResult(): MutableState<T> {
-//    map.putIfAbsent(T::class.java.name, mutableStateOf(null))
-//    val state = map[T::class.java.name]
-//
-//    return state as MutableState<T>
-//}
+@Singleton
+@ContributesBinding(AppScope::class)
+class ResultListenerImpl @Inject constructor() : ResultListener {
+    override val map: MutableMap<String, MutableState<*>> = mutableMapOf()
+}
 
-//inline fun <reified T> Bridge.listenFor(function: () -> Unit) {
-//
-//}
+inline fun <reified T> ResultListener.setResult(result: T) {
+    val state: MutableState<T> = map[T::class.java.name]!! as MutableState<T>
+    state.value = result
+}
+
+inline fun <reified T> ResultListener.onResult(default: T): MutableState<T> {
+    map.putIfAbsent(T::class.java.name, mutableStateOf(default))
+    val state = map[T::class.java.name]
+
+    return state as MutableState<T>
+}
 
 class FoodCategoriesPresenter @AssistedInject constructor(
     private val getFoodCategoriesAsItems: GetFoodCategoriesAsItems,
-    private val bridge: BridgeImpl,
+    private val resultListener: ResultListener,
     @Assisted private val navigator: Navigator,
 ) : Presenter<FoodCategoriesState> {
     @Composable
     override fun present(): FoodCategoriesState {
-        var isLoading by remember { mutableStateOf(true) }
+        var isLoading by rememberSaveable { mutableStateOf(true) }
         val categories by produceState<List<FoodItem>>(emptyList(), null) {
             isLoading = true
             getFoodCategoriesAsItems().fold(
@@ -99,27 +72,12 @@ class FoodCategoriesPresenter @AssistedInject constructor(
             )
         }
 
-
-//        rememberLauncherForActivityResult(contract =, onResult =)
-//        var resultText by remember { mutableStateOf("") }
-//        val detailsResult: DetailsResult? by remember { bridge.onResult() }
-        val resultText by remember { bridge.onResult() }
-
-//        rememberUpdatedState(bridge.onResult {
-//            resultText = it.toString()
-//        })
-//        LaunchedEffect(null) {
-//             { result ->
-//                result?.let {
-//                    resultText = it.toString()
-//                }
-//            }
-//        }
+        val resultText by rememberSaveable { resultListener.onResult<DetailsResult?>(null) }
 
         return FoodCategoriesState(
             categories = categories,
             isLoading = isLoading,
-            resultText = resultText ?: "",
+            resultText = resultText?.value ?: "",
         ) { event ->
             when (event) {
                 is FoodCategoriesEvent.TappedCategory -> {
