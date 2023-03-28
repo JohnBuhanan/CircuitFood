@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.johnbuhanan.common.di.AppScope
 import com.johnbuhanan.common.ui.AppBar
-import com.johnbuhanan.common.ui.LoadingBar
 import com.slack.circuit.codegen.annotations.CircuitInject
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,8 +25,6 @@ fun FoodCategoriesView(
     ) { paddingValues ->
         Box(modifier = Modifier.padding(paddingValues)) {
             Text(aboutState.aboutText)
-            if (aboutState.isLoading)
-                LoadingBar()
         }
     }
 }
