@@ -1,0 +1,8 @@
+plugins {
+    id "com.johnbuhanan.features.internal"
+}
+
+dependencies {
+    api projects.features.about.public
+}
+

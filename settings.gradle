@@ -18,5 +18,6 @@ include(
         ":common:retrofit",
         ":common:ui",
         ':features:food:public', ':features:food:internal',
+        ':features:about:public', ':features:about:internal',
         ":libraries:food:public", ":libraries:food:internal"
 )
