@@ -1,14 +1,13 @@
 package com.johnbuhanan.features.food.categories
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,22 +19,19 @@ import com.johnbuhanan.features.food.shared.FoodItemRow
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.slack.circuit.codegen.annotations.CircuitInject
 
+@OptIn(ExperimentalMaterial3Api::class)
 @CircuitInject(FoodCategoriesScreen::class, AppScope::class)
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun FoodCategoriesView(
     foodCategoriesState: FoodCategoriesState,
     modifier: Modifier,
 ) {
-    val scaffoldState: ScaffoldState = rememberScaffoldState()
-
     Scaffold(
-        scaffoldState = scaffoldState,
         topBar = {
             AppBar()
         },
-    ) {
-        Box {
+    ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)) {
             Text(foodCategoriesState.resultText)
             FoodItemList(
                 foodItems = foodCategoriesState.categories,

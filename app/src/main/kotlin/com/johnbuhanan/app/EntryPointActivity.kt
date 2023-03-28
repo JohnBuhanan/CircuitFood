@@ -1,5 +1,6 @@
 package com.johnbuhanan.app
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ class EntryPointActivity : ComponentActivity() {
     @Inject
     lateinit var circuitConfig: CircuitConfig
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +30,30 @@ class EntryPointActivity : ComponentActivity() {
             val circuitNavigator = rememberCircuitNavigator(backstack)
 
             ComposeSampleTheme {
+//                Scaffold(
+//                    modifier = Modifier
+//                        .navigationBarsPadding()
+//                        .systemBarsPadding()
+//                        .fillMaxWidth(),
+//                    bottomBar = {
+//                        NavigationBar(
+//                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+//                        ) {
+//                            NavigationBarItem(
+//                                icon = {
+//                                    Icon(
+//                                        imageVector = Icons.Filled.Home,
+//                                        contentDescription = "title"
+//                                    )
+//                                },
+//                                label = { Text(text = "Label") },
+//                                alwaysShowLabel = true,
+//                                selected = false,
+//                                onClick = { }
+//                            )
+//                        }
+//                    }
+//                ) {
                 NavigableCircuitContent(
                     navigator = circuitNavigator,
                     backstack = backstack,
@@ -36,4 +62,5 @@ class EntryPointActivity : ComponentActivity() {
             }
         }
     }
+//    }
 }

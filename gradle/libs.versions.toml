@@ -15,6 +15,7 @@ kspPlugin = "1.8.10-1.0.9"
 voyager = "1.0.0-rc03"
 moshi = "1.13.0"
 circuit = "0.7.0"
+material3 = "1.0.1"
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin" }
@@ -53,7 +54,7 @@ androidx-test-orchestrator = { module = "androidx.test:orchestrator", version.re
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 androidx-compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
-androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+androidx-compose-material = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-compose-activity = "androidx.activity:activity-compose:1.6.1"
 androidx-compose-lifecycleviewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 

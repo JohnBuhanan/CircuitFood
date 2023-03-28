@@ -8,9 +8,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -42,9 +43,9 @@ fun FoodCategoryDetailsView(
         1f,
         1 - (scrollState.firstVisibleItemScrollOffset / 600f + scrollState.firstVisibleItemIndex)
     )
-    Surface(color = MaterialTheme.colors.background) {
+    Surface(color = MaterialTheme.colorScheme.background) {
         Column {
-            Surface(elevation = 4.dp) {
+            Surface(shadowElevation = 4.dp) {
                 CategoryDetailsCollapsingToolbar(state.category, scrollOffset)
             }
             Spacer(modifier = Modifier.height(2.dp))
@@ -83,7 +84,9 @@ private fun CategoryDetailsCollapsingToolbar(
                 width = 2.dp,
                 color = Color.Black
             ),
-            elevation = 4.dp
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 4.dp
+            ),
         ) {
             Image(
                 painter = rememberImagePainter(
