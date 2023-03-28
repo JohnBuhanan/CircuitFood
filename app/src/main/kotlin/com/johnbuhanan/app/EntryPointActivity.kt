@@ -1,9 +1,25 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.johnbuhanan.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
 import com.johnbuhanan.app.theme.ComposeSampleTheme
 import com.johnbuhanan.features.food.FoodCategoriesScreen
 import com.slack.circuit.CircuitConfig
@@ -30,37 +46,38 @@ class EntryPointActivity : ComponentActivity() {
             val circuitNavigator = rememberCircuitNavigator(backstack)
 
             ComposeSampleTheme {
-//                Scaffold(
-//                    modifier = Modifier
-//                        .navigationBarsPadding()
-//                        .systemBarsPadding()
-//                        .fillMaxWidth(),
-//                    bottomBar = {
-//                        NavigationBar(
-//                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-//                        ) {
-//                            NavigationBarItem(
-//                                icon = {
-//                                    Icon(
-//                                        imageVector = Icons.Filled.Home,
-//                                        contentDescription = "title"
-//                                    )
-//                                },
-//                                label = { Text(text = "Label") },
-//                                alwaysShowLabel = true,
-//                                selected = false,
-//                                onClick = { }
-//                            )
-//                        }
-//                    }
-//                ) {
-                NavigableCircuitContent(
-                    navigator = circuitNavigator,
-                    backstack = backstack,
-                    circuitConfig = circuitConfig,
-                )
+                Scaffold(
+                    modifier = Modifier
+                        .navigationBarsPadding()
+                        .systemBarsPadding()
+                        .fillMaxWidth(),
+                    bottomBar = {
+                        NavigationBar(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        ) {
+                            NavigationBarItem(
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Filled.Home,
+                                        contentDescription = "title"
+                                    )
+                                },
+                                label = { Text(text = "Label") },
+                                alwaysShowLabel = true,
+                                selected = false,
+                                onClick = { }
+                            )
+                        }
+                    }
+                ) {
+                    NavigableCircuitContent(
+                        navigator = circuitNavigator,
+                        backstack = backstack,
+                        circuitConfig = circuitConfig,
+                        modifier = Modifier.padding(it)
+                    )
+                }
             }
         }
     }
-//    }
 }
