@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.about
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,6 +19,9 @@ fun FoodCategoriesView(
     aboutState: AboutState,
     modifier: Modifier,
 ) {
+    BackHandler {
+        aboutState.eventSink(AboutEvent.TappedBack)
+    }
     Scaffold(
         topBar = {
             AppBar()

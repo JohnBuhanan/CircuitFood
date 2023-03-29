@@ -5,18 +5,34 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import com.johnbuhanan.common.di.AppScope
+import com.slack.circuit.Navigator
 import com.slack.circuit.Presenter
 import com.slack.circuit.codegen.annotations.CircuitInject
-import javax.inject.Inject
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 
-@CircuitInject(AboutScreen::class, AppScope::class)
-class AboutPresenter @Inject constructor() : Presenter<AboutState> {
+class AboutPresenter @AssistedInject constructor(
+    @Assisted private val navigator: Navigator,
+) : Presenter<AboutState> {
     @Composable
     override fun present(): AboutState {
         val aboutText by rememberSaveable {
             mutableStateOf("This is the ABOUT page.")
         }
 
-        return AboutState(aboutText)
+        return AboutState(aboutText) {
+            when (it) {
+                AboutEvent.TappedBack -> {
+                    navigator.pop()
+                }
+            }
+        }
+    }
+
+    @CircuitInject(AboutScreen::class, AppScope::class)
+    @AssistedFactory
+    interface Factory {
+        fun create(navigator: Navigator): AboutPresenter
     }
 }
