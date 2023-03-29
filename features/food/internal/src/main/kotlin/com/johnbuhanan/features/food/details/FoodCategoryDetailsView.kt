@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.food.details
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -37,6 +38,10 @@ fun FoodCategoryDetailsView(
     state: FoodCategoryDetailsState,
     modifier: Modifier,
 ) {
+    BackHandler {
+        state.eventSink(FoodCategoryDetailsEvent.TappedBack)
+    }
+
     Timber.e("Composable - FoodCategoryDetailsView")
     val scrollState = rememberLazyListState()
     val scrollOffset: Float = min(
