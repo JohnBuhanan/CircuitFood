@@ -56,7 +56,7 @@ class FoodCategoryDetailsPresenter @AssistedInject constructor(
             when (event) {
                 FoodCategoryDetailsEvent.TappedBack -> navigator.pop()
                 is FoodCategoryDetailsEvent.TappedFoodItem -> {
-                    resultListener.setResult(DetailsResult("BLAH"))
+                    resultListener.setResult(DetailsResult(event.message))
                     navigator.pop()
                 }
             }
