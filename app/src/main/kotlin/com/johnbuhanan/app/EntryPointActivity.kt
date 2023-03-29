@@ -69,7 +69,7 @@ class EntryPointActivity : ComponentActivity() {
                                     selected = index == selectedIndex,
                                     onClick = {
                                         selectedIndex = index
-                                        circuitNavigator.goTo(bottomNavItem.screen)
+                                        circuitNavigator.resetRoot(bottomNavItem.screen)
                                     }
                                 )
                             }
