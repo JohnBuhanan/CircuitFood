@@ -6,6 +6,7 @@ import com.slack.circuit.CircuitUiState
 
 sealed interface FoodCategoriesEvent : CircuitUiEvent {
     data class TappedCategory(val id: String) : FoodCategoriesEvent
+    object TappedBack : FoodCategoriesEvent
 }
 
 data class FoodCategoriesState(

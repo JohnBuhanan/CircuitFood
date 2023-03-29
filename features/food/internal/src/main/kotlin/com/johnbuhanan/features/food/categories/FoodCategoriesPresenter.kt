@@ -83,6 +83,10 @@ class FoodCategoriesPresenter @AssistedInject constructor(
                 is FoodCategoriesEvent.TappedCategory -> {
                     navigator.goTo(FoodCategoryDetailsScreen(event.id))
                 }
+
+                is FoodCategoriesEvent.TappedBack -> {
+                    navigator.pop()
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.johnbuhanan.features.food.categories
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,9 @@ fun FoodCategoriesView(
     foodCategoriesState: FoodCategoriesState,
     modifier: Modifier,
 ) {
+    BackHandler {
+        foodCategoriesState.eventSink(FoodCategoriesEvent.TappedBack)
+    }
     Scaffold(
         topBar = {
             AppBar()
