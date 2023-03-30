@@ -15,8 +15,3 @@ data class FoodCategoriesState(
     val resultText: String = "",
     val eventSink: (FoodCategoriesEvent) -> Unit,
 ) : CircuitUiState
-
-sealed class FoodCategoriesEffect {
-    data class ShowToast(val message: String) : FoodCategoriesEffect()
-}
-
