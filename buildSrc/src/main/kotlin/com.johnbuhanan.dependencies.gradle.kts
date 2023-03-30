@@ -21,18 +21,11 @@ dependencies {
     "implementation"(libs.resolveDependency("kotlin.coroutines.core"))
     "implementation"(libs.resolveDependency("kotlin.coroutines.android"))
 
-    // Lifecycle
-    "implementation"(libs.resolveDependency("androidx.lifecycle.runtime"))
-    "implementation"(libs.resolveDependency("androidx.lifecycle.viewmodel"))
-
     // UnitTest
     "testImplementation"(libs.resolveDependency("junit4"))
     "testImplementation"(libs.resolveDependency("kotlin.coroutines.test"))
     "testImplementation"(libs.resolveDependency("turbine"))
     "testImplementation"(libs.resolveDependency("assertk"))
-
-    // Voyager
-    "implementation"(libs.resolveBundle("voyager"))
 
     // Circuit
     "implementation"(libs.resolveDependency("circuitCore"))

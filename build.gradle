@@ -7,8 +7,7 @@ buildscript {
   dependencies {
     classpath libs.androidGradlePlugin
     classpath libs.kotlin.gradle
-    classpath libs.dagger.hilt.androidGradlePlugin
-    classpath "com.squareup.anvil:gradle-plugin:2.4.4"
+    classpath libs.anvil.gradlePlugin
   }
 }
 
@@ -28,26 +27,6 @@ allprojects { project ->
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
-      }
-
-      kotlin {
-        sourceSets {
-          debug {
-            kotlin.srcDir("build/generated/ksp/debug/kotlin")
-          }
-          release {
-            kotlin.srcDir("build/generated/ksp/release/kotlin")
-          }
-        }
-      }
-
-      ksp {
-        // To turn off navigation graphs generation:
-        // (if you prefer creating NavGraph instances or you prefer using the normal NavHost)
-        //        arg("compose-destinations.generateNavGraphs", "false")
-
-        // To change the package name where the generated files will be placed
-        //        arg("compose-destinations.codeGenPackageName", "your.preferred.packagename")
       }
     }
   }
