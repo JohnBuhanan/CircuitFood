@@ -17,7 +17,7 @@ I believe Compose navigation makes it extremely difficult to be type-safe becaus
 
 Once you eschew implicit deeplinks, all sorts of Compose navigation schemes become possible.
 
-This repo contains one of my favorite approaches I that I found.
+This repo contains one of my favorite approaches that I found.
 
 Circuit (https://github.com/slackhq/circuit)
 
