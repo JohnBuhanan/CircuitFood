@@ -26,7 +26,7 @@ fun AppBar() {
                 contentDescription = "Action icon"
             )
         },
-        title = { Text("Tinder Interview") },
+        title = { Text("CircuitFood") },
         colors = TopAppBarDefaults.smallTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
