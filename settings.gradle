@@ -15,6 +15,7 @@ include(
         ":common:android",
         ":common:coroutines",
         ":common:di",
+        ":common:resultlistener",
         ":common:retrofit",
         ":common:ui",
         ':features:food:public', ':features:food:internal',

@@ -4,10 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.common.resultlistener.ResultListener
+import com.johnbuhanan.common.resultlistener.setResult
 import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
-import com.johnbuhanan.features.food.categories.DetailsResult
-import com.johnbuhanan.features.food.categories.ResultListener
-import com.johnbuhanan.features.food.categories.setResult
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
 import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById

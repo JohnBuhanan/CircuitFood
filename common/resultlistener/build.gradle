@@ -1,0 +1,8 @@
+plugins {
+    id 'com.johnbuhanan.lib'
+    id "com.johnbuhanan.android"
+}
+
+dependencies {
+    implementation libs.bundles.compose
+}

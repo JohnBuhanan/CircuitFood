@@ -12,6 +12,7 @@ dependencies {
   implementation libs.material
   implementation projects.common.android
   implementation projects.common.coroutines
+  implementation projects.common.resultlistener
   implementation projects.common.retrofit
   implementation projects.features.about.internal
   implementation projects.features.food.internal
