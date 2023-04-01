@@ -2,6 +2,7 @@ package com.johnbuhanan.features.food.categories
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
 import com.johnbuhanan.common.resultlistener.ResultListenerImpl
 import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
 import com.johnbuhanan.libraries.food.model.FoodItem
@@ -34,18 +35,17 @@ class FoodCategoriesPresenterTest {
     @Test
     fun `data loads and then clicking item navigates to details screen`() = runTest {
         presenter.test {
-            val firstState = awaitItem()
-            assertThat(firstState.categories).isEqualTo(listOf())
-            assertThat(firstState.isLoading).isEqualTo(true)
+            // Starts off Loading
+            assertThat(awaitItem()).isEqualTo(FoodCategoriesState.Loading)
 
-            val secondState = awaitItem()
-            assertThat(secondState.categories).isEqualTo(listOf(FoodItem("", "", "")))
-            assertThat(secondState.isLoading).isEqualTo(false)
+            // Food items are found -> Success
+            val successState = awaitItem() as FoodCategoriesState.Success
+            assertThat(successState).isInstanceOf(FoodCategoriesState.Success::class)
+            assertThat(successState.categories).isEqualTo(listOf(FoodItem("", "", "")))
 
-            // Clicking the same index does nothing.
-            firstState.eventSink(FoodCategoriesEvent.TappedCategory("1"))
+            // Tap a Category and go to FoodCategoryDetailsScreen
+            successState.eventSink(FoodCategoriesEvent.TappedCategory("1"))
             val nextScreen = fakeNavigator.awaitNextScreen()
-
             assertThat(nextScreen).isEqualTo(FoodCategoryDetailsScreen("1"))
         }
     }
