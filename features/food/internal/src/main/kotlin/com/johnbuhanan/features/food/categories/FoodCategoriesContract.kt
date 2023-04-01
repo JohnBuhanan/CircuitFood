@@ -9,9 +9,12 @@ sealed interface FoodCategoriesEvent : CircuitUiEvent {
     object TappedBack : FoodCategoriesEvent
 }
 
-data class FoodCategoriesState(
-    val categories: List<FoodItem> = listOf(),
-    val isLoading: Boolean = false,
-    val resultText: String = "",
-    val eventSink: (FoodCategoriesEvent) -> Unit,
-) : CircuitUiState
+sealed interface FoodCategoriesState : CircuitUiState {
+    object Loading : FoodCategoriesState
+
+    data class Success(
+        val categories: List<FoodItem> = listOf(),
+        val resultText: String = "",
+        val eventSink: (FoodCategoriesEvent) -> Unit,
+    ) : FoodCategoriesState
+}

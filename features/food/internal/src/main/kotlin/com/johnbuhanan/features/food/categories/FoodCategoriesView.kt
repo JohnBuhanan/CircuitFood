@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.johnbuhanan.features.food.categories
 
 import androidx.activity.compose.BackHandler
@@ -20,13 +22,21 @@ import com.johnbuhanan.features.food.shared.FoodItemRow
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.slack.circuit.codegen.annotations.CircuitInject
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @CircuitInject(FoodCategoriesScreen::class, AppScope::class)
 @Composable
 fun FoodCategoriesView(
     foodCategoriesState: FoodCategoriesState,
     modifier: Modifier,
 ) {
+    when (foodCategoriesState) {
+        is FoodCategoriesState.Loading -> LoadingBar()
+        is FoodCategoriesState.Success -> ShowFoodCategories(foodCategoriesState, modifier)
+    }
+}
+
+@Composable
+fun ShowFoodCategories(foodCategoriesState: FoodCategoriesState.Success, modifier: Modifier) {
     BackHandler {
         foodCategoriesState.eventSink(FoodCategoriesEvent.TappedBack)
     }
@@ -41,8 +51,6 @@ fun FoodCategoriesView(
                 foodItems = foodCategoriesState.categories,
                 onEvent = foodCategoriesState.eventSink,
             )
-            if (foodCategoriesState.isLoading)
-                LoadingBar()
         }
     }
 }
