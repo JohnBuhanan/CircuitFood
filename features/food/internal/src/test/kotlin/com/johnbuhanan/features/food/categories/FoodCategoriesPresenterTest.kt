@@ -2,7 +2,6 @@ package com.johnbuhanan.features.food.categories
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import assertk.assertions.isInstanceOf
 import com.johnbuhanan.common.resultlistener.ResultListenerImpl
 import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
 import com.johnbuhanan.libraries.food.model.FoodItem
@@ -22,7 +21,6 @@ class FakeGetFoodCategoriesAsItems : GetFoodCategoriesAsItems {
 
 @RunWith(RobolectricTestRunner::class)
 class FoodCategoriesPresenterTest {
-
     private val fakeNavigator = FakeNavigator()
     private val getFoodCategoriesAsItems = FakeGetFoodCategoriesAsItems()
     private val resultListener = ResultListenerImpl()
@@ -40,13 +38,11 @@ class FoodCategoriesPresenterTest {
 
             // Food items are found -> Success
             val successState = awaitItem() as FoodCategoriesState.Success
-            assertThat(successState).isInstanceOf(FoodCategoriesState.Success::class)
             assertThat(successState.categories).isEqualTo(listOf(FoodItem("", "", "")))
 
             // Tap a Category and go to FoodCategoryDetailsScreen
             successState.eventSink(FoodCategoriesEvent.TappedCategory("1"))
-            val nextScreen = fakeNavigator.awaitNextScreen()
-            assertThat(nextScreen).isEqualTo(FoodCategoryDetailsScreen("1"))
+            assertThat(fakeNavigator.awaitNextScreen()).isEqualTo(FoodCategoryDetailsScreen("1"))
         }
     }
 }
