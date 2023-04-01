@@ -2,6 +2,10 @@ plugins {
     id "com.johnbuhanan.features.internal"
 }
 
+android {
+    testOptions.unitTests.includeAndroidResources = true
+}
+
 dependencies {
     api projects.features.food.public
     implementation projects.libraries.food.public
