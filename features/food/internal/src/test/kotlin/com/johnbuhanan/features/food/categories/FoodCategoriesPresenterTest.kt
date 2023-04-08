@@ -38,7 +38,7 @@ class FoodCategoriesPresenterTest {
 
             // Food items are found -> Success
             val successState = awaitItem() as FoodCategoriesState.Success
-            assertThat(successState.categories).isEqualTo(listOf(FoodItem("", "", "")))
+            assertThat(successState.categories).isEqualTo(listOf(FoodItem("wrong", "", "")))
 
             // Tap a Category and go to FoodCategoryDetailsScreen
             successState.eventSink(FoodCategoriesEvent.TappedCategory("1"))
