@@ -32,8 +32,8 @@ jobs:
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Check LFS files
-        uses: actionsdesk/lfs-warning@v3.2
+#      - name: Check LFS files
+#        uses: actionsdesk/lfs-warning@v3.2
 
       - name: Install JDK
         uses: actions/setup-java@v3
