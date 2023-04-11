@@ -77,7 +77,7 @@ junit4 = "junit:junit:4.13.2"
 assertk = "com.willowtreeapps.assertk:assertk-jvm:0.23.1"
 turbine = "app.cash.turbine:turbine:0.12.3"
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-robolectric = { module = "org.robolectric:robolectric", version.ref="robolectric" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 #testing-hamcrest = "org.hamcrest:hamcrest:2.2"
 #androidx-compose-ui-testing-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 #androidx-tracing = "androidx.tracing:tracing:1.2.0-beta02"
@@ -89,7 +89,10 @@ robolectric = { module = "org.robolectric:robolectric", version.ref="robolectric
 # Circuit
 circuitCodegenAnnotations = { module = "com.slack.circuit:circuit-codegen-annotations", version.ref = "circuit" }
 circuitCodegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuit" }
-circuitCore = { module = "com.slack.circuit:circuit-core", version.ref = "circuit" }
+circuitRuntime = { module = "com.slack.circuit:circuit-runtime", version.ref = "circuit" }
+circuitRuntimePresenter = { module = "com.slack.circuit:circuit-runtime-presenter", version.ref = "circuit" }
+circuitRuntimeUi = { module = "com.slack.circuit:circuit-runtime-ui", version.ref = "circuit" }
+circuitFoundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
 circuitTest = { module = "com.slack.circuit:circuit-test", version.ref = "circuit" }
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
 
@@ -102,4 +105,4 @@ timber = "com.jakewharton.timber:timber:5.0.1"
 compose = ["androidx-compose-ui", "androidx-compose-uitooling", "androidx-compose-foundation", "androidx-compose-material", "androidx-compose-activity"]
 daggerKapt = ["dagger-compiler", "dagger-android-processor"]
 dagger = ["dagger-lib", "dagger-android", "dagger-android-support"]
-circuit = ["circuitCore", "circuitCodegenAnnotations", "circuitCodegen"]
+circuit = ["circuitFoundation", "circuitRuntime", "circuitRuntimePresenter", "circuitRuntimeUi"]

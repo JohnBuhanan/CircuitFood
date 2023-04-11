@@ -1,8 +1,8 @@
 package com.johnbuhanan.features.food.categories
 
 import com.johnbuhanan.libraries.food.model.FoodItem
-import com.slack.circuit.CircuitUiEvent
-import com.slack.circuit.CircuitUiState
+import com.slack.circuit.runtime.CircuitUiEvent
+import com.slack.circuit.runtime.CircuitUiState
 
 sealed interface FoodCategoriesEvent : CircuitUiEvent {
     data class TappedCategory(val id: String) : FoodCategoriesEvent

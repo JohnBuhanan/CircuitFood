@@ -10,13 +10,12 @@ import com.johnbuhanan.features.food.FoodCategoryDetailsScreen
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.johnbuhanan.libraries.food.usecase.GetFoodCategoryAsItemById
 import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsById
-import com.slack.circuit.Navigator
-import com.slack.circuit.Presenter
 import com.slack.circuit.codegen.annotations.CircuitInject
+import com.slack.circuit.runtime.Navigator
+import com.slack.circuit.runtime.presenter.Presenter
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-
 
 class FoodCategoryDetailsPresenter @AssistedInject constructor(
     private val getFoodCategoryById: GetFoodCategoryAsItemById,
