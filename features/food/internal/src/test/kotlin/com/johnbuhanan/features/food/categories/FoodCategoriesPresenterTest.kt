@@ -30,6 +30,7 @@ class FoodCategoriesPresenterTest {
         navigator = fakeNavigator,
     )
 
+
     @Test
     fun `data loads and then clicking item navigates to details screen`() = runTest {
         presenter.test {
