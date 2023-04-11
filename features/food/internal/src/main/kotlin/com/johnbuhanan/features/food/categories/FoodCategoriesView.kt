@@ -13,21 +13,27 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.johnbuhanan.common.di.AppScope
 import com.johnbuhanan.common.ui.AppBar
 import com.johnbuhanan.common.ui.LoadingBar
 import com.johnbuhanan.features.food.FoodCategoriesScreen
+import com.johnbuhanan.features.food.categories.FoodCategoriesConstants.FOOD_LIST_TAG
 import com.johnbuhanan.features.food.shared.FoodItemRow
 import com.johnbuhanan.libraries.food.model.FoodItem
 import com.slack.circuit.codegen.annotations.CircuitInject
+
+internal object FoodCategoriesConstants {
+    const val FOOD_LIST_TAG = "grid"
+}
 
 
 @CircuitInject(FoodCategoriesScreen::class, AppScope::class)
 @Composable
 fun FoodCategoriesView(
     foodCategoriesState: FoodCategoriesState,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
     when (foodCategoriesState) {
         is FoodCategoriesState.Loading -> LoadingBar()
@@ -61,7 +67,8 @@ fun FoodItemList(
     onEvent: (FoodCategoriesEvent) -> Unit = {},
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(bottom = 16.dp)
+        contentPadding = PaddingValues(bottom = 16.dp),
+        modifier = Modifier.testTag(FOOD_LIST_TAG),
     ) {
         items(foodItems) { item ->
             FoodItemRow(

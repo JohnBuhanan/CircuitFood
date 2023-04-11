@@ -31,8 +31,4 @@ dependencies {
     "implementation"(libs.resolveBundle("circuit"))
     "api"(libs.resolveDependency("circuitCodegenAnnotations"))
     "ksp"(libs.resolveDependency("circuitCodegen"))
-    //  androidTestImplementation libs.androidx.compose.test.junit4
-    //  androidTestImplementation libs.androidx.test.junit
-    //  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    //  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }

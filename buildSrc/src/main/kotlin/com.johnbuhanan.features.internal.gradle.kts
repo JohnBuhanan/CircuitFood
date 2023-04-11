@@ -17,12 +17,9 @@ dependencies {
 
     "testImplementation"(libs.resolveDependency("circuitTest"))
     "testImplementation"(libs.resolveDependency("robolectric"))
-//    "testImplementation"(libs.resolveDependency("testing.hamcrest"))
-//    "testImplementation"(libs.resolveDependency("androidx.compose.ui.testing.junit"))
-//    "testImplementation"(libs.resolveDependency("molecule.runtime"))
-//    "implementation"(libs.resolveDependency("androidx.tracing"))
-//    "testImplementation"(libs.resolveDependency("androidx.loader"))
-//    "testImplementation"(libs.resolveDependency("testing.espresso.core"))
-//    "testImplementation"(libs.resolveDependency("androidx.compose.ui.testing.manifest"))
 
+    "androidTestImplementation"(libs.resolveDependency("androidx.compose.test.junit4"))
+    "androidTestImplementation"(libs.resolveDependency("leakcanary.android.instrumentation"))
+    "androidTestImplementation"(libs.resolveDependency("truth"))
+    "androidTestImplementation"(libs.resolveDependency("androidx.compose.ui.testing.manifest"))
 }
