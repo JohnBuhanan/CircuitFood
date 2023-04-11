@@ -3,8 +3,8 @@ package com.johnbuhanan.features.food.details
 import android.os.Parcelable
 import androidx.compose.runtime.Stable
 import com.johnbuhanan.libraries.food.model.FoodItem
-import com.slack.circuit.CircuitUiEvent
-import com.slack.circuit.CircuitUiState
+import com.slack.circuit.runtime.CircuitUiEvent
+import com.slack.circuit.runtime.CircuitUiState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

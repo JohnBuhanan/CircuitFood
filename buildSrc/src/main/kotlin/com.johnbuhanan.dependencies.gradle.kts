@@ -28,7 +28,7 @@ dependencies {
     "testImplementation"(libs.resolveDependency("assertk"))
 
     // Circuit
-    "implementation"(libs.resolveDependency("circuitCore"))
+    "implementation"(libs.resolveBundle("circuit"))
     "api"(libs.resolveDependency("circuitCodegenAnnotations"))
     "ksp"(libs.resolveDependency("circuitCodegen"))
     //  androidTestImplementation libs.androidx.compose.test.junit4

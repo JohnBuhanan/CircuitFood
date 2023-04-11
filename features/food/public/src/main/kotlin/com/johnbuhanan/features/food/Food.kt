@@ -1,6 +1,6 @@
 package com.johnbuhanan.features.food
 
-import com.slack.circuit.Screen
+import com.slack.circuit.runtime.Screen
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

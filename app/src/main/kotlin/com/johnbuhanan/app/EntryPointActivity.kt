@@ -23,11 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.johnbuhanan.app.theme.ComposeSampleTheme
 import com.johnbuhanan.features.food.FoodCategoriesScreen
-import com.slack.circuit.CircuitConfig
-import com.slack.circuit.NavigableCircuitContent
 import com.slack.circuit.backstack.rememberSaveableBackStack
-import com.slack.circuit.push
-import com.slack.circuit.rememberCircuitNavigator
+import com.slack.circuit.foundation.CircuitConfig
+import com.slack.circuit.foundation.NavigableCircuitContent
+import com.slack.circuit.foundation.push
+import com.slack.circuit.foundation.rememberCircuitNavigator
 import javax.inject.Inject
 
 class EntryPointActivity : ComponentActivity() {

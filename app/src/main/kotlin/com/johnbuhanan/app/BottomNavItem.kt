@@ -6,7 +6,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.johnbuhanan.features.about.AboutScreen
 import com.johnbuhanan.features.food.FoodCategoriesScreen
-import com.slack.circuit.Screen
+import com.slack.circuit.runtime.Screen
 
 sealed class BottomNavItem(val title: String, val icon: ImageVector) {
     abstract val screen: Screen

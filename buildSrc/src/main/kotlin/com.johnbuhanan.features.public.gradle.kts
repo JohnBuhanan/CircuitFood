@@ -8,5 +8,5 @@ apply(plugin = "kotlin-parcelize")
 
 dependencies {
     "implementation"(libs.resolveDependency("androidx.compose.ui"))
-    "implementation"(libs.resolveDependency("circuitCore"))
+    "implementation"(libs.resolveDependency("circuitRuntime"))
 }
