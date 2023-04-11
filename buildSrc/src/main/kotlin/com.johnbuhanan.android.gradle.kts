@@ -35,6 +35,6 @@ with(the<BaseExtension>()) {
     buildFeatures.compose = true
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.resolveVersion("kotlinCompilerExtensionVersion").requiredVersion
+        kotlinCompilerExtensionVersion = libs.resolveVersion("composeCompiler").requiredVersion
     }
 }
