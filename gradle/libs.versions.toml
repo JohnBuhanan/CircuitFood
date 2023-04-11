@@ -11,7 +11,7 @@ kspPlugin = "1.8.10-1.0.9"
 moshi = "1.13.0"
 circuit = "0.7.0"
 material3 = "1.0.1"
-anvil = "2.4.4"
+anvil = "2.4.5"
 
 orchestrator = "1.3.0"
 coroutines = "1.6.4"
