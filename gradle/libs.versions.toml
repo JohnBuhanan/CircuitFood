@@ -39,7 +39,7 @@ kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = 
 # https://developer.android.com/jetpack/androidx/versions
 # Androidx
 androidx-corektx = "androidx.core:core-ktx:1.6.0"
-androidx-appcompat = "androidx.appcompat:appcompat:1.3.1"
+androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
 
 # Androidx Test
 androidx-test-corektx = "androidx.test:core-ktx:1.5.0"
