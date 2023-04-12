@@ -95,7 +95,7 @@ circuitTest = { module = "com.slack.circuit:circuit-test", version.ref = "circui
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
 
 # Misc
-material = "com.google.android.material:material:1.4.0"
+material = "com.google.android.material:material:1.8.0"
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 timber = "com.jakewharton.timber:timber:5.0.1"
 
