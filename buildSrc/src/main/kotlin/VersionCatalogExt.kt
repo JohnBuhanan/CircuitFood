@@ -21,7 +21,7 @@ fun VersionCatalog.resolveBundle(bundle: String): Provider<ExternalModuleDepende
  * Wraps VersionCatalog#findDependency to give a clean error message in the event of a failure
  */
 fun VersionCatalog.resolveDependency(dependency: String): Provider<MinimalExternalModuleDependency> =
-    resolveCatalogItem(VersionCatalog::findDependency, "dependency", dependency)
+    resolveCatalogItem(VersionCatalog::findLibrary, "dependency", dependency)
 
 /**
  * Wraps VersionCatalog#findVersion to give a clean error message in the event of a failure
