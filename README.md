@@ -2,7 +2,6 @@
 
 * Circuit
 * Compose
-* Molecule Presenters
 * Anvil
 * Flow/Coroutines
 * Animations
