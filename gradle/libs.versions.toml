@@ -74,7 +74,7 @@ anvil-gradlePlugin = { module = "com.squareup.anvil:gradle-plugin", version.ref 
 androidx-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 junit4 = "junit:junit:4.13.2"
 assertk = "com.willowtreeapps.assertk:assertk-jvm:0.25"
-turbine = "app.cash.turbine:turbine:0.12.3"
+turbine = "app.cash.turbine:turbine:0.13.0"
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 
