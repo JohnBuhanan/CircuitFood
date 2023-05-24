@@ -53,7 +53,7 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compos
 androidx-compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-compose-material = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-androidx-compose-activity = "androidx.activity:activity-compose:1.7.1"
+androidx-compose-activity = "androidx.activity:activity-compose:1.7.2"
 
 # Image loading
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
