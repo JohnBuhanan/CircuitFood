@@ -1,7 +1,7 @@
 [versions]
 agp = "7.4.2"
 anvil = "2.4.4"
-circuit = "0.8.0"
+circuit = "0.9.0"
 coil = "2.4.0"
 compose = "1.4.3"
 composeCompiler = "1.4.4"
