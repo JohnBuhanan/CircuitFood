@@ -5,3 +5,7 @@ plugins {
 dependencies {
     api projects.libraries.food.public
 }
+
+android {
+    namespace 'com.johnbuhanan.features.food.domain'
+}

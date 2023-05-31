@@ -4,6 +4,7 @@ plugins {
 
 android {
     testOptions.unitTests.includeAndroidResources = true
+    namespace 'com.johnbuhanan.features.food'
 }
 
 dependencies {

@@ -1,3 +1,7 @@
 plugins {
   id 'com.johnbuhanan.features.public'
 }
+
+android {
+    namespace 'com.johnbuhanan.features.food.api'
+}

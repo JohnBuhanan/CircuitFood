@@ -6,3 +6,7 @@ plugins {
 dependencies {
     implementation libs.bundles.compose
 }
+
+android {
+    namespace 'com.johnbuhanan.common.resultlistener'
+}
