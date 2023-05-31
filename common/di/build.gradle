@@ -5,4 +5,5 @@ plugins {
 
 android {
     buildFeatures.compose = false
+    namespace 'com.johnbuhanan.common.di'
 }

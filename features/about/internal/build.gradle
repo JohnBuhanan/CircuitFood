@@ -6,3 +6,7 @@ dependencies {
     api projects.features.about.public
 }
 
+android {
+    namespace 'com.johnbuhanan.features.about'
+}
+

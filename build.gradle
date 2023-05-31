@@ -23,7 +23,7 @@ allprojects { project ->
   project.afterEvaluate {
     if (plugins.hasPlugin('com.johnbuhanan.android')) {
       android.kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"

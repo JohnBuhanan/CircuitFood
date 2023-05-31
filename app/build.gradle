@@ -6,6 +6,7 @@ android {
   defaultConfig {
     applicationId "com.johnbuhanan.mvi.public"
   }
+  namespace 'com.johnbuhanan.foodies'
 }
 
 dependencies {
