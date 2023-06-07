@@ -28,6 +28,8 @@ allprojects { project ->
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
         freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
       }
+
+      android.lint.baseline = file(projectDir.path + "/lint-baseline.xml")
     }
   }
 }
