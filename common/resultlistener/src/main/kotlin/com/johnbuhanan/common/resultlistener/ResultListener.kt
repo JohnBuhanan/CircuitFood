@@ -3,15 +3,15 @@ package com.johnbuhanan.common.resultlistener
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.common.di.SingleIn
 import com.squareup.anvil.annotations.ContributesBinding
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface ResultListener {
     val map: MutableMap<String, MutableState<*>>
 }
 
-@Singleton
+@SingleIn(AppScope::class)
 @ContributesBinding(AppScope::class)
 class ResultListenerImpl @Inject constructor() : ResultListener {
     override val map: MutableMap<String, MutableState<*>> = mutableMapOf()

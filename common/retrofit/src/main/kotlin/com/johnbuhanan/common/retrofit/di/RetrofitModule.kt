@@ -1,10 +1,10 @@
 package com.johnbuhanan.common.retrofit.di
 
 import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.common.di.SingleIn
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -17,7 +17,7 @@ class RetrofitModule {
     }
 
     @Provides
-    @Singleton
+    @SingleIn(AppScope::class)
     fun provideAuthInterceptorOkHttpClient(): OkHttpClient {
         return OkHttpClient
             .Builder()
@@ -25,7 +25,7 @@ class RetrofitModule {
     }
 
     @Provides
-    @Singleton
+    @SingleIn(AppScope::class)
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
     ): Retrofit {

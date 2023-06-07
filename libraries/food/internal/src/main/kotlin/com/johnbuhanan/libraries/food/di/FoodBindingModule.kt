@@ -1,6 +1,7 @@
 package com.johnbuhanan.libraries.food.di
 
 import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.common.di.SingleIn
 import com.johnbuhanan.libraries.food.repository.FoodCategoryRepository
 import com.johnbuhanan.libraries.food.repository.FoodCategoryRepositoryImpl
 import com.johnbuhanan.libraries.food.repository.MealRepository
@@ -14,28 +15,27 @@ import com.johnbuhanan.libraries.food.usecase.GetMealsAsItemsByIdImpl
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
 @ContributesTo(AppScope::class)
 @Module
 abstract class FoodBindingModule {
     @Binds
-    @Singleton
+    @SingleIn(AppScope::class)
     abstract fun bindsFoodCategoryRepository(impl: FoodCategoryRepositoryImpl): FoodCategoryRepository
 
     @Binds
-    @Singleton
+    @SingleIn(AppScope::class)
     abstract fun bindsMealRepository(impl: MealRepositoryImpl): MealRepository
 
     @Binds
-    @Singleton
+    @SingleIn(AppScope::class)
     abstract fun bindsGetFoodCategoriesAsItems(impl: GetFoodCategoriesAsItemsImpl): GetFoodCategoriesAsItems
 
     @Binds
-    @Singleton
+    @SingleIn(AppScope::class)
     abstract fun bindsGetFoodCategoryAsItemById(impl: GetFoodCategoryAsItemByIdImpl): GetFoodCategoryAsItemById
 
     @Binds
-    @Singleton
+    @SingleIn(AppScope::class)
     abstract fun bindsGetMealsAsItemsById(impl: GetMealsAsItemsByIdImpl): GetMealsAsItemsById
 }
