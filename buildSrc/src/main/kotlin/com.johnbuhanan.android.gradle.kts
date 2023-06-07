@@ -12,7 +12,7 @@ with(the<BaseExtension>()) {
     compileSdkVersion(33)
     buildToolsVersion = "30.0.3"
     defaultConfig {
-        minSdk = 24
+        minSdk = 28
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"

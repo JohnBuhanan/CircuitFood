@@ -1,16 +1,17 @@
 package com.johnbuhanan.libraries.food.repository
 
+import com.johnbuhanan.common.di.AppScope
+import com.johnbuhanan.common.di.SingleIn
 import com.johnbuhanan.libraries.food.FoodService
 import com.johnbuhanan.libraries.food.model.FoodCategory
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 interface FoodCategoryRepository {
     suspend fun getFoodCategories(): Result<List<FoodCategory>>
 }
 
-@Singleton
+@SingleIn(AppScope::class)
 class FoodCategoryRepositoryImpl @Inject constructor(
     private val foodService: FoodService,
 ) : FoodCategoryRepository {

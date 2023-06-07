@@ -1,7 +1,6 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.johnbuhanan.app
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -22,23 +20,25 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.johnbuhanan.app.theme.ComposeSampleTheme
+import com.johnbuhanan.common.di.ActivityKey
+import com.johnbuhanan.common.di.AppScope
 import com.johnbuhanan.features.food.FoodCategoriesScreen
 import com.slack.circuit.backstack.rememberSaveableBackStack
 import com.slack.circuit.foundation.CircuitConfig
 import com.slack.circuit.foundation.NavigableCircuitContent
 import com.slack.circuit.foundation.push
 import com.slack.circuit.foundation.rememberCircuitNavigator
+import com.squareup.anvil.annotations.ContributesMultibinding
 import javax.inject.Inject
 
-class EntryPointActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var circuitConfig: CircuitConfig
+@ContributesMultibinding(AppScope::class, boundType = Activity::class)
+@ActivityKey(EntryPointActivity::class)
+class EntryPointActivity @Inject constructor(
+    private val circuitConfig: CircuitConfig
+) : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        DaggerAppComponent.create().inject(this)
 
         setContent {
             val backstack = rememberSaveableBackStack { push(FoodCategoriesScreen) }

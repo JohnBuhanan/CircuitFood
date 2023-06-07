@@ -1,13 +1,14 @@
 package com.johnbuhanan.app
 
 import android.app.Application
-import com.johnbuhanan.common.di.AppScope
-import com.squareup.anvil.annotations.MergeComponent
-import javax.inject.Singleton
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-class MVIPublicApp : Application() {
+class CircuitFoodApp : Application() {
+    private val appComponent by lazy { AppComponent.create(this) }
+
+    fun appComponent() = appComponent
+
     override fun onCreate() {
         super.onCreate()
         Timber.plant(DebugTree())
