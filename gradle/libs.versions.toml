@@ -81,7 +81,7 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 # AndroidTest
 androidx-compose-ui-testing-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 leakcanary-android-instrumentation = { module = "com.squareup.leakcanary:leakcanary-android-instrumentation", version.ref = "leakcanary" }
-truth = "com.google.truth:truth:1.1.4"
+truth = "com.google.truth:truth:1.1.5"
 
 
 # Circuit
